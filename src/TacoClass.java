@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class TacoClass {
+public class TacoClass {
+    public TacoClass() {
+        System.out.println("tacoclass");
+    }
 }
