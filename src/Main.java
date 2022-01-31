@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-	    System.out.println("Töntigt värre, hej hej");
+	    System.out.println("HEJ ROBERT");
         new TacoClass();
     }
 }
