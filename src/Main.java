@@ -5,7 +5,7 @@ public class Main {
         System.out.println("OSCARS rabarber");        //Är jag filip eller buildtools
         System.out.println("Dehär går ju!..");
         // HEJ OSCAR, HEJ IGEN hehehehe hackerman rob the man
-        //Ni har glömt räkna på jordens gravitation
+        //Ni har glömt räkna på jordens gravitationqwdwqd
         System.out.println("Det går bra för Filip");
         /*
 
