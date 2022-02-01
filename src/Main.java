@@ -4,7 +4,7 @@ public class Main {
 	    System.out.println("HEJ JÖRGEN");
         System.out.println("OSCARS rabarber");        //Är jag filip eller buildtools
         System.out.println("Dehär går ju!..");
-        // HEJ OSCAR, HEJ IGEN hehehehe hackerman
+        // HEJ OSCAR, HEJ IGEN hehehehe hackerman rob the man
         System.out.println("Det går bra för Filip");
         /*
 
