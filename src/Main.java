@@ -6,6 +6,13 @@ public class Main {
         System.out.println("Dehär går ju!..");
         // HEJ OSCAR, HEJ IGEN
         System.out.println("Det går bra för Filip");
+        /*
+
+
+        INGET MER JÄVLA BUILDTOOLS NU VÄL
+
+
+         */
         new TacoClass();
 
     }
