@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-02-03T08:41:38.363Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="GdLbj6KCH0EEioO9XwtM" version="16.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-03T08:42:35.671Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="YsBG7dlG1oDQ5C3mS_fH" version="16.5.3" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
     <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="-XOdeHyJX4b31aOvF6B2-1" value="CIRLCES" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;fontSize=16;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
-          <mxGeometry x="440" y="290" width="85" height="85" as="geometry" />
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-1" value="CIRCLES" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;fontSize=16;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="390" y="280" width="85" height="85" as="geometry" />
         </mxCell>
         <mxCell id="-XOdeHyJX4b31aOvF6B2-8" value="Sign in / Sign up" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
           <mxGeometry x="90" y="450" width="140" height="355" as="geometry" />
