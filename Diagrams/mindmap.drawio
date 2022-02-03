@@ -1,13 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2022-02-03T08:58:20.862Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="satRbuU5fsFMUsVcUcZw" version="16.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-03T09:00:10.205Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="CdhOACG0ptOzJKQfIzBT" version="16.5.3" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
-    <mxGraphModel dx="1422" dy="745" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
+    <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="-XOdeHyJX4b31aOvF6B2-1" value="CIRCLES" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;fontSize=16;strokeColor=#000000;fillColor=#FFFFFF;" parent="1" vertex="1">
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-1" value="CIRCLES" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;rounded=0;fontSize=16;strokeColor=#000000;fillColor=#FFFFFF;" vertex="1" parent="1">
           <mxGeometry x="117.5" y="180" width="85" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="-XOdeHyJX4b31aOvF6B2-8" value="Sign in / Sign up" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-8" value="Sign in / Sign up" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
           <mxGeometry x="90" y="450" width="140" height="100" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-22" value="Username:__________&lt;br&gt;&lt;br&gt;Password:__________" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="-XOdeHyJX4b31aOvF6B2-8">
@@ -133,7 +133,7 @@
           <mxGeometry x="90" y="630" width="140" height="350" as="geometry" />
         </mxCell>
         <mxCell id="UE1TaZcInzhewKq7OZas-10" value="Från sign in / sign up&lt;br&gt;kommer man till huvudfönstret. &lt;br&gt;Här finns tre knappar med tre val&lt;br&gt;&quot;My Circles&quot;, &quot;Browse Circles&quot;&lt;br&gt;&amp;nbsp;och &quot;Settings&quot;.&lt;br&gt;I My Circles skall man kunna se gruppnamn &lt;br&gt;och vilken film som just nu är aktiv. &lt;br&gt;Efter man bockat i en ruta sett film kan man lämna kommentar&lt;br&gt;&amp;nbsp;och betyg samt se andras kommentarer och betyg. &lt;br&gt;Browse Circles Skall innehålla färdiga cirklar med en viss genre.&lt;br&gt;Settings ändra utseende i programet exempel darkmode." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="320" y="560" width="360" height="160" as="geometry" />
+          <mxGeometry x="320" y="610" width="360" height="160" as="geometry" />
         </mxCell>
         <mxCell id="-XOdeHyJX4b31aOvF6B2-35" value="Go Back" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.shaded_button;dx=10;fillColor=#E6E6E6;strokeColor=none;" vertex="1" parent="1">
           <mxGeometry x="960" y="760" width="60" height="30" as="geometry" />
@@ -184,6 +184,21 @@
         </mxCell>
         <mxCell id="-XOdeHyJX4b31aOvF6B2-40" value="Register" style="rounded=1;html=1;shadow=0;dashed=0;whiteSpace=wrap;fontSize=10;fillColor=#E6E6E6;align=center;strokeColor=#E6E6E6;fontColor=#333333;" vertex="1" parent="1">
           <mxGeometry x="170" y="571.56" width="50" height="16.88" as="geometry" />
+        </mxCell>
+        <mxCell id="UE1TaZcInzhewKq7OZas-17" value="Funktionsbeskrivning" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="565" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UE1TaZcInzhewKq7OZas-19" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.177;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="UE1TaZcInzhewKq7OZas-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="670" as="sourcePoint" />
+            <mxPoint x="690" y="596" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UE1TaZcInzhewKq7OZas-20" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.177;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="320" y="560.02" as="sourcePoint" />
+            <mxPoint x="690" y="560" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
