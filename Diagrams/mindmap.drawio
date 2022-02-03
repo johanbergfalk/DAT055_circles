@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-02-03T08:42:35.671Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="YsBG7dlG1oDQ5C3mS_fH" version="16.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-03T08:42:42.508Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="Pkl87hPavneeow0MOf10" version="16.5.2" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
-    <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="942" dy="642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -12,6 +12,24 @@
         </mxCell>
         <mxCell id="-XOdeHyJX4b31aOvF6B2-9" value="Första fönstret man får upp när man startar klienten. Här möts man av två fält för användarnamn och lösenord, samt två knappar. &#39;&#39;Log in&#39;&#39; eller &#39;&#39;Register&#39;&#39;. Klickar man login så kontrolleras uppgifterna mot databas/server. Klickar man register så ska man ange användarnamn och önskat lösenord. Sedan kontrolleras det att detta är tillgängligt och login fönstret stängs och vi hamnar i ett huvudfönster. (Där man landar när man är korrekt inloggad)&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;" vertex="1" parent="-XOdeHyJX4b31aOvF6B2-8">
           <mxGeometry y="30" width="140" height="325" as="geometry" />
+        </mxCell>
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-22" value="Huvudfönster" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="440" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-23" value="My Circles" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="-XOdeHyJX4b31aOvF6B2-22">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-24" value="Browse Circles" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="-XOdeHyJX4b31aOvF6B2-22">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-25" value="Settings" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="-XOdeHyJX4b31aOvF6B2-22">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-XOdeHyJX4b31aOvF6B2-26" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.005;exitY=0.043;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.01;entryY=0.122;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="-XOdeHyJX4b31aOvF6B2-8" target="-XOdeHyJX4b31aOvF6B2-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="530" as="sourcePoint" />
+            <mxPoint x="520" y="480" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
