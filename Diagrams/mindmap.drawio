@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-03T13:21:41.857Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="Td27w5rGjiAuLyeZsJIW" version="16.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-03T13:23:19.268Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="6i7Q8dDFTNPAKWxQEzXJ" version="16.5.3" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
     <mxGraphModel dx="1422" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
       <root>
@@ -14,10 +14,10 @@
           <mxGeometry y="30" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-2" value="Browse Circles" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1510" y="805" width="700" height="20" as="geometry" />
+          <mxGeometry x="1510" y="805" width="570" height="20" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-3" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-          <mxGeometry x="1510" y="825" width="680" height="680" as="geometry" />
+          <mxGeometry x="1510" y="825" width="570" height="570" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-4" value="Oscars&lt;br&gt;Romance" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
           <mxGeometry x="1530" y="860" width="80" height="80" as="geometry" />
@@ -56,16 +56,16 @@
           <mxGeometry x="1890" y="1090" width="100" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-16" value="" style="rounded=0;whiteSpace=wrap;html=1;rotation=90;" parent="1" vertex="1">
-          <mxGeometry x="2035" y="995" width="330" height="20" as="geometry" />
+          <mxGeometry x="1900" y="985" width="340" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="xkWNYUJY-CJNG6x_o0mZ-17" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1510" y="1185" width="700" height="330" as="geometry" />
+        <mxCell id="xkWNYUJY-CJNG6x_o0mZ-17" value="&lt;span lang=&quot;SV-SE&quot; class=&quot;TextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px ; background-color: rgb(255 , 255 , 255) ; font-size: 12pt ; line-height: 19.425px ; font-family: &amp;#34;times new roman&amp;#34; , &amp;#34;times new roman_embeddedfont&amp;#34; , &amp;#34;times new roman_msfontservice&amp;#34; , serif&quot;&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;Visar alla &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;tillgängliga &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;cirklar&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt; med&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt; &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;namn, och eventuellt en liten beskrivning.&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt; &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;Varje cirkel har ett datum då cirkeln startar&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt; &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;och när den slutar&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt; &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;Man kan välja att gå med i en cirkel här direkt, eller gå &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;ur om man &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;redan är &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;med&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;lem. &lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt;Om man klickar på en cirkel kommer man till &lt;/span&gt;&lt;span class=&quot;SpellingError SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px ; background-repeat: repeat-x ; background-position: left bottom ; background-image: url(&amp;#34;data:image/gif;base64,R0lGODlhBQAEAJECAP////8AAAAAAAAAACH5BAEAAAIALAAAAAAFAAQAAAIIlGAXCCHrTCgAOw==&amp;#34;) ; border-bottom: 1px solid transparent&quot;&gt;Circle&lt;/span&gt;&lt;span class=&quot;NormalTextRun SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px&quot;&gt; &lt;/span&gt;&lt;span class=&quot;SpellingError SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px ; background-repeat: repeat-x ; background-position: left bottom ; background-image: url(&amp;#34;data:image/gif;base64,R0lGODlhBQAEAJECAP////8AAAAAAAAAACH5BAEAAAIALAAAAAAFAAQAAAIIlGAXCCHrTCgAOw==&amp;#34;) ; border-bottom: 1px solid transparent&quot;&gt;details&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;EOP SCXW185962391 BCX0&quot; style=&quot;margin: 0px ; padding: 0px ; background-color: rgb(255 , 255 , 255) ; font-size: 12pt ; line-height: 19.425px ; font-family: &amp;#34;times new roman&amp;#34; , &amp;#34;times new roman_embeddedfont&amp;#34; , &amp;#34;times new roman_msfontservice&amp;#34; , serif&quot;&gt;&amp;nbsp;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1510" y="1185" width="570" height="330" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-18" value="&lt;span&gt;Funktionsbeskrivning&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1510" y="1165" width="700" height="20" as="geometry" />
+          <mxGeometry x="1510" y="1165" width="570" height="20" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-19" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2190" y="825" width="20" height="20" as="geometry" />
+          <mxGeometry x="2060" y="825" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="-XOdeHyJX4b31aOvF6B2-33" value="BobRobBob startar applikationen" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="600" y="60" width="30" height="60" as="geometry" />
