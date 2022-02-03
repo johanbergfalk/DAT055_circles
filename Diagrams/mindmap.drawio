@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-02-03T13:23:19.268Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="6i7Q8dDFTNPAKWxQEzXJ" version="16.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-03T14:00:10.682Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="3haSSMasrIM_be7SXA0i" version="16.5.3" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
-    <mxGraphModel dx="1422" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -92,10 +92,10 @@
           <mxGeometry x="850" y="180" width="140" height="60" as="geometry" />
         </mxCell>
         <mxCell id="gihYF0l77A3G0Wvorfxp-9" value="Settings" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="370" y="550" width="140" height="90" as="geometry" />
+          <mxGeometry x="370" y="550" width="140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="gihYF0l77A3G0Wvorfxp-16" value="* Nightmode on/off&lt;br&gt;* Change name&lt;br&gt;* Change password&lt;br&gt;* Delete account (?)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="gihYF0l77A3G0Wvorfxp-9" vertex="1">
-          <mxGeometry y="30" width="140" height="60" as="geometry" />
+        <mxCell id="gihYF0l77A3G0Wvorfxp-16" value="* Nightmode on/off&lt;br&gt;* Change password&lt;br&gt;* Delete account (?)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="gihYF0l77A3G0Wvorfxp-9" vertex="1">
+          <mxGeometry y="30" width="140" height="50" as="geometry" />
         </mxCell>
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-28" value="Funktionsbeskrivning" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="850" y="240" width="140" height="20" as="geometry" />
@@ -195,12 +195,12 @@
         <mxCell id="xkWNYUJY-CJNG6x_o0mZ-67" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="1015" y="1510" width="195" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="7voX9Bw7psMwSDj8nCXa-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="-XOdeHyJX4b31aOvF6B2-8" target="7voX9Bw7psMwSDj8nCXa-16" edge="1">
+        <mxCell id="7voX9Bw7psMwSDj8nCXa-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1.029;exitY=0.19;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="-XOdeHyJX4b31aOvF6B2-8" target="7voX9Bw7psMwSDj8nCXa-16" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="580" y="650" as="sourcePoint" />
             <mxPoint x="1075" y="650" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1070" y="105" />
+              <mxPoint x="1070" y="100" />
             </Array>
           </mxGeometry>
         </mxCell>
