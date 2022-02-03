@@ -4,8 +4,16 @@ public class Main {
 	    System.out.println("HEJ JÖRGEN");
         System.out.println("OSCARS rabarber");        //Är jag filip eller buildtools
         System.out.println("Dehär går ju!..");
-        // HEJ OSCAR, HEJ IGEN
+        // HEJ OSCAR, HEJ IGEN hehehehe hackerman rob the man
+        //Ni har glömt räkna på jordens gravitationqwdwqdsuhifud
         System.out.println("Det går bra för Filip");
+        /*
+
+
+        INGET MER JÄVLA BUILDTOOLS NU VÄL jahopp NUDÅ?
+
+
+         */
         new TacoClass();
 
     }
