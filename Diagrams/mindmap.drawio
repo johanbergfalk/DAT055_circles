@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-03T08:35:23.928Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="7-NY9OSbupHt3NRyLU2Q" version="16.5.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-03T08:37:12.178Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="npFiv3HSrVTIF_6iI-GV" version="16.5.3" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
     <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -17,6 +17,15 @@
         </mxCell>
         <mxCell id="-XOdeHyJX4b31aOvF6B2-9" value="Första fönstret man får upp när man startar klienten. " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;" vertex="1" parent="-XOdeHyJX4b31aOvF6B2-8">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UE1TaZcInzhewKq7OZas-3" value="My cicles&amp;nbsp;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UE1TaZcInzhewKq7OZas-4" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.007;exitY=0.133;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="-XOdeHyJX4b31aOvF6B2-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="510" as="sourcePoint" />
+            <mxPoint x="430" y="460" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
