@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-10T08:31:03.014Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="5qfMoc7BOzNi9TqWiv2n" version="16.5.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-02-10T08:32:01.609Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="mXRul7RyzIc5JMKHNYT-" version="16.5.5" type="github">
   <diagram id="p2HajZ41j6ZCVXQFpqO8" name="Page-1">
     <mxGraphModel dx="868" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
       <root>
@@ -358,6 +358,12 @@
         </mxCell>
         <mxCell id="Ojl0A6f6nF8EtHLME5s5-14" value="Slut datum" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Ojl0A6f6nF8EtHLME5s5-7" vertex="1">
           <mxGeometry x="110" y="125" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tfCkdgh3ERgMZaU4HgN3-1" value="Beskrivning" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="Ojl0A6f6nF8EtHLME5s5-7">
+          <mxGeometry x="110" y="170" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tfCkdgh3ERgMZaU4HgN3-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="Ojl0A6f6nF8EtHLME5s5-7">
+          <mxGeometry x="190" y="175" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Ojl0A6f6nF8EtHLME5s5-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.955;exitY=1.141;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="xkWNYUJY-CJNG6x_o0mZ-16" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
