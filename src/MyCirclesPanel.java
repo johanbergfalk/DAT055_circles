@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,8 @@ public class MyCirclesPanel extends JPanel {
         setLayout(new BorderLayout());
 
         JPanel content = new JPanel();
-        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        content.setLayout(new GridLayout(userCircles.size(), 0, 3,3));
+        //content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         //create the frame for each circle
         circleFrame(content);
@@ -36,24 +38,27 @@ public class MyCirclesPanel extends JPanel {
     private void circleFrame(JPanel c){
           for(Circle i : userCircles) {
               JPanel circleMainSlot = new JPanel(); //Main window for the circle
-              circleMainSlot.setLayout(new GridLayout(1,2, 3,3)); //Main split in 2
+              circleMainSlot.setLayout(new GridLayout(1,2)); //Main split in 2
 
               JPanel datesAndName = new JPanel();
+              datesAndName.setLayout(new GridLayout(3,0));
 
               DateFormat df = new SimpleDateFormat("yy-MM-dd");
               String dateFrom = df.format(i.get_starttime());
               String dateTo = df.format(i.get_stoptime());
 
-              JTextArea labelDatesAndName = new JTextArea("From: " + dateFrom + "\n\n" + i.getName() + "\n\n" + "To: " + dateTo);
-              labelDatesAndName.setOpaque(true); //Todo funkar inte..
-              datesAndName.add(labelDatesAndName);
+              datesAndName.add(new JLabel("Starting: " + dateFrom));
+              datesAndName.add(new JLabel(i.getName()));
+              datesAndName.add(new JLabel("Ending: " + dateTo));
+
 
               JPanel descriptionAndButton = new JPanel();
+              descriptionAndButton.setLayout(new GridLayout(5,0));
               JLabel desc = new JLabel(i.getDescription());
               descriptionAndButton.add(desc);
 
-              JButton open = new JButton("Open");
-              descriptionAndButton.add(open);
+              JButton details = new JButton("Details");
+              descriptionAndButton.add(details);
 
 
               circleMainSlot.setPreferredSize(new Dimension(100, 100));
@@ -65,7 +70,7 @@ public class MyCirclesPanel extends JPanel {
 
 
 
-
+    //Tillfälligt för att testa MyCircles
     public static void main(String[] args) {
         MainFrame frame = new MainFrame("Navigate");
 
