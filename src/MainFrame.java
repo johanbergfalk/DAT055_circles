@@ -6,6 +6,7 @@ import java.util.function.Function;
 public class MainFrame extends JFrame {
 
     public MainFrame() {
+
     }
 
     public static void main(String[] args) throws SQLException, URISyntaxException {

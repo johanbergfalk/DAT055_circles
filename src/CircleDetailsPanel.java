@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class CircleDetailsPanel extends JPanel {
 
-    public CircleDetailsPanel(MainFrame frame) {
+    public CircleDetailsPanel(JFrame frame) {
 
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -18,6 +18,7 @@ public class CircleDetailsPanel extends JPanel {
         content.add(new MovieCard());
         content.add(new MovieCard());
         content.add(new MovieCard());
+
 
         JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
