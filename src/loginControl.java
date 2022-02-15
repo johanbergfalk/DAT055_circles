@@ -35,13 +35,6 @@ public class loginControl implements ActionListener {
 
 
     }
-
-    public static void main(String[] args) throws SQLException, URISyntaxException {
-        new loginControl();
-    }
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String sourceClicked = e.getActionCommand();
