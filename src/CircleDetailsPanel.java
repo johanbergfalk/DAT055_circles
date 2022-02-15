@@ -1,5 +1,3 @@
-import CircleDetails.MainFrame;
-
 import javax.swing.*;
 import java.awt.*;
 
