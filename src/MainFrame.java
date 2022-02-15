@@ -5,7 +5,8 @@ import java.sql.SQLException;
 import java.util.function.Function;
 public class MainFrame extends JFrame {
 
-    public MainFrame() {
+    public MainFrame(String titel) throws HeadlessException {
+        super(titel);
 
     }
 
