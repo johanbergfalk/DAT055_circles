@@ -21,7 +21,8 @@ public class loginControl implements ActionListener {
     MainFrame m;
 
     public loginControl() throws SQLException, URISyntaxException {
-        m = new MainFrame("Circles");
+        m = new MainFrame();
+        m.setTitle("Circles");
         conn = new DBConnection();
         model = new loginModel();
         m.setMinimumSize(new Dimension(500,300));
