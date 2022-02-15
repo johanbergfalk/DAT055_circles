@@ -1,7 +1,6 @@
-package CircleDetails;
+import CircleDetails.MainFrame;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class CircleDetailsPanel extends JPanel {
@@ -22,7 +21,7 @@ public class CircleDetailsPanel extends JPanel {
         content.add(new MovieCard());
         content.add(new MovieCard());
 
-        JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         add(scrollPane);
 
