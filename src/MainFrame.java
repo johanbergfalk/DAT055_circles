@@ -7,7 +7,6 @@ public class MainFrame extends JFrame{
 
 public MainFrame(String title){
     this.setTitle(title);
-
 }
     public static void main(String[] args) throws SQLException, URISyntaxException {
         new loginControl();
