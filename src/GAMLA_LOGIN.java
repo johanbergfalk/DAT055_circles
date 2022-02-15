@@ -3,13 +3,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 
-public class loginControl implements ActionListener {
+public class GAMLA_LOGIN implements ActionListener {
     loginModel model;
     DBConnection conn;
     JPanel loginPanel;
@@ -20,10 +18,10 @@ public class loginControl implements ActionListener {
     JPanel mainPanel;
     MainFrame m;
 
-    public loginControl() throws SQLException, URISyntaxException {
+    public GAMLA_LOGIN() throws SQLException, URISyntaxException {
         m = new MainFrame();
         m.setTitle("Circles");
-        conn = new DBConnection();
+        //conn = new DBConnection();
         model = new loginModel();
         m.setMinimumSize(new Dimension(500,300));
         loginPanel = this.makeLoginPanel();
@@ -64,7 +62,7 @@ public class loginControl implements ActionListener {
                 if(username.getText().length() >= 4 && password.getPassword().length >= 4) {
                     byte[] sr = Passwords.getNextSalt();
                     byte[] hr = Passwords.hash(password.getPassword(), sr);
-                    boolean success = conn.addUser(username.getText(), hr, sr);
+                    boolean success = DatabaseConn.addUser(username.getText(),hr, hr, sr);
                     password.setText("");
                     username.setText("");
                     if (success) {

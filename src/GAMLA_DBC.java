@@ -2,11 +2,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
 
-public class DBConnection {
+public class GAMLA_DBC{
     Connection connection;
 
 
-    public DBConnection() throws SQLException, URISyntaxException {
+    public GAMLA_DBC() throws SQLException, URISyntaxException {
         this.connection = getConnection();
     }
 
