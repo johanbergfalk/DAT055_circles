@@ -2,7 +2,7 @@
 import java.sql.*;
 
 
-public classDatabaseConn {
+public class DatabaseConn {
 
     private static DatabaseConn instance;
     private Connection c;
