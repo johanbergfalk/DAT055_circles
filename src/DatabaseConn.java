@@ -17,13 +17,14 @@ public class DatabaseConn {
         } catch (Exception e){ System.out.println("Error establishing database connection.");}
     }
 
-    public static DatabaseConn getInstance() throws SQLException{
+    private static DatabaseConn getInstance() throws SQLException{
         if (instance == null) {
             instance = new DatabaseConn();
         }
         return instance;
     }
 
+    /* FUNCTIONS RELATED TO USER DATA */
     public static boolean addUser(String username, byte[] obj, byte[] hash, byte[] salt){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?,?,?)");
@@ -35,6 +36,42 @@ public class DatabaseConn {
             return true;
         } catch (SQLException se){
             return false;
+        }
+    }
+
+    public static byte[] getUser(String username){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT obj FROM users WHERE username = ?");
+            ps.setString(1, username);
+            ResultSet r = ps.executeQuery();
+            r.next();
+            return r.getBytes(1);
+        } catch (SQLException se){
+            return null;
+        }
+    }
+
+    public static byte[] getHash(String username){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT hash FROM users WHERE username = ?");
+            ps.setString(1, username);
+            ResultSet r = ps.executeQuery();
+            r.next();
+            return r.getBytes(1);
+        } catch (SQLException se){
+            return null;
+        }
+    }
+
+    public static byte[] getSalt(String username){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT salt FROM users WHERE username = ?");
+            ps.setString(1, username);
+            ResultSet r = ps.executeQuery();
+            r.next();
+            return r.getBytes(1);
+        } catch (SQLException se){
+            return null;
         }
     }
 
