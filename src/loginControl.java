@@ -12,36 +12,26 @@ import java.sql.SQLException;
 public class loginControl implements ActionListener {
     loginModel model;
     DBConnection conn;
-    JFrame window;
     JPanel loginPanel;
     String user;
     JTextField username;
     JPasswordField password;
     JLabel loginError;
     JPanel mainPanel;
-
+    MainFrame m;
 
     public loginControl() throws SQLException, URISyntaxException {
+        m = new MainFrame();
+        m.setTitle("Circles");
         conn = new DBConnection();
         model = new loginModel();
-
-        window = new JFrame ("Circles");
-        window.setMinimumSize(new Dimension(500,300));
+        m.setMinimumSize(new Dimension(500,300));
         loginPanel = this.makeLoginPanel();
-        window.add(loginPanel);
-        window.setLocation(100,100);
-        window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
+        m.add(loginPanel);
+        m.setLocation(100,100);
+        m.setVisible(true);
+        m.setDefaultCloseOperation(m.EXIT_ON_CLOSE);
     }
-
-    public static void main(String[] args) throws SQLException, URISyntaxException {
-        new loginControl();
-    }
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String sourceClicked = e.getActionCommand();
@@ -58,7 +48,7 @@ public class loginControl implements ActionListener {
                     loginError.setVisible(false);
                     this.mainPanel = this.makeMainPanel();
                     loginPanel.setVisible(false);
-                    window.add(mainPanel);
+                    m.add(mainPanel);
                 } else {
                     password.setText("");
                     username.setText("");
@@ -78,17 +68,17 @@ public class loginControl implements ActionListener {
                     password.setText("");
                     username.setText("");
                     if (success) {
-                        JOptionPane.showMessageDialog(this.window, "You are now registered. Please log in.");
+                        JOptionPane.showMessageDialog(m, "You are now registered. Please log in.");
                     } else {
-                        JOptionPane.showMessageDialog(this.window, "Username already taken.");
+                        JOptionPane.showMessageDialog(m, "Username already taken.");
                     }
                     break;
                 } else {
-                    JOptionPane.showMessageDialog(this.window, "Username and password need to be atleast four charachters each.");
+                    JOptionPane.showMessageDialog(m, "Username and password need to be atleast four charachters each.");
                 }
         }
         }
-        window.repaint();
+        m.repaint();
     }
 
     private void terminate() throws SQLException {
