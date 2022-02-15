@@ -24,6 +24,7 @@ public class DatabaseConn {
         return instance;
     }
 
+    /* FUNCTIONS RELATED TO USER DATA */
     public static boolean addUser(String username, byte[] obj, byte[] hash, byte[] salt){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?,?,?)");
