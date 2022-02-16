@@ -1,3 +1,8 @@
+/*
+
+    This class is taken from here https://stackoverflow.com/questions/18142745/how-do-i-generate-a-salt-in-java-for-salted-hash
+    Author: assylias
+ */
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
