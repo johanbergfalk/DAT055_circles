@@ -1,5 +1,6 @@
 
 import java.sql.*;
+import java.util.function.Consumer;
 
 
 public class DatabaseConn {
@@ -25,7 +26,7 @@ public class DatabaseConn {
     }
 
     /* FUNCTIONS RELATED TO USER DATA */
-    public static boolean addUser(String username, byte[] obj, byte[] hash, byte[] salt){
+    public static boolean addUser(String username, byte[] obj, byte[] hash, byte[] salt, Consumer<Boolean> lambda){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?,?,?)");
             ps.setString(1, username);
@@ -33,8 +34,14 @@ public class DatabaseConn {
             ps.setBytes(3, hash);
             ps.setBytes(4, salt);
             ps.executeUpdate();
+
+            lambda.accept(true);
+
             return true;
         } catch (SQLException se){
+
+            lambda.accept(false);
+
             return false;
         }
     }

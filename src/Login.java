@@ -28,7 +28,25 @@ public class Login implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String sourceClicked = e.getActionCommand();
 
+        System.out.println(e.getActionCommand());
+
         switch (sourceClicked){
+            case "Register":
+                new Thread(() -> {
+                    DatabaseConn.addUser(username.getText(), null, null, null, (result) -> {
+                        if (result) {
+                            System.out.println("GREAT!");
+                        } else {
+                            System.out.println("nope :(");
+
+                            SwingUtilities.invokeLater(() -> {
+                                username.setText("There was an error");
+                            });
+                        }
+                    });
+                }).start();
+                break;
+
             //klicka på registered skicka till registered
             //klicka på login validate!!
         }
