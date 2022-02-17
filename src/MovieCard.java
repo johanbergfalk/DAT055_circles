@@ -1,37 +1,57 @@
 import javax.swing.*;
 
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
 
 public class MovieCard extends JPanel {
 
-    public MovieCard() {
+    public MovieCard(Movie m) {
 
-        setLayout(new GridLayout(1,2));
-        setBackground(Color.lightGray);
-        setBorder(new LineBorder(Color.YELLOW)); // TODO REMOVE
-        setPreferredSize(new Dimension(650,50));
+        setLayout(new BorderLayout());
+        setSize(new Dimension(650, 150));
+        setBorder(new LineBorder(Color.GRAY));
 
-        JPanel leftSide = new JPanel();
-        leftSide.setLayout(new BorderLayout());
-        leftSide.setBackground(Color.gray);
-        leftSide.add(new JLabel("movie info"), BorderLayout.WEST);
-        leftSide.add(new JLabel("movie title"), BorderLayout.EAST);
+        JPanel left = new JPanel();
+        left.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        left.setLayout(new BorderLayout());
+        left.add(new JButton(m.getPosterURL()), BorderLayout.WEST);
+        left.add(new JLabel(m.getName()), BorderLayout.NORTH);
+        left.add(new JLabel(String.valueOf(m.getYear())), BorderLayout.CENTER);
+        left.add(new JLabel(m.getDescription()), BorderLayout.PAGE_END);
 
-        JPanel rightSide = new JPanel();
-        rightSide.setLayout(new GridLayout(4,1));
-        rightSide.setBackground(Color.lightGray);
-        rightSide.add(new JLabel("Vad tyckte du om filmen?"));
-        rightSide.add(new JTextField());
-        rightSide.add(new JLabel("Vad får filmen för betyg?"));
-        rightSide.add(new JTextField());
+        //if(circle == active)
+        JPanel right = circleActive();
 
+        JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        sp.setResizeWeight(0.25);
+        sp.setEnabled(false);
+        sp.setDividerSize(0);
 
-        add(leftSide);
-        add(rightSide);
+        sp.add(left);
+        sp.add(right);
+        add(sp, BorderLayout.CENTER);
 
+    }
 
+    private JPanel circleActive() {
+
+        JPanel right = new JPanel();
+        right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
+        right.add(new JLabel("Lämna en recension på filmen"));
+        right.add(new JTextField());
+        right.add(new JLabel("Vad ger du filmen för betyg?"));
+        right.add(new JTextField());
+        right.setBackground(Color.lightGray);
+        right.add(new JButton("Submit"));
+        return right;
+    }
+
+    private JPanel circleEnded() {
+        JPanel right = new JPanel();
+
+        return right;
     }
 
 }

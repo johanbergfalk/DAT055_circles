@@ -6,9 +6,10 @@ public class Movie {
     private int id;
     private String description;
     private int year;
-    private URL posterURL;
+    private String posterURL;
 
-    public Movie(String name, int id, String description, int year, URL posterURL) {
+    public Movie(String name, int id, String description, int year, String posterURL) {
+
         this.name = name;
         this.id = id;
         this.description = description;
@@ -34,8 +35,8 @@ public class Movie {
 
     public void setYear(int year) { this.year = year; }
 
-    public URL getPosterURL() { return posterURL; }
+    public String getPosterURL() { return posterURL; }
 
-    public void setPosterURL(URL posterURL) { this.posterURL = posterURL; }
+    public void setPosterURL(String posterURL) { this.posterURL = posterURL; }
 
 }
