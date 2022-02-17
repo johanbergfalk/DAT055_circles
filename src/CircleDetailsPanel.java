@@ -7,9 +7,9 @@ public class CircleDetailsPanel extends JPanel {
 
     LinkedList<Movie> moviesInCircle = new LinkedList<>();
 
-    Movie movie1 = new Movie("film1", 1, "description or genre", 1997, "url");
-    Movie movie2 = new Movie("film2", 2, "description or genre", 2004, "url");
-    Movie movie3 = new Movie("film2", 3, "description or genre", 2015, "url");
+    Movie movie1 = new Movie("film1", 1, "description or genre", "1997", "url");
+    Movie movie2 = new Movie("film2", 2, "description or genre", "2004", "url");
+    Movie movie3 = new Movie("film2", 3, "description or genre", "2015", "url");
 
     public CircleDetailsPanel(JFrame frame) {
 
