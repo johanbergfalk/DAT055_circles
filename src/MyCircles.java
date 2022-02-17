@@ -23,8 +23,8 @@ public class MyCircles {
         username = tempUser.getUsername();
 
         //TODO metod som hämtar alla cirklar tillhörande username
-        userCircles.add(new Circle("Roberts Drama", "Robert", "Drama from the 60´s",  new Date(2022, 02, 02), new Date(2022,03,02) ));
-        userCircles.add(new Circle("Oscars Romance", "Oscar", "Best of 2010",  new Date(2022, 03, 05), new Date(2022,03,30) ));
+        userCircles.add(new Circle("Roberts Drama", "Robert", "Robert", "Drama from the 60´s",  new Date(2022, 02, 02), new Date(2022,03,02) ));
+        userCircles.add(new Circle("Oscars Romance", "Oscar", "Oscar", "Best of 2010",  new Date(2022, 03, 05), new Date(2022,03,30) ));
 
         frame.setContentPane(new MyCirclesPanel(frame, userCircles));
     }
