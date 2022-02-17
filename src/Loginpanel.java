@@ -92,6 +92,7 @@ public class Loginpanel extends JPanel implements ActionListener{
 
         if(action=="Login"){
         //check if valid user and if valid take to landingpagepanel
+            m.navigateTo(LandingPagePanel::new);
             //if not valid then show error.
 
         }
