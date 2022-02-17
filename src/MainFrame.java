@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.net.URISyntaxException;
-import java.sql.SQLException;
+import java.awt.*;
 import java.util.function.Function;
 
 public class MainFrame extends JFrame {
@@ -8,9 +7,13 @@ public class MainFrame extends JFrame {
         super.setTitle(title);
 
     }
-    public static void main(String[] args) throws SQLException, URISyntaxException {
+    public static void main(String[] args)  {
         MainFrame m = new MainFrame("Circles");
-        new Login(m);
+        m.setMinimumSize(new Dimension(500,400));
+        m.setLocation(100,100);
+        m.setDefaultCloseOperation(m.EXIT_ON_CLOSE);
+        m.setContentPane(new Loginpanel(m));
+        m.setVisible(true);
     }
     public void navigateTo(Function<MainFrame, JPanel> panelSupplier) {
         setContentPane(panelSupplier.apply(this));
