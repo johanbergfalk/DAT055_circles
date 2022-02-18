@@ -8,6 +8,7 @@ public class Loginpanel extends JPanel implements ActionListener{
     private JPasswordField password;
     private MainFrame m;
     private Login l;
+    private LandingPagePanel p;
     public Loginpanel(MainFrame m){
 
         JPanel finishedPanel = new JPanel();
@@ -92,10 +93,20 @@ public class Loginpanel extends JPanel implements ActionListener{
         String action = e.getActionCommand();
         if(action=="Login"){
             l = new Login(password.getPassword(),username.getText());
-
-
+            l.validateuser();
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            if(l.Get_succes()){
+                p=new LandingPagePanel(m);
+                p.setUsername(username.getText());
+                m.navigateTo(LandingPagePanel::new);
+            }else {
+                System.out.println("FAILED");
+            }
         //check if valid user and if valid take to landingpagepanel
-            m.navigateTo(LandingPagePanel::new);
 
 
 

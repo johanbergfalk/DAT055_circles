@@ -25,8 +25,10 @@ public class MovieCard extends JPanel {
         //text area for the description of a movie
         JTextArea ta = new JTextArea();
         ta.setSize(new Dimension(180,60));
+        ta.setBorder(BorderFactory.createEmptyBorder(3,3,3,3));
+        ta.setEditable(false);
         ta.setLineWrap(true);
-        ta.setWrapStyleWord(false);
+        ta.setWrapStyleWord(true);
         ta.setText(m.getDescription());
         ta.setBackground(this.getBackground());
         left.add(ta, BorderLayout.PAGE_END);

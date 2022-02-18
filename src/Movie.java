@@ -22,38 +22,49 @@ public class Movie {
 
     }
 
-    public Movie(String title) throws IOException {
+    public Movie(String title) {
 
-        URL url = new URL("https://api.themoviedb.org/3/movie/" + title + "?api_key=9235f4be07271782e1c1021ed0762621");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        try {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+            //converts spaces in the title with %20 for url formatting
+            title = title.replaceAll("\\s+","%20");
 
-        StringBuilder responseStrBuilder = new StringBuilder();
+            URL url = new URL("https://api.themoviedb.org/3/search/movie?api_key=9235f4be07271782e1c1021ed0762621&language=en-US&query=" + title + "&page=1&include_adult=false");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-        String inputStr;
-        while ((inputStr = br.readLine()) != null)
-            responseStrBuilder.append(inputStr);
-        JSONObject obj = new JSONObject(responseStrBuilder.toString());
+            BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
 
-        this.name = obj.getString("original_title");
-        this.id = obj.getInt("id");
-        this.description = obj.getString("overview");
-        this.year = obj.getString("release_date");
-        String poster = obj.getString("poster_path");
-        this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
+            StringBuilder responseStrBuilder = new StringBuilder();
 
-        System.out.println(this.name);
-        System.out.println(this.id);
-        System.out.println(this.year);
-        System.out.println(this.posterURL);
-    }
+            String inputStr;
+            while ((inputStr = br.readLine()) != null)
+                responseStrBuilder.append(inputStr);
 
-    public static String findMovieId(String title) {
+            JSONObject obj = new JSONObject(responseStrBuilder.toString());
 
-        JSONObject obj = new JSONObject("src/Resources/movie_ids_02_17_2022.json");
+            JSONArray ja = new JSONArray(obj.getJSONArray("results"));
 
-        return obj.getString("id");
+            JSONObject ob = (JSONObject) ja.get(0);
+
+            System.out.println(ob);
+
+            this.name = ob.getString("original_title");
+            this.id = ob.getInt("id");
+            this.description = ob.getString("overview");
+            this.year = ob.getString("release_date");
+            String poster = ob.getString("poster_path");
+            this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
+
+            System.out.println(this.name);
+            System.out.println(this.id);
+            System.out.println(this.year);
+            System.out.println(this.posterURL);
+        }
+
+        catch(IOException e) {
+            System.out.println(e);
+        }
+
     }
 
     //------ GETTERS & SETTERS
