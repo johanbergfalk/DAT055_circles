@@ -100,6 +100,7 @@ public class Loginpanel extends JPanel implements ActionListener{
                 ex.printStackTrace();
             }
             if(l.Get_succes()){
+                p=new LandingPagePanel(m);
                 p.setUsername(username.getText());
                 m.navigateTo(LandingPagePanel::new);
             }else {
