@@ -2,11 +2,11 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class User implements Serializable {
+public class User{
 
     private String username;
     private LinkedList<Integer> circles;
-    private boolean nightModeActive = false;
+    private boolean darkmode = false;
 
     /**
      * Create a new User
@@ -14,7 +14,6 @@ public class User implements Serializable {
      */
     public User(String username){
         this.username = username;
-
     }
 
 //----Getters and setters------------------------------------------
@@ -27,7 +26,7 @@ public class User implements Serializable {
     }
 
     public boolean getNightModeActive(){
-        return this.nightModeActive;
+        return this.darkmode;
     }
 
     public void setCircles(Integer circle){

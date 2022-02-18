@@ -6,18 +6,21 @@ import java.util.LinkedList;
  */
 
 public class MyCircles {
-
+    private final String user;
     private final LinkedList<Circle> userCircles = new LinkedList<Circle>();
 
     /**
      * Creates a LinkedList with all circles
+     *
      * @param u String Username
      */
-    public MyCircles(String u){
+    public MyCircles(String u) {
+
+        this.user = u;
 
         //TODO metod som hämtar alla cirklar tillhörande username från DatabaseConn
-        userCircles.add(new Circle("Roberts Drama", "Robert", "Drama from the 60´s",  new Date(2022, 02, 02), new Date(2022,03,02) ));
-        userCircles.add(new Circle("Oscars Romance", "Oscar", "Best of 2010",  new Date(2022, 03, 05), new Date(2022,03,30) ));
+        userCircles.add(new Circle("Roberts Drama", "Robert", "Drama from the 60´s", new Date(2022, 02, 02), new Date(2022, 03, 02)));
+        userCircles.add(new Circle("Oscars Romance", "Oscar", "Best of 2010", new Date(2022, 03, 05), new Date(2022, 03, 30)));
 
     }
 
@@ -25,5 +28,9 @@ public class MyCircles {
 
     public LinkedList<Circle> getUserCircles() {
         return userCircles;
+    }
+
+    public String getUser() {
+        return this.user;
     }
 }

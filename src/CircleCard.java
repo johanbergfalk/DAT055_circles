@@ -8,27 +8,26 @@ import java.util.GregorianCalendar;
 
 public class CircleCard extends JPanel {
 
-    private Circle c;
+    private Circle circle;
 
     public CircleCard(Circle i, MainFrame frame){
 
-        this.c = i;
+        this.circle = i;
 
         setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(frame.getWidth(), 100));
         setBorder(new LineBorder(Color.GRAY));
-
-        JPanel content = new JPanel(); //Main window for the circle
-        content.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 
         //Left side of the card
         JPanel left = new JPanel();
-        createLeft(i, left);
+        createLeft(circle, left);
 
         //Right side of the card
         JPanel right = new JPanel();
-        createRight(i, right, frame);
+        createRight(circle, right, frame);
 
         JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, left, right);
+        pane.setPreferredSize(new Dimension(frame.getWidth(), frame.getHeight()));
         pane.setResizeWeight(0.5);
         pane.setDividerSize(0);
         add(pane);
@@ -50,7 +49,6 @@ public class CircleCard extends JPanel {
         title.add(new JLabel(i.getName()));
         title.setBackground(Color.LIGHT_GRAY);
         leftTop.add(title);
-        left.add(leftTop);
         JPanel description = new JPanel();
         description.setLayout(new GridLayout(2,0));
         description.add(new JLabel("Description:"));
@@ -59,8 +57,8 @@ public class CircleCard extends JPanel {
         left.add(leftTop);
 
         DateFormat df = new SimpleDateFormat("yy-MM-dd");
-        String dateFrom = df.format(i.get_starttime());
-        String dateTo = df.format(i.get_stoptime());
+        String dateFrom = df.format(i.getStartTime());
+        String dateTo = df.format(i.getStopTime());
 
         JPanel leftBottom = new JPanel();
         leftBottom.setLayout(new GridLayout(4,0));
@@ -73,9 +71,10 @@ public class CircleCard extends JPanel {
     }
 
     private void createRight(Circle i, JPanel right, MainFrame frame){
+        right.setLayout(new GridLayout(2,0));
+
         JPanel rightTop = new JPanel();
         rightTop.setLayout(new BoxLayout(rightTop, BoxLayout.Y_AXIS));
-        //rightTop.setLayout(new GridLayout(i.getMembers().size() + 1,0));
         JPanel members = new JPanel();
         members.add(new JLabel("Members:"));
         rightTop.add(members);
@@ -84,8 +83,7 @@ public class CircleCard extends JPanel {
             t.add(new JLabel(k));
             rightTop.add(t);
         }
-        JScrollPane scrollPane = new JScrollPane(rightTop ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        //right.add(scrollPane);
+        JScrollPane scrollMembers = new JScrollPane(rightTop ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         JPanel rightBottom = new JPanel();
         rightBottom.setLayout(new GridLayout(4,0));
@@ -93,17 +91,15 @@ public class CircleCard extends JPanel {
         rightBottom.add(new JLabel(""));
         rightBottom.add(new JLabel(""));
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1,2));
+        buttonPanel.setLayout(new GridLayout(0,2));
         buttonPanel.add(new JLabel(""));
         JButton detailsButton = new JButton("Circle details");
         detailsButton.addActionListener(event -> frame.navigateTo(CircleDetailsPanel :: new));
         buttonPanel.add(detailsButton);
         rightBottom.add(buttonPanel);
-        //j.add(rightBottom);
-        JSplitPane pane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scrollPane, rightBottom);
-        pane.setResizeWeight(1);
-        pane.setDividerSize(0);
-        right.add(pane);
+
+        right.add(scrollMembers);
+        right.add(rightBottom);
 
     }
 

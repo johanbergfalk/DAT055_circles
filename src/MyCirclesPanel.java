@@ -12,7 +12,7 @@ public class MyCirclesPanel extends JPanel {
 
     public MyCirclesPanel(MainFrame frame){
 
-        MyCircles t = new MyCircles("user"); //TODO Denna ska startas med inloggad user
+        MyCircles t = new MyCircles("user"); //TODO Denna ska köras med inloggad user
         this.userCircles = t.getUserCircles();
 
         setLayout(new BorderLayout());
@@ -46,7 +46,7 @@ public class MyCirclesPanel extends JPanel {
         MainFrame frame = new MainFrame("Navigate");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(800, 550);
         frame.setLocationRelativeTo(null);
         frame.add(new MyCirclesPanel(frame));
 

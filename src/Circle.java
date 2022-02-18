@@ -5,61 +5,91 @@ public class Circle {
     private int id;
     private String name;
     private String creator;
-    private LinkedList<String> members =  new LinkedList<String>();
+    private LinkedList<String> members = new LinkedList<String>();
     private String description;
-    private Date starttime;
-    private Date stoptime;
+    private Date startTime;
+    private Date stopTime;
     private float score = 0;
 
-//linkedlist of type movie
-    public Circle(){};
+    //linkedlist of type movie
+    public Circle() {
+    }
+
+    ;
 
     public Circle(String name, String creator, String description, Date starttime, Date stoptime) {
         this.name = name;
         this.creator = creator;
         this.members.add(creator);
         this.description = description;
-        this.starttime = starttime;
-        this.stoptime = stoptime;
-        for(int i = 0; i < 4; i++){
+        this.startTime = starttime;
+        this.stopTime = stoptime;
+        for (int i = 0; i < 10; i++) {
             String str = Integer.toString(i);
             members.add(str);
         }
 
     }
+//----Getters and setters------------------------------------------
 
-    public Date get_starttime() {
-        return this.starttime;
+    public int getId(){
+        return this.id;
     }
 
-    public Date get_stoptime() {
-        return this.stoptime;
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public void setMembers(String m){
-        this.members.add(m);
-    }
-
-    public LinkedList<String> getMembers(){
-        return this.members;
+    public void setName(String name){
+        this.name = name;
     }
 
     public String getCreator(){
         return this.creator;
     }
 
-    public void setScore(float s){
-        this.score = s;
+    public void setCreator(String creator){
+        this.creator = creator;
     }
-    public float getScore(){
-        return this.score;
+
+    public LinkedList<String> getMembers(){
+        return this.members;
     }
 
     public String getDescription(){
         return this.description;
     }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public Date getStartTime(){
+        return this.startTime;
+    }
+
+    public void setStartTime(Date startTime){
+        this.startTime = startTime;
+    }
+
+    public Date getStopTime(){
+        return this.stopTime;
+    }
+
+    public void setStopTime(Date stopTime){
+        this.stopTime = stopTime;
+    }
+     public float getScore(){
+        return this.score;
+     }
+
+     public void setScore(float score){
+        this.score = score;
+     }
+
+
 }
