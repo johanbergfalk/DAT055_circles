@@ -92,10 +92,19 @@ public class Loginpanel extends JPanel implements ActionListener{
         String action = e.getActionCommand();
         if(action=="Login"){
             l = new Login(password.getPassword(),username.getText());
+            l.validateuser();
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            if(l.Get_succes()){
 
-
+                m.navigateTo(LandingPagePanel::new);
+            }else {
+                System.out.println("FAILED");
+            }
         //check if valid user and if valid take to landingpagepanel
-            m.navigateTo(LandingPagePanel::new);
 
 
 

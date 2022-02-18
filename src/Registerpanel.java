@@ -92,7 +92,7 @@ public class Registerpanel extends JPanel implements ActionListener {
             r = new Register(username.getText(), password.getPassword());
             r.reg();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1500);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
