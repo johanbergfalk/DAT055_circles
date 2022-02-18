@@ -71,12 +71,18 @@ public class DatabaseConn {
     /* FUNCTIONS RELATED TO CIRCLES */
     public static void getUserCircles(String username){
         try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT COUNT(id) FROM Circlemembers WHERE member = ? GROUP BY member");
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circlemembers WHERE member = ?");
             ps.setString(1, username);
-            ResultSet r = ps.executeQuery();
-            r.next();
-            int res = r.getInt(1);
-           System.out.println(username +" "+ res);
+            ResultSet circleID = ps.executeQuery();
+            while(circleID.next()){
+                Circle temp = new Circle();
+                int id = circleID.getInt(1);
+                ps = getInstance().c.prepareStatement("SELECT * FROM Circles WHERE id = ?");
+                ps.setString(1,Integer.toString(id));
+                ResultSet circle = ps.executeQuery();
+                circle.next();
+
+            }
         } catch (SQLException e){
 
         }

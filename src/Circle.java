@@ -12,6 +12,7 @@ public class Circle {
     private float score = 0;
 
 //linkedlist of type movie
+    public Circle(){};
 
     public Circle(String name, String creator, String description, Date starttime, Date stoptime) {
         this.name = name;
