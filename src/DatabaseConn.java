@@ -30,16 +30,16 @@ public class DatabaseConn {
 
 
     /* FUNCTIONS RELATED TO LOGIN AND REGISTER */
-    public static void registerUser(String username, byte[] hash, byte[] salt, Consumer<Boolean> result) {
+    public static boolean registerUser(String username, byte[] hash, byte[] salt) {
             try {
                 PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
                 ps.setString(1, username);
                 ps.setBytes(2, hash);
                 ps.setBytes(3, salt);
                 ps.executeUpdate();
-                result.accept(true);
+                return true;
             } catch (SQLException se) {
-                result.accept(false);
+                return false;
             }
     }
 
@@ -71,7 +71,7 @@ public class DatabaseConn {
     /* FUNCTIONS RELATED TO CIRCLES */
     public static void getUserCircles(String username){
         try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT COUNT(id) FROM Circlemembers WHERE member = ? GROUP BY id");
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT COUNT(id) FROM Circlemembers WHERE member = ? GROUP BY member");
             ps.setString(1, username);
             ResultSet r = ps.executeQuery();
             r.next();
