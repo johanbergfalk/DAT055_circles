@@ -1,5 +1,7 @@
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.function.Consumer;
 
@@ -69,24 +71,68 @@ public class DatabaseConn {
 
 
     /* FUNCTIONS RELATED TO CIRCLES */
-    public static void getUserCircles(String username){
+    public static LinkedList<Circle> getUserCircles(String username){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circlemembers WHERE member = ?");
             ps.setString(1, username);
             ResultSet circleID = ps.executeQuery();
+            LinkedList<Circle> circles = new LinkedList<Circle>();
             while(circleID.next()){
                 Circle temp = new Circle();
                 int id = circleID.getInt(1);
                 ps = getInstance().c.prepareStatement("SELECT * FROM Circles WHERE id = ?");
-                ps.setString(1,Integer.toString(id));
+                ps.setInt(1, id);
                 ResultSet circle = ps.executeQuery();
                 circle.next();
-
+                temp.setId(id);
+                temp.setName(circle.getString("name"));
+                temp.setCreator(circle.getString("creator"));
+                temp.setDescription(circle.getString("description"));
+                temp.setScore(circle.getFloat("score"));
+                String start_t = circle.getString("timestart");
+                java.util.Date starttime = new SimpleDateFormat("yyyy-MM-dd").parse(start_t);
+                temp.setStartTime(starttime);
+                String end_t = circle.getString("timeend");
+                java.util.Date endtime = new SimpleDateFormat("yyyy-MM-dd").parse(end_t);
+                temp.setStopTime(endtime);
+                ps = getInstance().c.prepareStatement("SELECT member FROM CircleMembers WHERE id = ?");
+                ps.setInt(1, id);
+                ResultSet rs_member = ps.executeQuery();
+                LinkedList<String> members = new LinkedList<String>();
+                while(rs_member.next()){
+                    members.add(rs_member.getString(1));
+                }
+                temp.setMembers(members);
+                circles.add(temp);
+                //printc(temp);
             }
+            return circles;
         } catch (SQLException e){
-
+            e.printStackTrace();
+            return null;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
         }
     }
+
+    // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
+    public static void printc(Circle c){
+        System.out.println("Id: " + c.getId());
+        System.out.println("Name: " + c.getName());
+        System.out.println("Creator: " + c.getCreator());
+        System.out.println("Description: " + c.getDescription());
+        System.out.println("Start time: " + c.getStartTime());
+        System.out.println("Stop time: " + c.getStopTime());
+        System.out.println("Score: " + c.getScore());
+        System.out.println("====Members====");
+        LinkedList<String> members = c.getMembers();
+        for(int i = 0; i < members.size(); i++){
+            System.out.println(members.get(i));
+        }
+        System.out.println("\n");
+    }
+
 
 }
 

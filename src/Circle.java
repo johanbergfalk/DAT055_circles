@@ -91,5 +91,8 @@ public class Circle {
         this.score = score;
      }
 
+     public void setMembers(LinkedList<String> members){
+        this.members = members;
+     }
 
 }
