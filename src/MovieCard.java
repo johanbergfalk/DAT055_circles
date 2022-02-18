@@ -1,8 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class MovieCard extends JPanel {
@@ -10,16 +13,29 @@ public class MovieCard extends JPanel {
     public MovieCard(Movie m) {
 
         setLayout(new BorderLayout());
-        setSize(new Dimension(650, 150));
-        setBorder(new LineBorder(Color.GRAY));
+        setPreferredSize(new Dimension(600, 150));
+        setBorder(new LineBorder(Color.YELLOW));
 
         JPanel left = new JPanel();
-        left.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        left.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         left.setLayout(new BorderLayout());
-        left.add(new JButton(m.getPosterURL()), BorderLayout.WEST);
+        left.add(getPoster(m), BorderLayout.WEST);
         left.add(new JLabel(m.getName()), BorderLayout.NORTH);
-        left.add(new JLabel(String.valueOf(m.getYear())), BorderLayout.CENTER);
-        left.add(new JLabel(m.getDescription()), BorderLayout.PAGE_END);
+
+        //text area for the description of a movie
+        JTextArea ta = new JTextArea();
+        ta.setSize(new Dimension(180,60));
+        ta.setLineWrap(true);
+        ta.setWrapStyleWord(false);
+        ta.setText(m.getDescription());
+        ta.setBackground(this.getBackground());
+        left.add(ta, BorderLayout.PAGE_END);
+        JScrollPane sp1 = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp1.setBorder(BorderFactory.createEmptyBorder());
+        left.add(sp1);
+
+        left.add(new JLabel("Release date: " + m.getYear()), BorderLayout.PAGE_END);
+
 
         //if(circle == active)
         JPanel right = circleActive();
@@ -31,7 +47,7 @@ public class MovieCard extends JPanel {
 
         sp.add(left);
         sp.add(right);
-        add(sp, BorderLayout.CENTER);
+        add(sp);
 
     }
 
@@ -54,6 +70,20 @@ public class MovieCard extends JPanel {
         return right;
     }
 
+    private JLabel getPoster(Movie m) {
+
+        try {
+            URL posterUrl = new URL(m.getPosterURL());
+            ImageIcon icon = new ImageIcon(posterUrl);
+            Image scaleImage = icon.getImage().getScaledInstance(72, 108,Image.SCALE_DEFAULT);
+            JLabel label = new JLabel(new ImageIcon(scaleImage));
+            return label;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new JLabel("hej");
+        }
+    }
 }
 
 
