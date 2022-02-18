@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Loginpanel extends JPanel implements ActionListener{
-    JTextField username;
-    JPasswordField password;
-    MainFrame m;
-    Login l;
+   private JTextField username;
+    private JPasswordField password;
+    private MainFrame m;
+    private Login l;
     public Loginpanel(MainFrame m){
 
         JPanel finishedPanel = new JPanel();

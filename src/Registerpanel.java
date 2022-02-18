@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Registerpanel extends JPanel implements ActionListener {
-    JTextField username;
-    JPasswordField password;
-    MainFrame m;
-    Register r;
+   private JTextField username;
+   private JPasswordField password;
+   private MainFrame m;
+   private Register r;
 
     public Registerpanel(MainFrame m) {
         JPanel finishedPanel = new JPanel();

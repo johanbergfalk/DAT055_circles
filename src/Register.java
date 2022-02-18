@@ -1,9 +1,9 @@
 public class Register {
-    String username;
-    char[] password;
-    byte[] salt;
-    byte[] hashedpassword;
-    boolean sucess;
+   private String username;
+   private char[] password;
+   private byte[] salt;
+   private byte[] hashedpassword;
+   private boolean sucess;
 
     public Register(String username, char[] password) {
         this.username = username;
