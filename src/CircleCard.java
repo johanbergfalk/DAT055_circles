@@ -86,17 +86,25 @@ public class CircleCard extends JPanel {
         JScrollPane scrollMembers = new JScrollPane(rightTop ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         JPanel rightBottom = new JPanel();
-        rightBottom.setLayout(new GridLayout(4,0));
-        rightBottom.add(new JLabel(""));
-        rightBottom.add(new JLabel(""));
-        rightBottom.add(new JLabel(""));
+        rightBottom.setLayout(new GridLayout(1,2));
+        JPanel rightLeft = new JPanel();
+        JPanel rightRight = new JPanel();
+        rightLeft.add(new JLabel("MOVIE POSTER"));
+        rightBottom.add(rightLeft);
+
+        rightRight.setLayout(new GridLayout(4,0));
+        rightRight.add(new JLabel(""));
+        rightRight.add(new JLabel(""));
+        rightRight.add(new JLabel(""));
+
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(0,2));
         buttonPanel.add(new JLabel(""));
         JButton detailsButton = new JButton("Circle details");
         detailsButton.addActionListener(event -> frame.navigateTo(CircleDetailsPanel :: new));
         buttonPanel.add(detailsButton);
-        rightBottom.add(buttonPanel);
+        rightRight.add(buttonPanel);
+        rightBottom.add(rightRight);
+
 
         right.add(scrollMembers);
         right.add(rightBottom);

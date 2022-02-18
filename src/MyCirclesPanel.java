@@ -46,7 +46,7 @@ public class MyCirclesPanel extends JPanel {
         MainFrame frame = new MainFrame("Navigate");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 550);
+        frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
         frame.add(new MyCirclesPanel(frame));
 
