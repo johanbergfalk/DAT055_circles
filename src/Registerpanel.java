@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Registerpanel extends JPanel implements ActionListener {
-    JTextField username;
-    JPasswordField password;
-    MainFrame m;
+   private JTextField username;
+   private JPasswordField password;
+   private MainFrame m;
+   private Register r;
 
     public Registerpanel(MainFrame m) {
         JPanel finishedPanel = new JPanel();
@@ -87,15 +88,27 @@ public class Registerpanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-
         if (action == "Register") {
-
-            //try to register a user if sucess a prompt displayed with a verification that a user is reged take back to login screen when click ok.
-            //if failed then show error.
-
-
-
-
+            r = new Register(username.getText(), password.getPassword());
+            r.reg();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            if (r.Get_regstatus()) {
+                username.setText("");
+                password.setText("");
+                System.out.println("sucess");
+            } else {
+                System.out.println("not");
+            }
         }
     }
+    //try to register a user DONE
+    //TO DOOOOO
+    // if sucess a prompt displayed with a verification that a user is reged
+    // take back to login screen when click ok.
+    //if failed then show error.
+
 }

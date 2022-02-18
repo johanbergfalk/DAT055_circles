@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Loginpanel extends JPanel implements ActionListener{
-    JTextField username;
-    JPasswordField password;
-    MainFrame m;
+   private JTextField username;
+    private JPasswordField password;
+    private MainFrame m;
+    private Login l;
     public Loginpanel(MainFrame m){
 
         JPanel finishedPanel = new JPanel();
@@ -89,10 +90,15 @@ public class Loginpanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
-
         if(action=="Login"){
+
+
         //check if valid user and if valid take to landingpagepanel
             m.navigateTo(LandingPagePanel::new);
+
+
+
+
             //if not valid then show error.
 
         }

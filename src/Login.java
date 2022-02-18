@@ -22,10 +22,12 @@
              */
 public class Login {
 
-
+private char[] password;
     public Login(){
-
     }
+
+
+
 }
 
 
