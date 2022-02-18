@@ -30,7 +30,7 @@ public class DatabaseConn {
 
 
     /* FUNCTIONS RELATED TO LOGIN AND REGISTER */
-    public static boolean registerUser(String username, byte[] hash, byte[] salt, Consumer<Boolean> result) {
+    public static void registerUser(String username, byte[] hash, byte[] salt, Consumer<Boolean> result) {
             try {
                 PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
                 ps.setString(1, username);
@@ -67,9 +67,18 @@ public class DatabaseConn {
         }
     }
 
-    public static LinkedList<Circle> getUserCircles(String username){
+
+    /* FUNCTIONS RELATED TO CIRCLES */
+    public static void getUserCircles(String username){
         try{
-           // PreparedStatement;
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT COUNT(id) FROM Circlemembers WHERE member = ? GROUP BY id");
+            ps.setString(1, username);
+            ResultSet r = ps.executeQuery();
+            r.next();
+            int res = r.getInt(1);
+           System.out.println(username +" "+ res);
+        } catch (SQLException e){
+
         }
     }
 
