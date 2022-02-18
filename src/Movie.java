@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.*;
 import org.json.*;
@@ -9,6 +10,7 @@ public class Movie {
     private String description;
     private String year;
     private String posterURL;
+    private BufferedImage poster;
 
     public Movie(String name, int id, String description, String year, String posterURL) {
 
@@ -17,6 +19,7 @@ public class Movie {
         this.description = description;
         this.year = year;
         this.posterURL = posterURL;
+
     }
 
     public Movie(String title) throws IOException {
@@ -35,14 +38,14 @@ public class Movie {
 
         this.name = obj.getString("original_title");
         this.id = obj.getInt("id");
-        //this.description = obj.getString("genres.name");
-        String year = obj.getString("release_date");
+        this.description = obj.getString("overview");
+        this.year = obj.getString("release_date");
         String poster = obj.getString("poster_path");
         this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
 
         System.out.println(this.name);
         System.out.println(this.id);
-        System.out.println(year);
+        System.out.println(this.year);
         System.out.println(this.posterURL);
     }
 
@@ -74,5 +77,9 @@ public class Movie {
     public String getPosterURL() { return posterURL; }
 
     public void setPosterURL(String posterURL) { this.posterURL = posterURL; }
+
+    public BufferedImage getPoster() { return poster; }
+
+    public void setPoster(BufferedImage poster) { this.poster = poster; }
 
 }
