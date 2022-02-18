@@ -51,25 +51,7 @@ public class DatabaseConn {
     */
 
 
-    /* FUNCTIONS RELATED TO USER DATA */
-
-    /* Work in progress här, svårt att göra innan vi vet vad userklassen ska innehålla.
-
-    public static void addUser(User user, Consumer<Boolean> result) {
-        new Thread(() -> {
-            try {
-                String username = user.getUsername();
-                PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?,?,?)");
-
-
-                result.accept(true);
-            } catch (SQLException se) {
-                result.accept(false);
-            }
-        }).start();
-    }
-    */
-
+    /* FUNCTIONS RELATED TO LOGIN */
     public static boolean registerUser(String username, byte[] hash, byte[] salt) {
             try {
                 PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
