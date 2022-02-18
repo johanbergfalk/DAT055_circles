@@ -3,11 +3,11 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
-import java.util.function.Consumer;
+
 
 
 public class DatabaseConn {
-
+    //Singleton
     private static DatabaseConn instance;
     private Connection c;
 
@@ -107,11 +107,7 @@ public class DatabaseConn {
                 //printc(temp);
             }
             return circles;
-        } catch (SQLException e){
-            e.printStackTrace();
-            return null;
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (SQLException | ParseException e){
             return null;
         }
     }
