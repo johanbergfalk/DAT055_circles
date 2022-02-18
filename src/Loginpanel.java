@@ -8,6 +8,7 @@ public class Loginpanel extends JPanel implements ActionListener{
     private JPasswordField password;
     private MainFrame m;
     private Login l;
+    private LandingPagePanel p;
     public Loginpanel(MainFrame m){
 
         JPanel finishedPanel = new JPanel();
@@ -99,7 +100,8 @@ public class Loginpanel extends JPanel implements ActionListener{
                 ex.printStackTrace();
             }
             if(l.Get_succes()){
-
+                p=new LandingPagePanel(m);
+                p.setUsername(username.getText());
                 m.navigateTo(LandingPagePanel::new);
             }else {
                 System.out.println("FAILED");
