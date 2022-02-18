@@ -15,11 +15,13 @@ CREATE TABLE Users (
 
 CREATE TABLE Circles
 (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,         ---Enklare att hantera enskilda medlemmar genom att ha dom i eget table.
-    creator TEXT NOT NULL,      ---Samma sak gäller för filmer. Enklare att ha separat table istället för listor.
+    creator TEXT NOT NULL, ---Samma sak gäller för filmer. Enklare att ha separat table istället för listor.
+    description TEXT NOT NULL,
     timestart TEXT NOT NULL,
-    timeend TEXT NOT NULL
+    timeend TEXT NOT NULL,
+    score REAL DEFAULT 0
 );
 
 CREATE TABLE Movies
@@ -50,9 +52,9 @@ CREATE TABLE MovieInCircle
 );
 
 CREATE VIEW CircleMovies AS
-    SELECT circleid, Circles.name AS circle_name, movieid, movie_name, description, year, posterURL
+    SELECT circleid, Circles.name AS circle_name, movieid, movie_name, movie_description, year, posterURL
     FROM Circles LEFT OUTER JOIN
-        (SELECT circleid, movieid, name AS movie_name, description, year, posterURL
+        (SELECT circleid, movieid, name AS movie_name, Movies.description AS movie_description, year, posterURL
         FROM Movieincircle LEFT OUTER JOIN Movies
 ON movieid = Movies.id) As w
     ON w.circleid = Circles.id;

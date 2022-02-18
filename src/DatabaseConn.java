@@ -1,6 +1,6 @@
 
 import java.sql.*;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.LinkedList;
 import java.util.function.Consumer;
 
 
@@ -28,40 +28,18 @@ public class DatabaseConn {
         return instance;
     }
 
-    /*
-    public static boolean addUser(String username, byte[] obj, byte[] hash, byte[] salt, Consumer<Boolean> lambda){
-        try {
-            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?,?,?)");
-            ps.setString(1, username);
-            ps.setBytes(2, obj);
-            ps.setBytes(3, hash);
-            ps.setBytes(4, salt);
-            ps.executeUpdate();
-                                      ===Sparade en kopia här på det felix gjorde===
-            lambda.accept(true);
 
-            return true;
-        } catch (SQLException se){
-
-            lambda.accept(false);
-
-            return false;
-        }
-    }
-    */
-
-
-    /* FUNCTIONS RELATED TO LOGIN */
-    public static boolean registerUser(String username, byte[] hash, byte[] salt) {
+    /* FUNCTIONS RELATED TO LOGIN AND REGISTER */
+    public static boolean registerUser(String username, byte[] hash, byte[] salt, Consumer<Boolean> result) {
             try {
                 PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
                 ps.setString(1, username);
                 ps.setBytes(2, hash);
                 ps.setBytes(3, salt);
                 ps.executeUpdate();
-                return true;
+                result.accept(true);
             } catch (SQLException se) {
-                return false;
+                result.accept(false);
             }
     }
 
@@ -86,6 +64,12 @@ public class DatabaseConn {
             return rs.getBytes(1);
         } catch (SQLException se){
             return null;
+        }
+    }
+
+    public static LinkedList<Circle> getUserCircles(String username){
+        try{
+           // PreparedStatement;
         }
     }
 
