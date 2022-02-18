@@ -91,6 +91,7 @@ public class Loginpanel extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if(action=="Login"){
+            l = new Login(password.getPassword(),username.getText());
 
 
         //check if valid user and if valid take to landingpagepanel

@@ -9,7 +9,7 @@ public class MainFrame extends JFrame {
     }
     public static void main(String[] args)  {
         MainFrame m = new MainFrame("Circles");
-        m.setMinimumSize(new Dimension(800,550));
+        m.setMinimumSize(new Dimension(800,600));
         m.setLocation(100,100);
         m.setDefaultCloseOperation(m.EXIT_ON_CLOSE);
         m.setContentPane(new Loginpanel(m));

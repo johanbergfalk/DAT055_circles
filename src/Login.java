@@ -23,10 +23,18 @@
 public class Login {
 
 private char[] password;
-    public Login(){
+private String username;
+private byte[] getsalt;
+private byte[] gethash;
+
+    public Login(char[] password, String username){
+        this.password=password;
+        this.username=username;
     }
 
-
+    public boolean validateuser() {
+return false;
+    }
 
 }
 
