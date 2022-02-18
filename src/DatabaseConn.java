@@ -83,10 +83,11 @@ public class DatabaseConn {
             }
     }
 
-    public static byte[] getHash(String user){
+    public static byte[] getHash(User user){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT hash FROM login WHERE username = ?");
-            ps.setString(1, user);
+            String uname = user.getUsername();
+            ps.setString(1, uname);
             ResultSet rs = ps.executeQuery();
             rs.next();
             return rs.getBytes(1);
@@ -95,10 +96,11 @@ public class DatabaseConn {
         }
     }
 
-    public static byte[] getSalt(String user){
+    public static byte[] getSalt(User user){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT salt FROM login WHERE username = ?");
-            ps.setString(1, user);
+            String uname = user.getUsername();
+            ps.setString(1, uname);
             ResultSet rs = ps.executeQuery();
             rs.next();
             return rs.getBytes(1);
