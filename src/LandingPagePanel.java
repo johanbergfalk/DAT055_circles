@@ -4,8 +4,9 @@ public class LandingPagePanel extends JPanel {
 
     private String username;
 
-    public LandingPagePanel(MainFrame m) {
+    public LandingPagePanel(MainFrame frame) {
 
+        add(new NavigationBar(frame));
     }
 
 
