@@ -102,7 +102,7 @@ public class Loginpanel extends JPanel implements ActionListener{
             if(l.Get_succes()){
                 p=new LandingPagePanel(m);
                 p.setUsername(username.getText());
-                m.navigateTo(LandingPagePanel::new);
+                m.navigateTo(LandingPagePanel :: new);
             }else {
                 System.out.println("FAILED");
             }

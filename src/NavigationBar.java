@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class NavigationBar extends JPanel{
-    private String user = "Mr Temp";
+
 
     public NavigationBar(MainFrame frame){
 
 
-        add(new JLabel(user));
+
         JButton myCircles = new JButton("My Circles");
         myCircles.addActionListener(event -> frame.navigateTo(MyCirclesPanel :: new));
         JButton browseCircles = new JButton("Browse Circles");

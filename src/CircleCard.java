@@ -1,12 +1,8 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.DimensionUIResource;
 import java.awt.*;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class CircleCard extends JPanel {
 
@@ -25,7 +21,10 @@ public class CircleCard extends JPanel {
 
         //Right side of the card
         JPanel right = new JPanel();
-        createRight(circle, right, frame);
+        new Thread(() -> {
+            createRight(circle, right, frame);
+            validate();
+        }).start();
 
         JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, left, right);
         pane.setBorder(BorderFactory.createTitledBorder("Created by: " + circle.getCreator()));
@@ -95,8 +94,11 @@ public class CircleCard extends JPanel {
         JPanel rightRight = new JPanel();
 
         //TODO metod som hämtar namnet på första filmen i cirkeln
+
         Movie m = new Movie("Napoleon Dynamite");
+
         JLabel poster = getPoster(m);
+
 
         rightPoster.add(poster);
         rightBottom.add(rightPoster);
@@ -105,6 +107,8 @@ public class CircleCard extends JPanel {
         rightRight.add(new JLabel(""));
         rightRight.add(new JLabel(""));
         rightRight.add(new JLabel(""));
+        validate();
+
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(new JLabel(""));
@@ -117,19 +121,23 @@ public class CircleCard extends JPanel {
         right.add(scrollMembers);
         right.add(rightBottom);
 
+
     }
     private JLabel getPoster(Movie m) {
 
-        try {
-            URL posterUrl = new URL(m.getPosterURL());
-            ImageIcon icon = new ImageIcon(posterUrl);
-            Image scaleImage = icon.getImage().getScaledInstance(72, 108,Image.SCALE_DEFAULT);
-            return new JLabel(new ImageIcon(scaleImage));
+            try {
+                URL posterUrl = new URL(m.getPosterURL());
+                ImageIcon icon = new ImageIcon(posterUrl);
+                Image scaleImage = icon.getImage().getScaledInstance(72, 108, Image.SCALE_DEFAULT);
+                return new JLabel(new ImageIcon(scaleImage));
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new JLabel("No image");
-        }
+            } catch(
+            Exception e)
+
+            {
+                e.printStackTrace();
+                return new JLabel("No image");
+            }
+
     }
-
 }
