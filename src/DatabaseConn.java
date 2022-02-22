@@ -112,6 +112,75 @@ public class DatabaseConn {
         }
     }
 
+    public static LinkedList<Circle> getAllCircles(){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM Circles");
+            ResultSet rs = ps.executeQuery();
+            LinkedList<Circle> circles = new LinkedList<Circle>();
+            while(rs.next()){
+                Circle temp = new Circle();
+                int id = rs.getInt("id");
+                temp.setId(id);
+                ps = getInstance().c.prepareStatement("SELECT * FROM Circles WHERE id = ?");
+                ps.setInt(1, id);
+                ResultSet current_circle = ps.executeQuery();
+                current_circle.next();
+                temp.setName(current_circle.getString("name"));
+                temp.setCreator(current_circle.getString("creator"));
+                temp.setDescription("description");
+                temp.setScore(current_circle.getFloat("score"));
+                String start_t = current_circle.getString("timestart");
+                java.util.Date starttime = new SimpleDateFormat("yyyy-MM-dd").parse(start_t);
+                String end_t = current_circle.getString("timeend");
+                java.util.Date endtime = new SimpleDateFormat("yyyy-MM-dd").parse(end_t);
+                temp.setStartTime(starttime);
+                temp.setStopTime(endtime);
+                ps = getInstance().c.prepareStatement("SELECT member FROM CircleMembers WHERE id = ?");
+                ps.setInt(1, id);
+                ResultSet rs_member = ps.executeQuery();
+                LinkedList<String> members = new LinkedList<String>();
+                while(rs_member.next()){
+                    members.add(rs_member.getString(1));
+                }
+                temp.setMembers(members);
+                circles.add(temp);
+                printc(temp);
+            }
+            return circles;
+        } catch (SQLException | ParseException e){
+            return null;
+        }
+    }
+
+    public static boolean addCircle(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO circles VALUES(default,?,?,?,?,?,default)");
+            ps.setString(1, c.getName());
+            ps.setString(2, c.getCreator());
+            ps.setString(3, c.getDescription());
+            java.util.Date start_t = c.getStartTime();
+            ps.setString(4, start_t.toString());
+            java.util.Date end_t = c.getStopTime();
+            ps.setString(5, end_t.toString());
+            ps.execute();
+            ps = getInstance().c.prepareStatement("SELECT id FROM Circles WHERE name = ?");
+            ps.setString(1, c.getName());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            int id = rs.getInt(1);
+            LinkedList<String> members = c.getMembers();
+            for(String member : members){
+                ps = getInstance().c.prepareStatement("INSERT INTO CircleMembers VALUES(?,?)");
+                ps.setInt(1, id);
+                ps.setString(2, member);
+                ps.execute();
+            }
+        } catch (SQLException e){
+            return false;
+        }
+        return true;
+    }
+
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
     public static void printc(Circle c){
         System.out.println("Id: " + c.getId());
