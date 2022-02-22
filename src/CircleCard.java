@@ -8,21 +8,23 @@ public class CircleCard extends JPanel {
 
     private Circle circle;
 
-    public CircleCard(Circle i, MainFrame frame){
+    public CircleCard(MainFrame frame, User user, Circle i){
 
         this.circle = i;
 
         setLayout(new BorderLayout());
-        setSize(new Dimension(800,200));
+        setPreferredSize(new Dimension(800,150));
 
         //Left side of the card
         JPanel left = new JPanel();
+        left.setPreferredSize(new Dimension(this.getWidth()/2,this.getHeight()));
         createLeft(circle, left);
 
         //Right side of the card
         JPanel right = new JPanel();
+        right.setPreferredSize(new Dimension(this.getWidth()/2,this.getHeight()));
         new Thread(() -> {
-            createRight(circle, right, frame);
+            createRight(circle, right, frame, user);
             validate();
         }).start();
 
@@ -31,10 +33,6 @@ public class CircleCard extends JPanel {
         pane.setResizeWeight(0.5);
         pane.setDividerSize(0);
         add(pane);
-
-
-
-
     }
 
 //----Methods-----------------------------------------------------------
@@ -43,6 +41,7 @@ public class CircleCard extends JPanel {
         left.setLayout(new GridLayout(2,0));
 
         JPanel leftTop = new JPanel();
+        leftTop.setPreferredSize(new Dimension(left.getWidth(), this.getHeight()/2));
         leftTop.setLayout(new GridLayout(2,0));
         JPanel title =  new JPanel();
         title.setLayout(new GridLayout(1,2));
@@ -62,6 +61,7 @@ public class CircleCard extends JPanel {
         String dateTo = df.format(i.getStopTime());
 
         JPanel leftBottom = new JPanel();
+        leftBottom.setPreferredSize(new Dimension(left.getWidth(), left.getHeight()/2));
         leftBottom.setLayout(new GridLayout(4,0));
         leftBottom.add(new JLabel(""));
         leftBottom.add(new JLabel("Running from:      " + "20" + dateFrom));
@@ -71,10 +71,11 @@ public class CircleCard extends JPanel {
 
     }
 
-    private void createRight(Circle i, JPanel right, MainFrame frame){
+    private void createRight(Circle i, JPanel right, MainFrame frame, User u){
         right.setLayout(new GridLayout(2,0));
 
         JPanel rightTop = new JPanel();
+        rightTop.setPreferredSize(new Dimension(right.getWidth(), this.getHeight()/2));
         rightTop.setLayout(new BoxLayout(rightTop, BoxLayout.Y_AXIS));
         JPanel members = new JPanel();
         members.setBackground(Color.LIGHT_GRAY);
@@ -89,6 +90,7 @@ public class CircleCard extends JPanel {
         JScrollPane scrollMembers = new JScrollPane(rightTop ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         JPanel rightBottom = new JPanel();
+        rightBottom.setPreferredSize(new Dimension(right.getWidth(), right.getHeight()));
         rightBottom.setLayout(new GridLayout(1,2));
         JPanel rightPoster = new JPanel();
         JPanel rightRight = new JPanel();
@@ -99,7 +101,6 @@ public class CircleCard extends JPanel {
 
         JLabel poster = getPoster(m);
 
-
         rightPoster.add(poster);
         rightBottom.add(rightPoster);
 
@@ -107,13 +108,12 @@ public class CircleCard extends JPanel {
         rightRight.add(new JLabel(""));
         rightRight.add(new JLabel(""));
         rightRight.add(new JLabel(""));
-        validate();
 
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(new JLabel(""));
         JButton detailsButton = new JButton("Circle details");
-        //detailsButton.addActionListener(event -> frame.navigateTo(CircleDetailsPanel :: new));
+        detailsButton.addActionListener(event -> frame.navigateTo(k -> new CircleDetailsPanel(k, u, circle)));
         buttonPanel.add(detailsButton);
         rightRight.add(buttonPanel);
         rightBottom.add(rightRight);

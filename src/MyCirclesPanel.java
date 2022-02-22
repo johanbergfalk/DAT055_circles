@@ -11,34 +11,34 @@ public class MyCirclesPanel extends JPanel {
 
     private final LinkedList<Circle> userCircles;
 
-    public MyCirclesPanel(MainFrame frame){
+    public MyCirclesPanel(MainFrame frame, User user){
 
-        MyCircles t = new MyCircles("user"); //TODO Denna ska köras med inloggad user
-        this.userCircles = t.getUserCircles();
+        MyCircles c = new MyCircles(user); //TODO Denna ska köras med inloggad user
+        this.userCircles = c.getUserCircles();
 
-        add(new NavigationBar(frame));
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setSize(new Dimension(800,600));
+        setPreferredSize(new Dimension(800,600));
+        setLayout(new BorderLayout());
+        add(new NavigationBar(frame, user), BorderLayout.NORTH);
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-        content.setSize(new Dimension(800,600));
+        content.setPreferredSize(new Dimension(this.getWidth(),this.getHeight()));
 
         //List all the users circles
-        circles(content, frame);
+        circles(content, frame, user);
 
         //If many circles, makes it possible to scroll through all
         JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        add(scrollPane);
+        add(scrollPane, BorderLayout.CENTER);
 
     }
 
 //----Methods-----------------------------------------------------------------------
 
     //Creates the frame for each circle
-    private void circles(JPanel c, MainFrame frame){
+    private void circles(JPanel c, MainFrame frame, User u){
           for(Circle i : userCircles) {
-              CircleCard x = new CircleCard(i, frame);
+              CircleCard x = new CircleCard(frame, u, i);
               c.add(x);
           }
     }

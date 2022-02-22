@@ -6,7 +6,7 @@ import java.util.LinkedList;
  */
 
 public class MyCircles {
-    private final String user;
+    private final User user;
     private final LinkedList<Circle> userCircles = new LinkedList<Circle>();
 
     /**
@@ -14,7 +14,7 @@ public class MyCircles {
      *
      * @param u String Username
      */
-    public MyCircles(String u) {
+    public MyCircles(User u) {
 
         this.user = u;
 
@@ -30,7 +30,7 @@ public class MyCircles {
         return userCircles;
     }
 
-    public String getUser() {
+    public User getUser() {
         return this.user;
     }
 }

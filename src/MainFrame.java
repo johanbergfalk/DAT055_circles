@@ -19,4 +19,5 @@ public class MainFrame extends JFrame {
         setContentPane(panelSupplier.apply(this));
         validate();
     }
+
 }

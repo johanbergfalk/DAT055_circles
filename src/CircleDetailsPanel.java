@@ -7,9 +7,10 @@ public class CircleDetailsPanel extends JPanel {
 
     LinkedList<Movie> moviesInCircle = new LinkedList<>();
 
-    public CircleDetailsPanel(JFrame frame) {
+    public CircleDetailsPanel(MainFrame frame, User user, Circle c) {
 
         setLayout(new BorderLayout());
+        add(new NavigationBar(frame, user), BorderLayout.NORTH);
         setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Oscars Romance"));
 
         Movie movie1 = new Movie("die hard 2");
@@ -41,7 +42,7 @@ public class CircleDetailsPanel extends JPanel {
 
         JScrollPane scrollPane = new JScrollPane(content, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        add(scrollPane);
+        add(scrollPane, BorderLayout.CENTER);
 
     }
 

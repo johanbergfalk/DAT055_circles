@@ -1,10 +1,12 @@
 import javax.swing.*;
 
 public class LandingPagePanel extends JPanel {
-    User user;
+
+    private User user;
+
     public LandingPagePanel(MainFrame frame, User user) {
-        add(new NavigationBar(frame));
-        this.user = user;
-        System.out.println(user.getUsername());
+
+        add(new NavigationBar(frame, user));
+
     }
 }
