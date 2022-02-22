@@ -1,10 +1,7 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 
