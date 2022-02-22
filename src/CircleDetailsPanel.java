@@ -10,7 +10,7 @@ public class CircleDetailsPanel extends JPanel {
     public CircleDetailsPanel(MainFrame frame, User user, Circle c) {
 
         setLayout(new BorderLayout());
-        add(new NavigationBar(frame, user), BorderLayout.NORTH);
+        add(new NavigationBar(frame, user, 1), BorderLayout.NORTH);
         setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Oscars Romance"));
 
         Movie movie1 = new Movie("die hard 2");

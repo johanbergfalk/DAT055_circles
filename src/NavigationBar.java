@@ -4,7 +4,7 @@ import javax.swing.*;
 public class NavigationBar extends JPanel{
 
 
-    public NavigationBar(MainFrame frame, User user){
+    public NavigationBar(MainFrame frame, User user, int hide){
 
         JButton myCircles = new JButton("My Circles");
         myCircles.addActionListener(event -> frame.navigateTo(m -> new MyCirclesPanel(m, user)));
@@ -13,11 +13,34 @@ public class NavigationBar extends JPanel{
         JButton settings = new JButton("Settings");
         JButton logOut = new JButton("Logout");
         logOut.addActionListener(event -> frame.navigateTo(Loginpanel :: new));
-        add(myCircles);
-        add(browseCircles);
-        add(settings);
-        add(logOut);
 
+        switch (hide){
+            //Landingpage, CircleDetailsPanel
+            case 1: add(myCircles);
+                    add(browseCircles);
+                    add(settings);
+                    add(logOut);
+                    break;
+            //BrowseCirclesPanel
+            case 2: add(myCircles);
+                    add(settings);
+                    add(logOut);
+                    break;
+            //MyCirclesPanel
+            case 3: add(browseCircles);
+                    add(settings);
+                    add(logOut);
+                    break;
+            //Settings
+            case 4: add(myCircles);
+                    add(browseCircles);
+                    add(logOut);
+                    break;
+            default: add(myCircles);
+                     add(browseCircles);
+                     add(settings);
+                     add(logOut);
+        }
     }
 
 }

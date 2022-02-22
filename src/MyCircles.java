@@ -6,19 +6,19 @@ import java.util.LinkedList;
  */
 
 public class MyCircles {
-    private final User user;
-    private final LinkedList<Circle> userCircles = new LinkedList<Circle>();
+
+    private LinkedList<Circle> userCircles = new LinkedList<Circle>();
 
     /**
-     * Creates a LinkedList with all circles
+     * Creates a LinkedList with all circles a user is a member in
      *
-     * @param u String Username
+     * @param user the user you want all circles from
      */
-    public MyCircles(User u) {
+    public MyCircles(User user) {
 
-        this.user = u;
+        this.userCircles = DatabaseConn.getUserCircles(user.getUsername());
 
-        //TODO metod som hämtar alla cirklar tillhörande username från DatabaseConn
+        //TODO - ta bort dessa när cirklar finns på en user
         userCircles.add(new Circle("The most captivating Dramas of the 60´s!", "Robert", "A 5 movie best-of-drama from the 60´s", new Date(2022, 02, 02), new Date(2022, 03, 02)));
         userCircles.add(new Circle("Who the hell needs Valentines day..", "Oscar", "Pick me ups for those not ready for a relationship", new Date(2022, 03, 05), new Date(2022, 03, 30)));
 
@@ -30,7 +30,4 @@ public class MyCircles {
         return userCircles;
     }
 
-    public User getUser() {
-        return this.user;
-    }
 }
