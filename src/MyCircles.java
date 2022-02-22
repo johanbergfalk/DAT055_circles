@@ -19,8 +19,8 @@ public class MyCircles {
         this.user = u;
 
         //TODO metod som hämtar alla cirklar tillhörande username från DatabaseConn
-        userCircles.add(new Circle("Roberts Drama", "Robert", "Drama from the 60´s", new Date(2022, 02, 02), new Date(2022, 03, 02)));
-        userCircles.add(new Circle("Oscars Romance", "Oscar", "Best of 2010", new Date(2022, 03, 05), new Date(2022, 03, 30)));
+        userCircles.add(new Circle("The most captivating Dramas of the 60´s!", "Robert", "A 5 movie best-of-drama from the 60´s", new Date(2022, 02, 02), new Date(2022, 03, 02)));
+        userCircles.add(new Circle("Who the hell needs Valentines day..", "Oscar", "Pick me ups for those not ready for a relationship", new Date(2022, 03, 05), new Date(2022, 03, 30)));
 
     }
 

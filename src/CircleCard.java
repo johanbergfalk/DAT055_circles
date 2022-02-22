@@ -1,10 +1,8 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class CircleCard extends JPanel {
 
@@ -15,8 +13,7 @@ public class CircleCard extends JPanel {
         this.circle = i;
 
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(frame.getWidth(), 100));
-        setBorder(new LineBorder(Color.GRAY));
+        setSize(new Dimension(800,200));
 
         //Left side of the card
         JPanel left = new JPanel();
@@ -24,10 +21,13 @@ public class CircleCard extends JPanel {
 
         //Right side of the card
         JPanel right = new JPanel();
-        createRight(circle, right, frame);
+        new Thread(() -> {
+            createRight(circle, right, frame);
+            validate();
+        }).start();
 
         JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, left, right);
-        pane.setPreferredSize(new Dimension(frame.getWidth(), frame.getHeight()));
+        pane.setBorder(BorderFactory.createTitledBorder("Created by: " + circle.getCreator()));
         pane.setResizeWeight(0.5);
         pane.setDividerSize(0);
         add(pane);
@@ -50,6 +50,7 @@ public class CircleCard extends JPanel {
         title.setBackground(Color.LIGHT_GRAY);
         leftTop.add(title);
         JPanel description = new JPanel();
+        description.setBackground(Color.LIGHT_GRAY);
         description.setLayout(new GridLayout(2,0));
         description.add(new JLabel("Description:"));
         description.add(new JLabel(i.getDescription()));
@@ -76,10 +77,12 @@ public class CircleCard extends JPanel {
         JPanel rightTop = new JPanel();
         rightTop.setLayout(new BoxLayout(rightTop, BoxLayout.Y_AXIS));
         JPanel members = new JPanel();
+        members.setBackground(Color.LIGHT_GRAY);
         members.add(new JLabel("Members:"));
         rightTop.add(members);
         for(String k : i.getMembers()){
             JPanel t = new JPanel();
+            t.setBackground(Color.LIGHT_GRAY);
             t.add(new JLabel(k));
             rightTop.add(t);
         }
@@ -87,28 +90,54 @@ public class CircleCard extends JPanel {
 
         JPanel rightBottom = new JPanel();
         rightBottom.setLayout(new GridLayout(1,2));
-        JPanel rightLeft = new JPanel();
+        JPanel rightPoster = new JPanel();
         JPanel rightRight = new JPanel();
-        rightLeft.add(new JLabel("MOVIE POSTER"));
-        rightBottom.add(rightLeft);
+
+        //TODO metod som hämtar namnet på första filmen i cirkeln
+
+        Movie m = new Movie("Napoleon Dynamite");
+
+        JLabel poster = getPoster(m);
+
+
+        rightPoster.add(poster);
+        rightBottom.add(rightPoster);
 
         rightRight.setLayout(new GridLayout(4,0));
         rightRight.add(new JLabel(""));
         rightRight.add(new JLabel(""));
         rightRight.add(new JLabel(""));
+        validate();
+
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(new JLabel(""));
         JButton detailsButton = new JButton("Circle details");
-        detailsButton.addActionListener(event -> frame.navigateTo(CircleDetailsPanel :: new));
+        //detailsButton.addActionListener(event -> frame.navigateTo(CircleDetailsPanel :: new));
         buttonPanel.add(detailsButton);
         rightRight.add(buttonPanel);
         rightBottom.add(rightRight);
 
-
         right.add(scrollMembers);
         right.add(rightBottom);
 
-    }
 
+    }
+    private JLabel getPoster(Movie m) {
+
+            try {
+                URL posterUrl = new URL(m.getPosterURL());
+                ImageIcon icon = new ImageIcon(posterUrl);
+                Image scaleImage = icon.getImage().getScaledInstance(72, 108, Image.SCALE_DEFAULT);
+                return new JLabel(new ImageIcon(scaleImage));
+
+            } catch(
+            Exception e)
+
+            {
+                e.printStackTrace();
+                return new JLabel("No image");
+            }
+
+    }
 }
