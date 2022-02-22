@@ -2,32 +2,33 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class Registerpanel extends JPanel implements ActionListener {
    private JTextField username;
    private JPasswordField password;
+    private JPasswordField passwordrep;
    private MainFrame m;
    private Register r;
 
     public Registerpanel(MainFrame m) {
-        JPanel finishedPanel = new JPanel();
-        finishedPanel.setBackground(Color.WHITE);
-        finishedPanel.setLayout(new GridLayout(3, 1, 0, 10));
+        setBackground(Color.WHITE);
+        setLayout(new GridLayout(3, 1, 0, 10));
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new GridLayout(2, 1, 3, 3));
         textPanel.setBackground(Color.WHITE);
         JLabel welcome = new JLabel("Welcome to Circles");
         welcome.setHorizontalAlignment(0);
         welcome.setVerticalAlignment(JLabel.BOTTOM);
-        welcome.setFont(new Font("Arial Black", Font.BOLD, 24));
+        welcome.setFont(new Font("Arial Black", Font.BOLD, 32));
         welcome.setForeground(Color.decode("#C6E2FF"));
 
 
-        JLabel prompt = new JLabel("Please register: (if already registered click login)");
+        JLabel prompt = new JLabel("Please register (if already registered click login):");
         prompt.setHorizontalAlignment(0);
         textPanel.add(welcome);
         textPanel.add(prompt);
-        finishedPanel.add(textPanel);
+        add(textPanel);
 
 
         JPanel userpass = new JPanel();
@@ -39,7 +40,7 @@ public class Registerpanel extends JPanel implements ActionListener {
         emptyu2.setBackground(Color.WHITE);
         emptyu1.setBackground(Color.WHITE);
         userpassFinal.add(emptyu1);
-        userpass.setLayout(new GridLayout(2, 2, 0, 0));
+        userpass.setLayout(new GridLayout(3, 3, 0, 0));
         userpass.setBackground(Color.WHITE);
         JLabel uname = new JLabel("Username: ");
         uname.setHorizontalAlignment(0);
@@ -49,15 +50,22 @@ public class Registerpanel extends JPanel implements ActionListener {
         username.setColumns(15);
         password = new JPasswordField();
         password.setColumns(15);
+        JLabel passrep = new JLabel("Repeat Password: ");
+        passrep.setHorizontalAlignment(0);
+        passwordrep = new JPasswordField();
+        passwordrep.setColumns(15);
+
         userpass.add(uname);
         userpass.add(username);
         userpass.add(pass);
         userpass.add(password);
+        userpass.add(passrep);
+        userpass.add(passwordrep);
 
         userpassFinal.add(userpass);
         userpassFinal.add(emptyu2);
 
-        finishedPanel.add(userpassFinal);
+        add(userpassFinal);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 1, 1, 10));
@@ -79,9 +87,8 @@ public class Registerpanel extends JPanel implements ActionListener {
         alignPanel.add(empty1);
         alignPanel.add(buttonPanel);
         alignPanel.add(empty2);
-        finishedPanel.add(alignPanel);
+        add(alignPanel);
         this.m = m;
-        add(finishedPanel);
     }
 
 
@@ -89,26 +96,34 @@ public class Registerpanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if (action == "Register") {
-            r = new Register(username.getText(), password.getPassword());
-            r.reg();
-            try {
-                Thread.sleep(1500);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-            if (r.Get_regstatus()) {
-                username.setText("");
-                password.setText("");
-                System.out.println("sucess");
+            if (!Arrays.equals(password.getPassword(), passwordrep.getPassword())) {
+                System.out.println("password match error");
             } else {
-                System.out.println("not");
+                r = new Register(username.getText(), password.getPassword());
+                r.reg();
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+                if (r.Get_regstatus()) {
+                    username.setText("");
+                    password.setText("");
+                    passwordrep.setText("");
+                    JOptionPane.showMessageDialog(m, "Sucessful registration!" + username.getText());
+                    m.navigateTo(Loginpanel::new);
+                } else {
+                    System.out.println("not");
+                }
             }
         }
     }
-    //try to register a user DONE
-    //TO DOOOOO
+
+
+
+    //TODO
     // if sucess a prompt displayed with a verification that a user is reged
     // take back to login screen when click ok.
-    //if failed then show error.
+    // if failed then show error.
 
 }
