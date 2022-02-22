@@ -39,7 +39,8 @@ CREATE TABLE CircleMembers
     id INT,
     member TEXT,
     PRIMARY KEY (id, member),
-    FOREIGN KEY (id) REFERENCES Circles(id)
+    FOREIGN KEY (id) REFERENCES Circles(id) ON DELETE CASCADE,
+    FOREIGN KEY (member) REFERENCES Login(username) ON DELETE CASCADE
 );
 
 CREATE TABLE MovieInCircle
