@@ -42,17 +42,16 @@ public class Movie {
 
             JSONObject obj = new JSONObject(responseStrBuilder.toString());
 
-            JSONArray ja = new JSONArray(obj.getJSONArray("results"));
+            JSONArray results = new JSONArray(obj.getJSONArray("results"));
 
-            JSONObject ob = (JSONObject) ja.get(0);
+            JSONObject movie = (JSONObject) results.get(0);
 
-            System.out.println(ob);
 
-            this.name = ob.getString("original_title");
-            this.id = ob.getInt("id");
-            this.description = ob.getString("overview");
-            this.year = ob.getString("release_date");
-            String poster = ob.getString("poster_path");
+            this.name = movie.getString("original_title");
+            this.id = movie.getInt("id");
+            this.description = movie.getString("overview");
+            this.year = movie.getString("release_date");
+            String poster = movie.getString("poster_path");
             this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
 
             System.out.println(this.name);

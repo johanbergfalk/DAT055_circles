@@ -16,7 +16,30 @@ public class MovieCard extends JPanel {
         setPreferredSize(new Dimension(600, 150));
         setBorder(new LineBorder(Color.YELLOW));
 
-        JPanel left = new JPanel();
+        JPanel leftPanel = new JPanel();
+        //new thread to allow dynamic loading of API-data
+        new Thread(() -> {
+            createLeftPanel(leftPanel, m);
+            validate();
+        }).start();
+
+        JPanel rightPanel = new JPanel();
+        createRightPanel(rightPanel, m);
+
+        //adds the left and right panel into a splitpane
+        JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        sp.setResizeWeight(0.25);
+        sp.setEnabled(false);
+        sp.setDividerSize(0);
+
+        sp.add(leftPanel);
+        sp.add(rightPanel);
+        add(sp);
+
+    }
+
+    private void createLeftPanel(JPanel left, Movie m) {
+        left.setPreferredSize(new Dimension(350, 150));
         left.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         left.setLayout(new BorderLayout());
         left.add(getPoster(m), BorderLayout.WEST);
@@ -37,25 +60,11 @@ public class MovieCard extends JPanel {
         left.add(sp1);
 
         left.add(new JLabel("Release date: " + m.getYear()), BorderLayout.PAGE_END);
-
-
-        //if(circle == active)
-        JPanel right = circleActive();
-
-        JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        sp.setResizeWeight(0.25);
-        sp.setEnabled(false);
-        sp.setDividerSize(0);
-
-        sp.add(left);
-        sp.add(right);
-        add(sp);
-
     }
 
-    private JPanel circleActive() {
-
-        JPanel right = new JPanel();
+    private void createRightPanel(JPanel right, Movie m) {
+        //IF CIRCLE ACTIVE
+        right.setPreferredSize(new Dimension(250, 150));
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
         right.add(new JLabel("Lämna en recension på filmen"));
         right.add(new JTextField());
@@ -63,14 +72,12 @@ public class MovieCard extends JPanel {
         right.add(new JTextField());
         right.setBackground(Color.lightGray);
         right.add(new JButton("Submit"));
-        return right;
+
+        //IF CIRCLE DATE PASSED
+        //TODO SHOW RATING AND COMMENTS
+
     }
 
-    private JPanel circleEnded() {
-        JPanel right = new JPanel();
-
-        return right;
-    }
 
     private JLabel getPoster(Movie m) {
 
@@ -83,7 +90,7 @@ public class MovieCard extends JPanel {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return new JLabel("hej");
+            return new JLabel("No image");
         }
     }
 }

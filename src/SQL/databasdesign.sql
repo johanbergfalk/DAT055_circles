@@ -51,6 +51,19 @@ CREATE TABLE MovieInCircle
     FOREIGN KEY (movieid) REFERENCES Movies(id)
 );
 
+CREATE TABLE MovieReview (
+    username TEXT,
+    circleid INT,
+    movieid INT,
+    rating FLOAT NOT NULL,
+    comment TEXT NOT NULL,
+    PRIMARY KEY (username, circleid, movieid),
+    FOREIGN KEY (username) REFERENCES Users(username),
+    FOREIGN KEY (circleid) REFERENCES Circles(id),
+    FOREIGN KEY (movieid) REFERENCES Movies(id),
+    CHECK (rating >= 0 && rating <= 10)
+);
+
 CREATE VIEW CircleMovies AS
     SELECT circleid, Circles.name AS circle_name, movieid, movie_name, movie_description, year, posterURL
     FROM Circles LEFT OUTER JOIN
