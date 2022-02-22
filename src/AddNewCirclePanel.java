@@ -51,17 +51,21 @@ public class AddNewCirclePanel extends JPanel {
 
         left.setSize(new Dimension(400,100));
         left.add(new JLabel("Name of the circle"));
-        left.add(new JTextField());
+        JTextField tf1 = new JTextField();
+        tf1.setPreferredSize(new Dimension(20,150));
+        left.add(tf1);
 
         left.add(padding(15,15,15,15));
 
         left.add(new JLabel("Start date for circle"));
-        left.add((Component) datePicker());
+        DatePicker d1 = new DatePicker();
+        left.add((Component) d1.getDatePicker());
 
         left.add(padding(25,25,25,25));
 
         left.add(new JLabel("End date for circle"));
-        left.add((Component) datePicker());
+        DatePicker d2 = new DatePicker();
+        left.add((Component) d2.getDatePicker());
 
         left.add(padding(15,15,15,15));
 
@@ -72,18 +76,6 @@ public class AddNewCirclePanel extends JPanel {
 
     private void createRightPanel(JPanel right) {
         right.setPreferredSize(new Dimension(400, 600));
-    }
-
-    private JDatePicker datePicker() {
-        //uses java Date format
-        UtilDateModel model = new UtilDateModel();
-        Properties p = new Properties();
-        p.put("text.day", "Day");
-        p.put("text.month", "Month");
-        p.put("text.year", "Year");
-        JDatePanelImpl panel = new JDatePanelImpl(model, p);
-        JDatePicker datePicker = new JDatePickerImpl(panel, null);
-        return datePicker;
     }
 
     private JPanel padding(int top, int left, int bottom, int right) {
