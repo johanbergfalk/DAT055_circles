@@ -1,15 +1,16 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.IOException;
 import java.util.LinkedList;
 
 public class CircleDetailsPanel extends JPanel {
 
     LinkedList<Movie> moviesInCircle = new LinkedList<>();
 
-    public CircleDetailsPanel(JFrame frame) throws IOException {
+    public CircleDetailsPanel(JFrame frame) {
+
+        setLayout(new BorderLayout());
+        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Oscars Romance"));
 
         Movie movie1 = new Movie("die hard 2");
         Movie movie2 = new Movie("forrest gump");
@@ -32,8 +33,6 @@ public class CircleDetailsPanel extends JPanel {
         moviesInCircle.add(movie9);
 
         JPanel content = new JPanel();
-        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Oscars Romance"));
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         for(Movie m : moviesInCircle) {
