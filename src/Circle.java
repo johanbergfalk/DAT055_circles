@@ -11,11 +11,9 @@ public class Circle {
     private Date stopTime;
     private float score = 0;
 
-    //linkedlist of type movie
-    public Circle() {
-    }
+    public Circle(){
 
-    ;
+    }
 
     public Circle(String name, String creator, String description, Date starttime, Date stoptime) {
         this.name = name;
@@ -60,6 +58,10 @@ public class Circle {
         return this.members;
     }
 
+    public void setMembers(LinkedList<String> members){
+        this.members = members;
+    }
+
     public String getDescription(){
         return this.description;
     }
@@ -83,16 +85,13 @@ public class Circle {
     public void setStopTime(Date stopTime){
         this.stopTime = stopTime;
     }
-     public float getScore(){
+
+    public float getScore(){
         return this.score;
      }
 
-     public void setScore(float score){
+    public void setScore(float score){
         this.score = score;
-     }
-
-     public void setMembers(LinkedList<String> members){
-        this.members = members;
      }
 
 }

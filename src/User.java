@@ -17,22 +17,17 @@ public class User{
     }
 
 //----Getters and setters------------------------------------------
-    public String getUsername(){
-        return this.username;
-    }
+    public String getUsername(){ return this.username; }
 
-    public LinkedList<Integer> getCircles(){
-        return this.circles;
-    }
-
-    public boolean getNightModeActive(){
-        return this.darkmode;
-    }
+    public LinkedList<Integer> getCircles(){ return this.circles; }
 
     public void setCircles(Integer circle){
         this.circles.add(circle);
     }
 
+    public boolean getDarkMode(){
+        return this.darkmode;
+    }
 
-
+    public void setDarkmode(boolean darkmode){ this.darkmode = darkmode; }
 }

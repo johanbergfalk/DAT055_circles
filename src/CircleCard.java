@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.net.URL;
 import java.text.DateFormat;
@@ -14,24 +15,28 @@ public class CircleCard extends JPanel {
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(800,150));
+        setBorder(new LineBorder(Color.YELLOW));
 
         //Left side of the card
         JPanel left = new JPanel();
-        left.setPreferredSize(new Dimension(this.getWidth()/2,this.getHeight()));
+        left.setPreferredSize(new Dimension(this.getWidth()/2,150));
         createLeft(circle, left);
 
         //Right side of the card
         JPanel right = new JPanel();
-        right.setPreferredSize(new Dimension(this.getWidth()/2,this.getHeight()));
+        right.setPreferredSize(new Dimension(this.getWidth()/2,150));
         new Thread(() -> {
             createRight(circle, right, frame, user);
             validate();
         }).start();
 
-        JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, left, right);
+        JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         pane.setBorder(BorderFactory.createTitledBorder("Created by: " + circle.getCreator()));
         pane.setResizeWeight(0.5);
+        pane.setEnabled(false);
         pane.setDividerSize(0);
+        pane.add(left);
+        pane.add(right);
         add(pane);
     }
 
@@ -96,7 +101,6 @@ public class CircleCard extends JPanel {
         JPanel rightRight = new JPanel();
 
         //TODO metod som hämtar namnet på första filmen i cirkeln
-
         Movie m = new Movie("Napoleon Dynamite");
 
         JLabel poster = getPoster(m);
