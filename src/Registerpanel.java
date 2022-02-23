@@ -74,8 +74,8 @@ public class Registerpanel extends JPanel implements ActionListener {
         loginButton.addActionListener(event -> m.navigateTo(Loginpanel::new));
         JButton registerButton = new JButton("Register");
         registerButton.addActionListener(this);
-        buttonPanel.add(loginButton);
         buttonPanel.add(registerButton);
+        buttonPanel.add(loginButton);
 
 
         JPanel alignPanel = new JPanel();
