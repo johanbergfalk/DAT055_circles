@@ -1,11 +1,5 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
 import java.util.function.Function;
 
 public class MainFrame extends JFrame {
@@ -25,5 +19,4 @@ public class MainFrame extends JFrame {
         setContentPane(panelSupplier.apply(this));
         validate();
     }
-
 }
