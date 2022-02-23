@@ -7,18 +7,19 @@ import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 public class DatePicker {
 
-    JDatePicker datePicker;
+    private final JDatePicker datePicker;
 
     public DatePicker() {
 
         //UtilDateModel uses default Java Date format
         UtilDateModel model = new UtilDateModel();
         Properties p = new Properties();
-        p.put("text.day", "Day");
+        p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
         JDatePanelImpl panel = new JDatePanelImpl(model, p);
@@ -29,9 +30,11 @@ public class DatePicker {
     //makes the output format when a date is picked yyyy-mm-dd
     private class CustomFormat extends JFormattedTextField.AbstractFormatter {
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
         @Override
         public Object stringToValue(String text) throws ParseException {
-            return null;
+            return format.parseObject(text);
         }
 
         @Override
@@ -39,7 +42,6 @@ public class DatePicker {
 
             if(value != null) {
                 Calendar cal = (Calendar) value;
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 String date = format.format(cal.getTime());
                 return date;
             }
@@ -49,4 +51,12 @@ public class DatePicker {
     public JDatePicker getDatePicker() {
         return datePicker;
     }
+
+    public String getSelectedDate(JDatePicker picker) {
+        Calendar value = (Calendar) picker.getModel().getValue();
+        Date selectedDate = value.getTime();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(selectedDate);
+    }
 }
+
