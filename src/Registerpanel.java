@@ -110,7 +110,7 @@ public class Registerpanel extends JPanel implements ActionListener {
                     username.setText("");
                     password.setText("");
                     passwordrep.setText("");
-                    JOptionPane.showMessageDialog(m, "Sucessful registration!" + username.getText());
+                    JOptionPane.showMessageDialog(m, "Successful registration!" + username.getText());
                     m.navigateTo(Loginpanel::new);
                 } else {
                     System.out.println("not");

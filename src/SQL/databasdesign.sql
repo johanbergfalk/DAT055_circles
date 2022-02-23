@@ -56,7 +56,7 @@ CREATE TABLE MovieReview (
     username TEXT,
     circleid INT,
     movieid INT,
-    rating FLOAT NOT NULL,
+    rating REAL NOT NULL,
     comment TEXT NOT NULL,
     PRIMARY KEY (username, circleid, movieid),
     FOREIGN KEY (username) REFERENCES Users(username),
