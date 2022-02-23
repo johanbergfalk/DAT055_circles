@@ -74,6 +74,7 @@ public class CircleCard extends JPanel {
         leftBottom.add(new JLabel("Score:                     " + i.getScore()));
         left.add(leftBottom);
 
+
     }
 
     private void createRight(Circle i, JPanel right, MainFrame frame, User u){

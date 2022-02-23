@@ -3,8 +3,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class LandingPagePanel extends JPanel {
 
@@ -17,7 +17,9 @@ public class LandingPagePanel extends JPanel {
         JPanel content = new JPanel();
         content.setLayout(new FlowLayout());
         try {
-            BufferedImage myPicture = ImageIO.read(new File("LandingImage.jpg"));
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classLoader.getResourceAsStream("LandingImage.jpg");
+            BufferedImage myPicture = ImageIO.read(input);
             JLabel picLabel = new JLabel(new ImageIcon(myPicture));
             add(picLabel, BorderLayout.CENTER);
         } catch (IOException e){}

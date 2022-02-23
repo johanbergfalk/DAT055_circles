@@ -1,16 +1,22 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 import java.util.function.Function;
 
 public class MainFrame extends JFrame {
-    public MainFrame(String title){
+    public MainFrame(String title) {
         super.setTitle(title);
-
     }
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         MainFrame m = new MainFrame("Circles");
         m.setMinimumSize(new Dimension(800,600));
         m.setLocation(100,100);
+        m.setIconImage(new ImageIcon("src/framelogo.png").getImage());
         m.setDefaultCloseOperation(m.EXIT_ON_CLOSE);
         m.setContentPane(new Loginpanel(m));
         m.setVisible(true);
