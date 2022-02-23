@@ -1,3 +1,6 @@
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 /*
      ===== Kommer köra som vi kom fram till med felix och lägga alla nya threads i databaseconn.
              Men eftersom vi inte behöver lagra objekt nu utan kan skriva get/set funktion för allt så kommer
@@ -28,21 +31,30 @@ private byte[] getsalt;
 private byte[] gethash;
 private Boolean sucess;
 
+    enum Result {
+        OK,
+        EMPTY_FIELDS,
+        NO_SUCH_USER,
+    }
+
     public Login(char[] password, String username){
         this.password=password;
         this.username=username;
     }
 
-    public void validateuser() {
-        new Thread(() -> {
+    public Future<Result> validateuser() throws NullPointerException {
             getsalt = DatabaseConn.getSalt(username);
             gethash = DatabaseConn.getHash(username);
-            if (Passwords.isExpectedPassword(password, getsalt, gethash)) {
-                sucess = true;
-            }else {
-                sucess=false;
-            }
-        }).start();
+            return Executors.newSingleThreadExecutor().submit(() -> {
+                if (getsalt == null || gethash == null) {
+                    return Result.NO_SUCH_USER;
+                }
+               if (Passwords.isExpectedPassword(password, getsalt, gethash)) {
+                   return Result.OK;
+               }else {
+                   return Result.NO_SUCH_USER;
+               }
+            });
     }
     public boolean Get_succes(){
         return this.sucess;
