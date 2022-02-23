@@ -24,42 +24,37 @@ import java.util.concurrent.Future;
              break;
              */
 public class Login {
-
 private char[] password;
 private String username;
 private byte[] getsalt;
 private byte[] gethash;
-private Boolean sucess;
-
-    enum Result {
+    enum Result{
         OK,
         EMPTY_FIELDS,
         NO_SUCH_USER,
     }
-
-    public Login(char[] password, String username){
-        this.password=password;
-        this.username=username;
+    public Login(char[] password, String username) {
+            this.password = password;
+            this.username = username;
     }
-
     public Future<Result> validateuser() throws NullPointerException {
             getsalt = DatabaseConn.getSalt(username);
             gethash = DatabaseConn.getHash(username);
             return Executors.newSingleThreadExecutor().submit(() -> {
+                if (username.trim().isEmpty() || password.length == 0) {
+                    return Result.EMPTY_FIELDS;
+                }
                 if (getsalt == null || gethash == null) {
                     return Result.NO_SUCH_USER;
                 }
-               if (Passwords.isExpectedPassword(password, getsalt, gethash)) {
-                   return Result.OK;
-               }else {
-                   return Result.NO_SUCH_USER;
-               }
+                if (Passwords.isExpectedPassword(password, getsalt, gethash)) {
+                    return Result.OK;
+                }else {
+                    return Result.NO_SUCH_USER;
+                }
             });
+        }
     }
-    public boolean Get_succes(){
-        return this.sucess;
-    }
-}
 
 //klicka på registered skicka till registered
 //klicka på login validate!!

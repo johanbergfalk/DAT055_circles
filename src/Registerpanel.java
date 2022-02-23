@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 
 public class Registerpanel extends JPanel implements ActionListener {
    private JTextField username;
@@ -96,34 +96,38 @@ public class Registerpanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if (action == "Register") {
-            if (!Arrays.equals(password.getPassword(), passwordrep.getPassword())) {
-                System.out.println("password match error");
-            } else {
-                r = new Register(username.getText(), password.getPassword());
-                r.reg();
+            r = new Register(username.getText(), password.getPassword(),passwordrep.getPassword());
+            Boolean pass_rep_match;
+            pass_rep_match = r.val_rep_pass();
+            if(!pass_rep_match){
+                JOptionPane.showMessageDialog(m, "Passwords don't match!");
+                password.setText("");
+                passwordrep.setText("");
+            }else{
                 try {
-                    Thread.sleep(1500);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-                if (r.Get_regstatus()) {
-                    username.setText("");
-                    password.setText("");
-                    passwordrep.setText("");
-                    JOptionPane.showMessageDialog(m, "Successful registration!" + username.getText());
-                    m.navigateTo(Loginpanel::new);
-                } else {
-                    System.out.println("not");
+                    Register.Result result = r.reg().get();
+                    switch (result) {
+                        case OK -> {
+                            JOptionPane.showMessageDialog(m, "Successful registration!" + " " + " WE Welcome YOU" + " " + username.getText());
+                            username.setText("");
+                            password.setText("");
+                            passwordrep.setText("");
+                            m.navigateTo(Loginpanel::new);
+                        }
+                        case EMPTY_FIELDS ->  {
+                            JOptionPane.showMessageDialog(m, "Can't leave fields password or username blank Please try again!");
+                        }
+                        case DUPLICATE ->   {
+                            JOptionPane.showMessageDialog(m, "Username" + " " + username.getText() + " " + " Already taken! Please try again!");
+                            username.setText("");
+                            password.setText("");
+                            passwordrep.setText("");
+                        }
+                    }
+                } catch (NullPointerException | ExecutionException | InterruptedException exception) {
+                    exception.printStackTrace();
                 }
             }
         }
     }
-
-
-
-    //TODO
-    // if sucess a prompt displayed with a verification that a user is reged
-    // take back to login screen when click ok.
-    // if failed then show error.
-
 }

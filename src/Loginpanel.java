@@ -83,38 +83,28 @@ public class Loginpanel extends JPanel implements ActionListener {
         add(alignPanel);
         this.m = m;
     }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
         if (action == "Login") {
-
-            if (username.getText().trim().isEmpty() || password.getPassword().length == 0) {
-                JOptionPane.showInputDialog("Login failed");
-
-            } else {
-                l = new Login(password.getPassword(), username.getText());
-                try {
-                    Login.Result result = l.validateuser().get();
-                    switch (result) {
-                        case OK -> {
-                            user = new User(username.getText());
-                            m.navigateTo(frame -> new LandingPagePanel(frame, user));
-                        }
-                        case EMPTY_FIELDS -> JOptionPane.showInputDialog("Login failed");
+            l = new Login(password.getPassword(), username.getText());
+            try {
+                Login.Result result = l.validateuser().get();
+                switch (result) {
+                    case OK -> {
+                        user = new User(username.getText());
+                        m.navigateTo(frame -> new LandingPagePanel(frame, user));
                     }
-                }catch (NullPointerException exception){
-                    JOptionPane.showInputDialog("Login failed");
-
-
-                } catch (ExecutionException | InterruptedException ex) {
-                    ex.printStackTrace();
+                    case EMPTY_FIELDS -> JOptionPane.showMessageDialog(m, "Can't leave fields password or username blank Please try again!");
+                    case NO_SUCH_USER -> {
+                        JOptionPane.showMessageDialog(m, "Invalid Username OR password" + " " + "Please try again!");
+                        username.setText("");
+                        password.setText("");
+                    }
                 }
-
+            } catch (NullPointerException | ExecutionException | InterruptedException exception){
+                exception.printStackTrace();
             }
         }
-        //check if valid user and if valid take to landingpagepanel
-        //if not valid then show error.
     }
 }
