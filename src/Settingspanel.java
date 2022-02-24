@@ -34,8 +34,10 @@ public class Settingspanel extends JPanel implements ActionListener {
         JButton settings = new JButton(u.getDarkMode() ? "Enable Light Mode" : "Enable Dark Mode");
         settings.addActionListener(this);
         buttonPanel.setBackground(u.getBackgroundColor());
+        //JButton changepass = new JButton("change password"); //add func change password?
         buttonPanel.add(header);
         buttonPanel.add(settings);
+       // buttonPanel.add(changepass);
 
 
         JPanel alignPanel = new JPanel();
