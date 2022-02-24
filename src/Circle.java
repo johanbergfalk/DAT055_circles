@@ -22,10 +22,7 @@ public class Circle {
         this.description = description;
         this.startTime = starttime;
         this.stopTime = stoptime;
-        for (int i = 0; i < 0; i++) {
-            String str = Integer.toString(i);
-            members.add(str);
-        }
+
 
     }
 //----Getters and setters------------------------------------------

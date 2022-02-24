@@ -7,31 +7,38 @@ import java.text.SimpleDateFormat;
 
 public class CircleCard extends JPanel {
 
-    private Circle circle;
+    private final Circle circle;
 
     public CircleCard(MainFrame frame, User user, Circle i){
 
         this.circle = i;
 
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(800,150));
+        setPreferredSize(new Dimension(780,150));
+        setMaximumSize(new Dimension(780,150));
+        setMinimumSize(new Dimension(780,150));
         setBorder(new LineBorder(Color.YELLOW));
 
         //Left side of the card
         JPanel left = new JPanel();
-        left.setPreferredSize(new Dimension(this.getWidth()/2,150));
+        left.setPreferredSize(new Dimension(390,150));
+        left.setMaximumSize(new Dimension(390,150));
+        left.setMinimumSize(new Dimension(390,150));
+
         createLeft(circle, left);
 
         //Right side of the card
         JPanel right = new JPanel();
-        right.setPreferredSize(new Dimension(this.getWidth()/2,150));
+        right.setPreferredSize(new Dimension(390,150));
+        right.setMaximumSize(new Dimension(390,150));
+        right.setMinimumSize(new Dimension(390,150));
+
         new Thread(() -> {
             createRight(circle, right, frame, user);
             validate();
         }).start();
 
         JSplitPane pane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        pane.setBorder(BorderFactory.createTitledBorder("Created by: " + circle.getCreator()));
         pane.setResizeWeight(0.5);
         pane.setEnabled(false);
         pane.setDividerSize(0);
@@ -43,30 +50,30 @@ public class CircleCard extends JPanel {
 //----Methods-----------------------------------------------------------
 
     private void createLeft(Circle i, JPanel left){
-        left.setLayout(new GridLayout(2,0));
+        left.setLayout(new GridLayout(3,0));
 
-        JPanel leftTop = new JPanel();
-        leftTop.setPreferredSize(new Dimension(left.getWidth(), this.getHeight()/2));
-        leftTop.setLayout(new GridLayout(2,0));
         JPanel title =  new JPanel();
-        title.setLayout(new GridLayout(1,2));
-        title.add(new JLabel(i.getName()));
-        title.setBackground(Color.LIGHT_GRAY);
-        leftTop.add(title);
-        JPanel description = new JPanel();
-        description.setBackground(Color.LIGHT_GRAY);
-        description.setLayout(new GridLayout(2,0));
-        description.add(new JLabel("Description:"));
-        description.add(new JLabel(i.getDescription()));
-        leftTop.add(description);
-        left.add(leftTop);
+        JLabel name = new JLabel(i.getName(), JLabel.LEFT);
+        name.setFont(new Font("Arial", Font.BOLD, 15));
+        title.add(name);
+        left.add(title);
+
+        //Description
+        JTextArea description = new JTextArea();
+        description.setEditable(false);
+        description.setLineWrap(true);
+        description.setWrapStyleWord(true);
+        description.setText(i.getDescription());
+        description.setBackground(this.getBackground());
+        JScrollPane scrollPane = new JScrollPane(description, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        left.add(scrollPane);
 
         DateFormat df = new SimpleDateFormat("yy-MM-dd");
         String dateFrom = df.format(i.getStartTime());
         String dateTo = df.format(i.getStopTime());
 
         JPanel leftBottom = new JPanel();
-        leftBottom.setPreferredSize(new Dimension(left.getWidth(), left.getHeight()/2));
         leftBottom.setLayout(new GridLayout(4,0));
         leftBottom.add(new JLabel(""));
         leftBottom.add(new JLabel("Running from:      " + "20" + dateFrom));
@@ -74,58 +81,49 @@ public class CircleCard extends JPanel {
         leftBottom.add(new JLabel("Score:                     " + i.getScore()));
         left.add(leftBottom);
 
-
     }
 
     private void createRight(Circle i, JPanel right, MainFrame frame, User u){
-        right.setLayout(new GridLayout(2,0));
-
-        JPanel rightTop = new JPanel();
-        rightTop.setPreferredSize(new Dimension(right.getWidth(), this.getHeight()/2));
-        rightTop.setLayout(new BoxLayout(rightTop, BoxLayout.Y_AXIS));
-        JPanel members = new JPanel();
-        members.setBackground(Color.LIGHT_GRAY);
-        members.add(new JLabel("Members:"));
-        rightTop.add(members);
-        for(String k : i.getMembers()){
-            JPanel t = new JPanel();
-            t.setBackground(Color.LIGHT_GRAY);
-            t.add(new JLabel(k));
-            rightTop.add(t);
-        }
-        JScrollPane scrollMembers = new JScrollPane(rightTop ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
-        JPanel rightBottom = new JPanel();
-        rightBottom.setPreferredSize(new Dimension(right.getWidth(), right.getHeight()));
-        rightBottom.setLayout(new GridLayout(1,2));
-        JPanel rightPoster = new JPanel();
-        JPanel rightRight = new JPanel();
+        right.setLayout(new GridLayout(0,2));
 
         //TODO metod som hämtar namnet på första filmen i cirkeln
         Movie m = new Movie("Napoleon Dynamite");
 
         JLabel poster = getPoster(m);
-
-        rightPoster.add(poster);
-        rightBottom.add(rightPoster);
-
-        rightRight.setLayout(new GridLayout(4,0));
-        rightRight.add(new JLabel(""));
-        rightRight.add(new JLabel(""));
-        rightRight.add(new JLabel(""));
+        right.add(poster);
 
 
+        JPanel membersAndButton = new JPanel();
+        membersAndButton.setLayout(new GridLayout(2,0));
+
+        //Members
+        JTextArea members = new JTextArea();
+        members.setEditable(false);
+        members.setLineWrap(true);
+        members.setWrapStyleWord(true);
+        String mem = "Members: \n";
+        for(String p : i.getMembers()){
+            mem += p + "\n";
+        }
+        members.setText(mem);
+        members.setBackground(this.getBackground());
+        JScrollPane scrollPane = new JScrollPane(members, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        membersAndButton.add(scrollPane);
+
+
+        //Button
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(new JLabel(""));
+        buttonPanel.setLayout(new GridLayout(3,0));
+        JPanel temp = new JPanel();
+        buttonPanel.add(temp.add(new JLabel("")));
+        JPanel temp2 = new JPanel();
+        buttonPanel.add(temp2.add(new JLabel("")));
         JButton detailsButton = new JButton("Circle details");
         detailsButton.addActionListener(event -> frame.navigateTo(k -> new CircleDetailsPanel(k, u, circle)));
         buttonPanel.add(detailsButton);
-        rightRight.add(buttonPanel);
-        rightBottom.add(rightRight);
-
-        right.add(scrollMembers);
-        right.add(rightBottom);
-
+        membersAndButton.add(buttonPanel);
+        right.add(membersAndButton);
 
     }
     private JLabel getPoster(Movie m) {
