@@ -2,6 +2,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.util.Date;
 import java.util.Properties;
@@ -11,10 +12,10 @@ import org.jdatepicker.impl.*;
 
 public class AddNewCirclePanel extends JPanel {
 
-    private String name;
-    private Date startDate;
-    private Date endDate;
-    private String description;
+    private JTextField name;
+    private DatePicker startDate;
+    private DatePicker endDate;
+    private JTextArea description;
 
     public AddNewCirclePanel(JFrame frame) {
 
@@ -52,27 +53,28 @@ public class AddNewCirclePanel extends JPanel {
 
         left.setSize(new Dimension(400,100));
         left.add(new JLabel("Name of the circle"));
-        JTextField tf1 = new JTextField();
-        tf1.setPreferredSize(new Dimension(346,35));
-        tf1.setMaximumSize(new Dimension(Integer.MAX_VALUE, tf1.getPreferredSize().height) );
-        left.add(tf1);
+        name = new JTextField();
+        name.setPreferredSize(new Dimension(346,35));
+        name.setMaximumSize(new Dimension(Integer.MAX_VALUE, name.getPreferredSize().height) );
+        left.add(name);
 
         left.add(Box.createRigidArea(new Dimension(15,40)));
 
         left.add(new JLabel("Start date for circle"));
-        DatePicker d1 = new DatePicker();
-        left.add((Component) d1.getDatePicker());
+        startDate = new DatePicker();
+        left.add((Component) startDate.getDatePicker());
 
         left.add(Box.createRigidArea(new Dimension(15,20)));
 
         left.add(new JLabel("End date for circle"));
-        DatePicker d2 = new DatePicker();
-        left.add((Component) d2.getDatePicker());
+        endDate = new DatePicker();
+        left.add((Component) endDate.getDatePicker());
 
         left.add(Box.createRigidArea(new Dimension(15,20)));
 
         left.add(new JLabel("Describe the circle"));
-        left.add(new JTextArea());
+        description = new JTextArea();
+        left.add(description);
 
         left.add(Box.createRigidArea(new Dimension(15,20)));
 
@@ -81,14 +83,18 @@ public class AddNewCirclePanel extends JPanel {
     private void createRightPanel(JPanel right) {
 
         right.setPreferredSize(new Dimension(400, 600));
-        right.setBorder(BorderFactory.createEmptyBorder(15,5,5,5));
+        right.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
 
-        right.add(Box.createRigidArea(new Dimension(15,40)));
-
+        JPanel titlePanel = new JPanel();
+        titlePanel.setPreferredSize(new Dimension(200, 75));
+        titlePanel.setMinimumSize(new Dimension(200, titlePanel.getPreferredSize().height));
+        titlePanel.setMaximumSize(new Dimension(200, titlePanel.getPreferredSize().height));
+        titlePanel.setLayout(new BorderLayout());
         JLabel title = new JLabel("Add movies to circle");
         title.setFont(new Font("title.getFont()", Font.PLAIN, 16));
-        right.add(title);
+        titlePanel.add(title, BorderLayout.CENTER);
+        right.add(titlePanel);
 
         right.add(Box.createRigidArea(new Dimension(15,20)));
 
@@ -98,17 +104,32 @@ public class AddNewCirclePanel extends JPanel {
         searchMovie.setMaximumSize(new Dimension(Integer.MAX_VALUE, searchMovie.getPreferredSize().height));
         right.add(searchMovie);
 
-        right.add(new JButton("Search"));
+        DualListBox dual = new DualListBox();
+
+        JButton search = new JButton("Search");
+        search.addActionListener(e -> { dual.addSourceElements(new String[] { Movie.searchForMovieToAdd(searchMovie.getText()) }); });
+        right.add(search);
 
         right.add(Box.createRigidArea(new Dimension(15,20)));
-
-        DualListBox dual = new DualListBox();
         dual.addSourceElements(new String[] { "One", "Two", "Three" });
 
         right.add(dual);
 
         right.add(Box.createRigidArea(new Dimension(15,60)));
 
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+
+        JButton createCirlceButton = new JButton("Create circle");
+        //createCirlceButton.addActionListener(e -> new Circle(name.getText(), "User", description.getText()), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
+        buttonPanel.add(createCirlceButton);
+
+        JButton abort = new JButton("Abort");
+        buttonPanel.add(abort);
+
+        right.add(buttonPanel);
+
     }
+
 
 }

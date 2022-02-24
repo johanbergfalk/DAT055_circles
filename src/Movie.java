@@ -24,10 +24,7 @@ public class Movie {
 
     public Movie(String title) {
 
-        JSONObject obj = movieSearch(title);
-        JSONArray results = new JSONArray(obj.getJSONArray("results"));
-
-        JSONObject movie = (JSONObject) results.get(0);
+        JSONObject movie = movieSearch(title);
 
 
         this.name = movie.getString("original_title");
@@ -42,6 +39,11 @@ public class Movie {
         System.out.println(this.year);
         System.out.println(this.posterURL);
 
+    }
+
+    public static String searchForMovieToAdd(String title) {
+        JSONObject movie = movieSearch(title);
+        return movie.getString("original_title");
     }
 
     public static JSONObject movieSearch(String title) {
@@ -61,7 +63,12 @@ public class Movie {
             while ((inputStr = br.readLine()) != null)
                 responseStrBuilder.append(inputStr);
 
-            return new JSONObject(responseStrBuilder.toString());
+            JSONObject obj = new JSONObject(responseStrBuilder.toString());
+
+            JSONArray results = new JSONArray(obj.getJSONArray("results"));
+
+            return (JSONObject) results.get(0);
+
         }
 
         catch(IOException e) {
