@@ -118,7 +118,7 @@ public class CircleCard extends JPanel {
         JPanel temp = new JPanel();
         buttonPanel.add(temp.add(new JLabel("")));
         JPanel temp2 = new JPanel();
-        buttonPanel.add(temp2.add(new JLabel("")));
+        buttonPanel.add(temp2.add(new JLabel("Created by: " + i.getCreator())));
         JButton detailsButton = new JButton("Circle details");
         detailsButton.addActionListener(event -> frame.navigateTo(k -> new CircleDetailsPanel(k, u, circle)));
         buttonPanel.add(detailsButton);
