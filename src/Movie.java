@@ -24,8 +24,29 @@ public class Movie {
 
     public Movie(String title) {
 
-        try {
+        JSONObject obj = movieSearch(title);
+        JSONArray results = new JSONArray(obj.getJSONArray("results"));
 
+        JSONObject movie = (JSONObject) results.get(0);
+
+
+        this.name = movie.getString("original_title");
+        this.id = movie.getInt("id");
+        this.description = movie.getString("overview");
+        this.year = movie.getString("release_date");
+        String poster = movie.getString("poster_path");
+        this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
+
+        System.out.println(this.name);
+        System.out.println(this.id);
+        System.out.println(this.year);
+        System.out.println(this.posterURL);
+
+    }
+
+    public static JSONObject movieSearch(String title) {
+
+        try {
             //converts spaces in the title with %20 for url formatting
             title = title.replaceAll("\\s+","%20");
 
@@ -40,31 +61,16 @@ public class Movie {
             while ((inputStr = br.readLine()) != null)
                 responseStrBuilder.append(inputStr);
 
-            JSONObject obj = new JSONObject(responseStrBuilder.toString());
-
-            JSONArray results = new JSONArray(obj.getJSONArray("results"));
-
-            JSONObject movie = (JSONObject) results.get(0);
-
-
-            this.name = movie.getString("original_title");
-            this.id = movie.getInt("id");
-            this.description = movie.getString("overview");
-            this.year = movie.getString("release_date");
-            String poster = movie.getString("poster_path");
-            this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
-
-            System.out.println(this.name);
-            System.out.println(this.id);
-            System.out.println(this.year);
-            System.out.println(this.posterURL);
+            return new JSONObject(responseStrBuilder.toString());
         }
 
         catch(IOException e) {
             System.out.println(e);
+            return new JSONObject("empty");
         }
 
     }
+
 
     //------ GETTERS & SETTERS
 
