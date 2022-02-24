@@ -12,16 +12,10 @@ public class Movie {
     private String posterURL;
     private BufferedImage poster;
 
-    public Movie(String name, int id, String description, String year, String posterURL) {
-
-        this.name = name;
-        this.id = id;
-        this.description = description;
-        this.year = year;
-        this.posterURL = posterURL;
-
-    }
-
+    /**
+     * Constructor for a movie, sets name, id, description, year, poster based on title
+     * @param title the movie title to find in tmdb database
+     */
     public Movie(String title) {
 
         JSONObject movie = movieSearch(title);
@@ -40,6 +34,11 @@ public class Movie {
 
     }
 
+    /**
+     * Search for a movie to display its title in the GUI
+     * @param title the movie title to find in tmdb database
+     * @return the movie title as a string to display in the GUI
+     */
     public static String searchForMovieToAdd(String title) {
 
         JSONObject movie = movieSearch(title);
@@ -47,12 +46,18 @@ public class Movie {
 
     }
 
+    /**
+     * Search for a movie in the tmdb database using API
+     * @param title the movie title to find in tmdb database
+     * @return a JSON object containing information about the movie
+     */
     public static JSONObject movieSearch(String title) {
 
         try {
             //converts spaces in the title with %20 for url formatting
             title = title.replaceAll("\\s+","%20");
 
+            //API connection, read in the file using StringBuilder
             URL url = new URL("https://api.themoviedb.org/3/search/movie?api_key=9235f4be07271782e1c1021ed0762621&language=en-US&query=" + title + "&page=1&include_adult=false");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -64,10 +69,13 @@ public class Movie {
             while ((inputStr = br.readLine()) != null)
                 responseStrBuilder.append(inputStr);
 
+            //the full JSON of movies and extra data
             JSONObject obj = new JSONObject(responseStrBuilder.toString());
 
+            //the movies found are stored as arrays under the results key
             JSONArray results = new JSONArray(obj.getJSONArray("results"));
 
+            //if multiple movies are found the first one in the list is returned
             return (JSONObject) results.get(0);
 
         }
