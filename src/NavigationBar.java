@@ -16,6 +16,7 @@ public class NavigationBar extends JPanel{
         settings.addActionListener(event -> frame.navigateTo(m -> new Settingspanel(m, user)));
         JButton logOut = new JButton("Logout");
         logOut.addActionListener(event -> frame.navigateTo(Loginpanel :: new));
+        setBackground(user.getBackgroundColor());
 
         //Only show relevant buttons in each panel
         switch (hide){

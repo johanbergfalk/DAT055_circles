@@ -1,6 +1,5 @@
-import java.io.Serializable;
+import java.awt.*;
 import java.util.LinkedList;
-import java.util.List;
 
 public class User{
 
@@ -30,4 +29,20 @@ public class User{
     }
 
     public void setDarkmode(boolean darkmode){ this.darkmode = darkmode; }
+
+
+    public Color getForegroundColor() {
+        if (darkmode) {
+            return Color.WHITE;
+        } else {
+            return Color.BLACK;
+        }
+    }
+    public Color getBackgroundColor() {
+        if (darkmode) {
+            return Color.BLACK;
+        } else {
+            return Color.WHITE;
+        }
+    }
 }
