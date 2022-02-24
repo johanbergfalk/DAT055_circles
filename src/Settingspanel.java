@@ -15,10 +15,9 @@ public class Settingspanel extends JPanel implements ActionListener {
     }
 
     private void draw(User u, MainFrame m){
-
         setLayout(new BorderLayout());
         add(new NavigationBar(m, u, 4), BorderLayout.NORTH);
-        setBorder(BorderFactory.createTitledBorder (new EmptyBorder(10,5,5,5), "Settings"));
+        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5),""));
 
         Color textColor = u.getForegroundColor();
         setBackground(u.getBackgroundColor());
