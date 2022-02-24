@@ -66,8 +66,31 @@ public class MovieCard extends JPanel {
         right.add(new JLabel("Lämna en recension på filmen"));
         right.add(new JTextField());
         right.add(new JLabel("Vad ger du filmen för betyg?"));
-        right.add(new JTextField());
-        right.setBackground(Color.lightGray);
+        JPanel sliderPanel = new JPanel();
+        sliderPanel.setLayout(new BoxLayout(sliderPanel, BoxLayout.X_AXIS));
+
+        //swing related to slider
+        JSlider slider = new JSlider(0,10, 1);
+        slider.setValue(0);
+        slider.setMajorTickSpacing(1);
+        slider.setMinorTickSpacing(1);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setBackground(Color.LIGHT_GRAY);
+        slider.setOpaque(false);
+        sliderPanel.add(slider);
+
+        //adds padding between slider and label
+        sliderPanel.add(Box.createRigidArea(new Dimension(5,5)));
+
+        //swing related to label displaying the value of slider
+        JLabel sliderValue = new JLabel(String.valueOf(slider.getValue()));
+        sliderValue.setBackground(this.getBackground());
+        slider.addChangeListener(e -> sliderValue.setText(String.valueOf(slider.getValue())));
+        sliderPanel.add(sliderValue);
+        sliderPanel.add(Box.createRigidArea(new Dimension(10,5)));
+        right.add(sliderPanel);
+
         right.add(new JButton("Submit"));
 
         //IF CIRCLE DATE PASSED
