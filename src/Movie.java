@@ -26,7 +26,6 @@ public class Movie {
 
         JSONObject movie = movieSearch(title);
 
-
         this.name = movie.getString("original_title");
         this.id = movie.getInt("id");
         this.description = movie.getString("overview");
@@ -42,8 +41,10 @@ public class Movie {
     }
 
     public static String searchForMovieToAdd(String title) {
+
         JSONObject movie = movieSearch(title);
         return movie.getString("original_title");
+
     }
 
     public static JSONObject movieSearch(String title) {
