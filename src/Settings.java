@@ -13,7 +13,7 @@ public class Settings {
         CANT_UPDATE,
         NO_SUCH_USER,
         PASSWORD_MATCH_ERROR,
-        OLD_PASSORD_ERROR,
+        OLD_PASSWORD_ERROR,
     }
 
     public Settings(char[] pass, char[] newpass, String username, char[] newotherpass){
@@ -37,7 +37,7 @@ public class Settings {
             return Settings.Result.NO_SUCH_USER;
         }
         if (!Passwords.isExpectedPassword(password, getsalt, gethash)){
-            return Result.OLD_PASSORD_ERROR;
+            return Result.OLD_PASSWORD_ERROR;
         }
         else {
             byte[] salt = Passwords.getNextSalt();

@@ -107,18 +107,22 @@ public class Settingspanel extends JPanel implements ActionListener {
                         JOptionPane.showMessageDialog(m, "Successful password change!");
                     }
                     case EMPTY_FIELDS -> {
+                        Toolkit.getDefaultToolkit().beep();
                         JOptionPane.showMessageDialog(m, "Can't leave fields empty!");
                         draw();
                     }
                     case NO_SUCH_USER, CANT_UPDATE -> {
+                        Toolkit.getDefaultToolkit().beep();
                         JOptionPane.showMessageDialog(m, "Something went wrong try again!");
                         draw();
                     }
                     case PASSWORD_MATCH_ERROR -> {
+                        Toolkit.getDefaultToolkit().beep();
                         JOptionPane.showMessageDialog(m, "Password match error, new passwords don't match!");
                         draw();
                     }
-                    case OLD_PASSORD_ERROR -> {
+                    case OLD_PASSWORD_ERROR -> {
+                        Toolkit.getDefaultToolkit().beep();
                         JOptionPane.showMessageDialog(m, "That is not your old pass (nice try sneeky devil!) try again!");
                         draw();
                     }
