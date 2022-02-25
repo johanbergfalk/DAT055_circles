@@ -2,6 +2,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.util.Date;
@@ -17,16 +18,21 @@ public class AddNewCirclePanel extends JPanel {
     private DatePicker endDate;
     private JTextArea description;
 
-    public AddNewCirclePanel(MainFrame frame, User u) {
+    public AddNewCirclePanel(MainFrame frame, User user) {
 
         setLayout(new BorderLayout());
-        setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        setBackground(user.getBackgroundColor());
+        Color textColor = user.getForegroundColor();
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Create new Circle");
+        titledBorder.setTitleColor(textColor);
+        setBorder(titledBorder);
+        //setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 
         JPanel leftPanel = new JPanel();
         createLeftPanel(leftPanel);
 
         JPanel rightPanel = new JPanel();
-        createRightPanel(frame, rightPanel, u);
+        createRightPanel(frame, rightPanel, user);
 
         JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         sp.setResizeWeight(0.5);

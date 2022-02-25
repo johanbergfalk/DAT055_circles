@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -10,8 +11,14 @@ public class CircleDetailsPanel extends JPanel {
     public CircleDetailsPanel(MainFrame frame, User user, Circle c) {
 
         setLayout(new BorderLayout());
+        setBackground(user.getBackgroundColor());
+        Color textColor = user.getForegroundColor();
         add(new NavigationBar(frame, user, 1), BorderLayout.NORTH);
-        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Oscars Romance"));
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Circle title goes here");
+        titledBorder.setTitleColor(textColor);
+        setBorder(titledBorder);
+
+        //setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Oscars Romance"));
 
         Movie movie1 = new Movie("die hard 2");
         Movie movie2 = new Movie("forrest gump");

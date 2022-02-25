@@ -11,6 +11,7 @@ public class LandingPagePanel extends JPanel {
     public LandingPagePanel(MainFrame frame, User user) {
 
         setLayout(new BorderLayout());
+        setBackground(user.getBackgroundColor());
         add(new NavigationBar(frame, user, 1), BorderLayout.NORTH);
         setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), " "));
 

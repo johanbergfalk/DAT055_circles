@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -18,8 +20,12 @@ public class MyCirclesPanel extends JPanel {
         this.userCircles = c.getUserCircles();
 
         setLayout(new BorderLayout());
+        setBackground(user.getBackgroundColor());
+        Color textColor = user.getForegroundColor();
         add(new NavigationBar(frame, user, 3), BorderLayout.NORTH);
-        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "My Circles"));
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "My Circles");
+        titledBorder.setTitleColor(textColor);
+        setBorder(titledBorder);
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));

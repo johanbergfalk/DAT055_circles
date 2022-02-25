@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.Date;
 import java.util.LinkedList;
@@ -20,8 +21,12 @@ public class BrowseCirclesPanel extends JPanel {
         circles.add(new Circle("Who the hell needs Valentines day..", "Oscar", "Pick me ups for those not ready for a relationship", new Date(2022, 03, 05), new Date(2022, 03, 30)));
 
         setLayout(new BorderLayout());
+        setBackground(user.getBackgroundColor());
+        Color textColor = user.getForegroundColor();
         add(new NavigationBar(frame, user, 2), BorderLayout.NORTH);
-        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Browse all Circles"));
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Browse all Circles");
+        titledBorder.setTitleColor(textColor);
+        setBorder(titledBorder);
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
