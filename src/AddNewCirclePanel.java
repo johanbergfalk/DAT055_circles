@@ -17,7 +17,7 @@ public class AddNewCirclePanel extends JPanel {
     private DatePicker endDate;
     private JTextArea description;
 
-    public AddNewCirclePanel(JFrame frame, User u) {
+    public AddNewCirclePanel(MainFrame frame, User u) {
 
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -26,7 +26,7 @@ public class AddNewCirclePanel extends JPanel {
         createLeftPanel(leftPanel);
 
         JPanel rightPanel = new JPanel();
-        createRightPanel(rightPanel);
+        createRightPanel(frame, rightPanel, u);
 
         JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         sp.setResizeWeight(0.5);
@@ -80,7 +80,7 @@ public class AddNewCirclePanel extends JPanel {
 
     }
 
-    private void createRightPanel(JPanel right) {
+    private void createRightPanel(MainFrame frame, JPanel right, User u) {
 
         right.setPreferredSize(new Dimension(400, 600));
         right.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -125,6 +125,7 @@ public class AddNewCirclePanel extends JPanel {
         buttonPanel.add(createCirlceButton);
 
         JButton abort = new JButton("Abort");
+        abort.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, u)));
         buttonPanel.add(abort);
 
         right.add(buttonPanel);
