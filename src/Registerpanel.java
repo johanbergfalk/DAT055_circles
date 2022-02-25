@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 public class Registerpanel extends JPanel implements ActionListener {
    private JTextField username;
    private JPasswordField password;
-    private JPasswordField passwordrep;
+   private JPasswordField passwordrep;
    private MainFrame m;
    private Register r;
 

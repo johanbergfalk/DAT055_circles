@@ -33,22 +33,22 @@ public class DatabaseConn {
 
     /* FUNCTIONS RELATED TO LOGIN AND REGISTER */
     public static boolean registerUser(String username, byte[] hash, byte[] salt) {
-            try {
-                PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
-                ps.setString(1, username);
-                ps.setBytes(2, hash);
-                ps.setBytes(3, salt);
-                ps.executeUpdate();
+        try {
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
+            ps.setString(1, username);
+            ps.setBytes(2, hash);
+            ps.setBytes(3, salt);
+            ps.executeUpdate();
 
-                PreparedStatement ps2 = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?)");
-                ps2.setString(1, username);
-                ps2.setBoolean(2, false);
-                ps2.executeUpdate();
+            PreparedStatement ps2 = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?)");
+            ps2.setString(1, username);
+            ps2.setBoolean(2, false);
+            ps2.executeUpdate();
 
-                return true;
-            } catch (SQLException se) {
-                return false;
-            }
+            return true;
+        } catch (SQLException se) {
+            return false;
+        }
     }
     public static boolean updateUserpass(String username, byte[] hash, byte[] salt) {
         try {
@@ -240,8 +240,6 @@ public class DatabaseConn {
         }
         System.out.println("\n");
     }
-
-
 }
 
 
