@@ -52,11 +52,9 @@ public class DatePicker {
         return datePicker;
     }
 
-    public String getSelectedDate(JDatePicker picker) {
+    public Date getSelectedDate(JDatePicker picker) {
         Calendar value = (Calendar) picker.getModel().getValue();
-        Date selectedDate = value.getTime();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        return format.format(selectedDate);
+        return value.getTime();
     }
 }
 
