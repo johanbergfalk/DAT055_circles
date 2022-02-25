@@ -50,7 +50,18 @@ public class DatabaseConn {
                 return false;
             }
     }
-
+    public static boolean updateUserpass(String username, byte[] hash, byte[] salt) {
+        try {
+            PreparedStatement ps = getInstance().c.prepareStatement("UPDATE login SET hash = ?, salt= ? WHERE username=?");
+            ps.setBytes(1, hash);
+            ps.setBytes(2, salt);
+            ps.setString(3, username);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException se) {
+            return false;
+        }
+    }
     public static byte[] getHash(String user){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT hash FROM login WHERE username = ?");
@@ -99,7 +110,6 @@ public class DatabaseConn {
             return false;
         }
     }
-
 
 
 

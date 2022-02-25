@@ -7,17 +7,25 @@ import java.awt.event.ActionListener;
 public class Settingspanel extends JPanel implements ActionListener {
     private MainFrame m;
     private User u;
+    private JLabel oldpass;
+    private JLabel newpass;
+    private JLabel repnewpass;
 
+    private JPasswordField oldField;
+    private JPasswordField newpassField;
+    private JPasswordField repnewpassField;
+
+    Settings s;
     public Settingspanel(MainFrame m, User u) {
         this.m = m;
         this.u = u;
-        draw(u,m);
+        draw(u, m);
     }
 
-    private void draw(User u, MainFrame m){
+    private void draw(User u, MainFrame m) {
         setLayout(new BorderLayout());
         add(new NavigationBar(m, u, 4), BorderLayout.NORTH);
-        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5),""));
+        setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10, 5, 5, 5), " "));
 
         Color textColor = u.getForegroundColor();
         setBackground(u.getBackgroundColor());
@@ -29,22 +37,22 @@ public class Settingspanel extends JPanel implements ActionListener {
         header.setVerticalAlignment(SwingConstants.TOP);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(6,1,1,10));
+        buttonPanel.setLayout(new GridLayout(6, 1, 1, 10));
         JButton settings = new JButton(u.getDarkMode() ? "Enable Light Mode" : "Enable Dark Mode");
         settings.addActionListener(this);
         buttonPanel.setBackground(u.getBackgroundColor());
-        //JButton changepass = new JButton("change password"); //add func change password?
+        JButton changepass = new JButton("change password"); //add func change password?
+        changepass.addActionListener(this);
         buttonPanel.add(header);
         buttonPanel.add(settings);
-       // buttonPanel.add(changepass);
-
+        buttonPanel.add(changepass);
 
         JPanel alignPanel = new JPanel();
         JPanel empty1 = new JPanel();
         empty1.setBackground(u.getBackgroundColor());
         JPanel empty2 = new JPanel();
         empty2.setBackground(u.getBackgroundColor());
-        alignPanel.setLayout(new BoxLayout(alignPanel,BoxLayout.X_AXIS));
+        alignPanel.setLayout(new BoxLayout(alignPanel, BoxLayout.X_AXIS));
         alignPanel.setBackground(u.getBackgroundColor());
         alignPanel.add(empty1);
         alignPanel.add(buttonPanel);
@@ -71,6 +79,57 @@ public class Settingspanel extends JPanel implements ActionListener {
                 removeAll();
                 draw(u, m);
                 validate();
+            }
+            case "change password" -> {
+
+                JLabel oldpass = new JLabel("Old Password:");
+                JLabel newpass = new JLabel("New password:");
+                JLabel repnewpass = new JLabel("Repeat password:");
+
+                oldField = new JPasswordField();
+                oldField.setColumns(15);
+                newpassField = new JPasswordField();
+                newpassField.setColumns(15);
+                repnewpassField = new JPasswordField();
+                repnewpassField.setColumns(15);
+
+                JPanel myPanel = new JPanel();
+                myPanel.setLayout(new GridLayout(3, 1, 10, 10));
+                myPanel.add(oldpass);
+                myPanel.add(oldField);
+                myPanel.add(newpass);
+                myPanel.add(newpassField);
+                myPanel.add(repnewpass);
+                myPanel.add(repnewpassField);
+
+                int result = JOptionPane.showConfirmDialog(m, myPanel,
+                        "Change password", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    s = new Settings(oldField.getPassword(), newpassField.getPassword(), u.getUsername(), repnewpassField.getPassword());
+                    try {
+                        Settings.Result rs = s.changepass();
+                        switch (rs) {
+                            case OK -> {
+                                System.out.println("okay!!!");
+                            }
+                            case EMPTY_FIELDS -> {
+                                System.out.println("EMPÅTY!!!");
+                            }
+                            case NO_SUCH_USER, CANT_UPDATE -> {
+                                System.out.println("WHÖPS!!!");
+                            }
+                            case PASSWORD_MATCH_ERROR -> {
+                                System.out.println("MATcH!!!");
+                            }
+                            case OLD_PASSORD_ERROR -> {
+                                System.out.println("that is not your old pass!!!");
+                            }
+                        }
+                    } catch (NullPointerException exception) {
+                        exception.printStackTrace();
+
+                    }
+                }
             }
         }
     }
