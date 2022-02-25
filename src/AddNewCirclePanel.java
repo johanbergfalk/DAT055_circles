@@ -17,7 +17,7 @@ public class AddNewCirclePanel extends JPanel {
     private DatePicker endDate;
     private JTextArea description;
 
-    public AddNewCirclePanel(JFrame frame) {
+    public AddNewCirclePanel(JFrame frame, User u) {
 
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
