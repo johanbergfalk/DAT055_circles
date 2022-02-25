@@ -14,8 +14,8 @@ import org.jdatepicker.impl.*;
 public class AddNewCirclePanel extends JPanel {
 
     private JTextField name;
-    private DatePicker startDate;
-    private DatePicker endDate;
+    private Date startDate;
+    private Date endDate;
     private JTextArea description;
 
     public AddNewCirclePanel(MainFrame frame, User user) {
@@ -67,14 +67,16 @@ public class AddNewCirclePanel extends JPanel {
         left.add(Box.createRigidArea(new Dimension(15,40)));
 
         left.add(new JLabel("Start date for circle"));
-        startDate = new DatePicker();
-        left.add((Component) startDate.getDatePicker());
+        DatePicker startDatePicker = new DatePicker();
+        left.add((Component) startDatePicker.getDatePicker());
+        startDate = startDatePicker.getSelectedDate(startDatePicker.getDatePicker());
 
         left.add(Box.createRigidArea(new Dimension(15,20)));
 
         left.add(new JLabel("End date for circle"));
-        endDate = new DatePicker();
-        left.add((Component) endDate.getDatePicker());
+        DatePicker endDatePicker = new DatePicker();
+        left.add((Component) endDatePicker.getDatePicker());
+        endDate = endDatePicker.getSelectedDate(endDatePicker.getDatePicker());
 
         left.add(Box.createRigidArea(new Dimension(15,20)));
 
@@ -127,7 +129,7 @@ public class AddNewCirclePanel extends JPanel {
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 
         JButton createCirlceButton = new JButton("Create circle");
-        //createCirlceButton.addActionListener(e -> new Circle(name.getText(), "User", description.getText()), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
+        // TODO SKAPA NY CIRKEL
         buttonPanel.add(createCirlceButton);
 
         JButton abort = new JButton("Abort");
