@@ -60,12 +60,14 @@ public class Settingspanel extends JPanel implements ActionListener {
         switch (action) {
             case "Enable Light Mode" -> {
                 u.setDarkmode(false);
+                DatabaseConn.setUserMode(u.getUsername(), u.getDarkMode());
                 removeAll();
                 draw(u, m);
                 validate();
             }
             case "Enable Dark Mode" -> {
                 u.setDarkmode(true);
+                DatabaseConn.setUserMode(u.getUsername(), u.getDarkMode());
                 removeAll();
                 draw(u, m);
                 validate();

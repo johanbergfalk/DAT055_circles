@@ -1,9 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.io.IOException;
 import java.util.LinkedList;
 
 /** Creates a panel with all Circles that a user is a member in

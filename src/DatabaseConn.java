@@ -39,6 +39,12 @@ public class DatabaseConn {
                 ps.setBytes(2, hash);
                 ps.setBytes(3, salt);
                 ps.executeUpdate();
+
+                PreparedStatement ps2 = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?)");
+                ps2.setString(1, username);
+                ps2.setBoolean(2, false);
+                ps2.executeUpdate();
+
                 return true;
             } catch (SQLException se) {
                 return false;
@@ -68,6 +74,33 @@ public class DatabaseConn {
             return null;
         }
     }
+
+    public static boolean getUserMode(String user){
+        try {
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT darkmode FROM users WHERE username = ?");
+            ps.setString(1, user);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getBoolean(1);
+        } catch (SQLException se){
+            return false;
+        }
+    }
+
+    public static boolean setUserMode(String user, boolean mode){
+        try {
+            PreparedStatement ps = getInstance().c.prepareStatement("UPDATE users SET darkmode = ? WHERE username = ?");
+            ps.setBoolean(1, mode);
+            ps.setString(2, user);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getBoolean(1);
+        } catch (SQLException se){
+            return false;
+        }
+    }
+
+
 
 
     /* FUNCTIONS RELATED TO CIRCLES */

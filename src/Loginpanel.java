@@ -93,6 +93,7 @@ public class Loginpanel extends JPanel implements ActionListener {
                 switch (result) {
                     case OK -> {
                         user = new User(username.getText());
+                        user.setDarkmode(DatabaseConn.getUserMode(user.getUsername()));
                         m.navigateTo(frame -> new LandingPagePanel(frame, user));
                     }
                     case EMPTY_FIELDS -> JOptionPane.showMessageDialog(m, "Can't leave fields password or username blank Please try again!");
