@@ -11,7 +11,7 @@ public class NavigationBar extends JPanel{
         JButton browseCircles = new JButton("Browse Circles");
         browseCircles.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, user)));
         JButton createCircle = new JButton("Create new Circle");
-        //createCircle.addActionListener(event -> frame.navigateTo(m -> new AddNewCirclePanel(m, user)));
+        createCircle.addActionListener(event -> frame.navigateTo(m -> new AddNewCirclePanel(m, user)));
         JButton settings = new JButton("Settings");
         settings.addActionListener(event -> frame.navigateTo(m -> new Settingspanel(m, user)));
         JButton logOut = new JButton("Logout");
