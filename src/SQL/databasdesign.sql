@@ -59,7 +59,7 @@ CREATE TABLE MovieReview (
     rating REAL NOT NULL,
     comment TEXT NOT NULL,
     PRIMARY KEY (username, circleid, movieid),
-    FOREIGN KEY (username) REFERENCES Users(username),
+    FOREIGN KEY (username) REFERENCES Login(username),
     FOREIGN KEY (circleid) REFERENCES Circles(id),
     FOREIGN KEY (movieid) REFERENCES Movies(id),
     CHECK (rating >= 0 && rating <= 10)
