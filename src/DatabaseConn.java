@@ -31,7 +31,7 @@ public class DatabaseConn {
     }
 
 
-    /* FUNCTIONS RELATED TO LOGIN AND REGISTER */
+    /* FUNCTIONS RELATED TO USER */
     public static boolean registerUser(String username, byte[] hash, byte[] salt) {
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
@@ -195,6 +195,31 @@ public class DatabaseConn {
         }
     }
 
+    public static LinkedList<Movie> getCircleMovies(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT movieid FROM MovieInCircle WHERE circleid = ?");
+            ps.setInt(1, c.getId());
+            ResultSet idnumbers = ps.executeQuery();
+            LinkedList<Movie> movies = new LinkedList<>();
+            while(idnumbers.next()){
+                PreparedStatement ps2 = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE id = ?");
+                ps2.setInt(1, idnumbers.getInt(1));
+                ResultSet movie = ps.executeQuery();
+                Movie temp = new Movie();
+                movie.next();
+                temp.setName(movie.getString("name"));
+                temp.setId(movie.getInt("id"));
+                temp.setDescription(movie.getString("description"));
+                temp.setYear(movie.getString("year"));
+                temp.setPosterURL(movie.getString("posterurl"));
+                movies.add(temp);
+            }
+            return movies;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
     public static boolean addCircle(Circle c){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO circles VALUES(default,?,?,?,?,?,default)");
@@ -223,6 +248,86 @@ public class DatabaseConn {
         }
         return true;
     }
+
+    public static boolean deleteCircle(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM Circles WHERE id = ?");
+            ps.setInt(1, c.getId());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    public static boolean addMovieCircle(Circle circle, Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO MovieinCircle VALUES (?,?)");
+            ps.setInt(1, circle.getId());
+            ps.setInt(2, movie.getId());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    public static boolean removeMovieCircle(Circle circle, Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM MovieInCircle WHERE (circleid = ? AND movieid = ?)");
+            ps.setInt(1, circle.getId());
+            ps.setInt(2, movie.getId());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    public static boolean updateCircle(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("UPDATE Circles SET name = ?, description = ?, timestart = ?, timeend = ?, score = ? WHERE id = ?");
+            ps.setString(1, c.getName());
+            ps.setString(2, c.getDescription());
+            java.util.Date start_t = c.getStartTime();
+            ps.setString(3, start_t.toString());
+            java.util.Date end_t = c.getStopTime();
+            ps.setString(4, end_t.toString());
+            ps.setFloat(5, c.getScore());
+            ps.setInt(6, c.getId());
+            ps.executeUpdate();
+            LinkedList<String> members = c.getMembers();
+            PreparedStatement mem = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE id = ?");
+            int id = c.getId();
+            ps.setInt(1, id);
+            ps.execute();
+            for(int i = 0; i < members.size(); i++){
+                mem = getInstance().c.prepareStatement("INSERT INTO CircleMembers VALUES (?,?)");
+                mem.setInt(1, id);
+                mem.setString(2, members.get(i));
+            }
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+    /* FUNCTIONS RELATED TO MOVIES */
+
+    public static boolean addMovie(Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO Movies VALUES (?,?,?,?,?)");
+            ps.setString(1, movie.getName());
+            ps.setInt(2, movie.getId());
+            ps.setString(3, movie.getDescription());
+            ps.setString(4, movie.getYear());
+            ps.setString(5, movie.getPosterURL());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
 
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
     public static void printc(Circle c){

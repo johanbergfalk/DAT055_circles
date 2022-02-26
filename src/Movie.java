@@ -34,6 +34,9 @@ public class Movie {
 
     }
 
+    //Tom konstruktor används internt i databaseconn.
+    public Movie(){}
+
     /**
      * Search for a movie to display its title in the GUI
      * @param title the movie title to find in tmdb database
