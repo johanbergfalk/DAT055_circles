@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class NavigationBar extends JPanel{
@@ -17,11 +19,16 @@ public class NavigationBar extends JPanel{
         JButton logOut = new JButton("Logout");
         logOut.addActionListener(event -> frame.navigateTo(Loginpanel :: new));
         JButton join = new JButton("Join Circle");
-        join.addActionListener(event -> DatabaseConn.joinCircle(c, user));
-        join.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, user)));
+        join.addActionListener(e -> {
+            DatabaseConn.joinCircle(c, user);
+            frame.navigateTo(m -> new BrowseCirclesPanel(m, user));
+        });
         JButton leave = new JButton("Leave Circle");
-        leave.addActionListener(event -> DatabaseConn.leaveCircle(c, user));
-        leave.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, user)));
+        leave.addActionListener(e -> {
+            DatabaseConn.leaveCircle(c, user);
+            frame.navigateTo(m -> new BrowseCirclesPanel(m, user));
+        });
+
 
 
 
@@ -67,5 +74,6 @@ public class NavigationBar extends JPanel{
                 break;
         }
     }
+
 
 }
