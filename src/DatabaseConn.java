@@ -259,7 +259,7 @@ public class DatabaseConn {
             while(idnumbers.next()){
                 PreparedStatement ps2 = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE id = ?");
                 ps2.setInt(1, idnumbers.getInt(1));
-                ResultSet movie = ps.executeQuery();
+                ResultSet movie = ps2.executeQuery();
                 Movie temp = new Movie();
                 movie.next();
                 temp.setName(movie.getString("name"));
