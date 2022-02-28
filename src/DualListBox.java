@@ -41,6 +41,10 @@ public class DualListBox extends JPanel {
         sourceListModel.clear();
     }
 
+    public Iterator destListIterator() {
+        return destListModel.iterator();
+    }
+
     public void clearDestinationListModel() {
         destListModel.clear();
     }
