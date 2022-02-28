@@ -56,7 +56,7 @@ public class MovieCard extends JPanel {
         sp1.setBorder(BorderFactory.createEmptyBorder());
         left.add(sp1);
 
-        left.add(new JLabel("Release date: " + m.getYear()), BorderLayout.PAGE_END);
+        left.add(new JLabel("Release date: " + m.getYear() + ".            Rate within XXX days"), BorderLayout.SOUTH);
     }
 
     private void createRightPanel(JPanel right, Movie m) {
