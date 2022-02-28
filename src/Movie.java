@@ -27,11 +27,6 @@ public class Movie {
         String poster = movie.getString("poster_path");
         this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
 
-        System.out.println(this.name);
-        System.out.println(this.id);
-        System.out.println(this.year);
-        System.out.println(this.posterURL);
-
     }
 
     //Tom konstruktor används internt i databaseconn.
