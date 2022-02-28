@@ -7,15 +7,8 @@ import java.awt.event.ActionListener;
 public class Settingspanel extends JPanel implements ActionListener {
     private MainFrame m;
     private User u;
-    private JLabel oldpass;
-    private JLabel newpass;
-    private JLabel repnewpass;
-
-    private JPasswordField oldField;
-    private JPasswordField newpassField;
-    private JPasswordField repnewpassField;
-
     Settings s;
+
     public Settingspanel(MainFrame m, User u) {
         this.m = m;
         this.u = u;
@@ -58,8 +51,6 @@ public class Settingspanel extends JPanel implements ActionListener {
         alignPanel.add(buttonPanel);
         alignPanel.add(empty2);
         add(alignPanel);
-
-
     }
 
     @Override
@@ -81,56 +72,65 @@ public class Settingspanel extends JPanel implements ActionListener {
                 validate();
             }
             case "change password" -> {
+                draw();
+            }
+        }
+    }
 
-                JLabel oldpass = new JLabel("Old Password:");
-                JLabel newpass = new JLabel("New password:");
-                JLabel repnewpass = new JLabel("Repeat password:");
+    public void draw(){
+        JLabel oldpass = new JLabel("Old Password:");
+        JLabel newpass = new JLabel("New password:");
+        JLabel repnewpass = new JLabel("Repeat password:");
 
-                oldField = new JPasswordField();
-                oldField.setColumns(15);
-                newpassField = new JPasswordField();
-                newpassField.setColumns(15);
-                repnewpassField = new JPasswordField();
-                repnewpassField.setColumns(15);
+        JPasswordField oldField = new JPasswordField();
+        oldField.setColumns(15);
+        JPasswordField newpassField = new JPasswordField();
+        newpassField.setColumns(15);
+        JPasswordField repnewpassField = new JPasswordField();
+        repnewpassField.setColumns(15);
 
-                JPanel myPanel = new JPanel();
-                myPanel.setLayout(new GridLayout(3, 1, 10, 10));
-                myPanel.add(oldpass);
-                myPanel.add(oldField);
-                myPanel.add(newpass);
-                myPanel.add(newpassField);
-                myPanel.add(repnewpass);
-                myPanel.add(repnewpassField);
-
-                int result = JOptionPane.showConfirmDialog(m, myPanel,
-                        "Change password", JOptionPane.OK_CANCEL_OPTION);
-                if (result == JOptionPane.OK_OPTION) {
-                    s = new Settings(oldField.getPassword(), newpassField.getPassword(), u.getUsername(), repnewpassField.getPassword());
-                    try {
-                        Settings.Result rs = s.changepass();
-                        switch (rs) {
-                            case OK -> {
-                                System.out.println("okay!!!");
-                            }
-                            case EMPTY_FIELDS -> {
-                                System.out.println("EMPÅTY!!!");
-                            }
-                            case NO_SUCH_USER, CANT_UPDATE -> {
-                                System.out.println("WHÖPS!!!");
-                            }
-                            case PASSWORD_MATCH_ERROR -> {
-                                System.out.println("MATcH!!!");
-                            }
-                            case OLD_PASSORD_ERROR -> {
-                                System.out.println("that is not your old pass!!!");
-                            }
-                        }
-                    } catch (NullPointerException exception) {
-                        exception.printStackTrace();
-
+        JPanel myPanel = new JPanel();
+        myPanel.setLayout(new GridLayout(3, 1, 10, 10));
+        myPanel.add(oldpass);
+        myPanel.add(oldField);
+        myPanel.add(newpass);
+        myPanel.add(newpassField);
+        myPanel.add(repnewpass);
+        myPanel.add(repnewpassField);
+        int result = JOptionPane.showConfirmDialog(m, myPanel, "Change password", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            s = new Settings(oldField.getPassword(), newpassField.getPassword(), u.getUsername(), repnewpassField.getPassword());
+            try {
+                Settings.Result rs = s.changepass();
+                switch (rs) {
+                    case OK -> {
+                        JOptionPane.showMessageDialog(m, "Successful password change!");
+                    }
+                    case EMPTY_FIELDS -> {
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(m, "Can't leave fields empty!");
+                        draw();
+                    }
+                    case NO_SUCH_USER, CANT_UPDATE -> {
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(m, "Something went wrong try again!");
+                        draw();
+                    }
+                    case PASSWORD_MATCH_ERROR -> {
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(m, "Password match error, new passwords don't match!");
+                        draw();
+                    }
+                    case OLD_PASSWORD_ERROR -> {
+                        Toolkit.getDefaultToolkit().beep();
+                        JOptionPane.showMessageDialog(m, "That is not your old pass (nice try sneeky devil!) try again!");
+                        draw();
                     }
                 }
+            } catch (NullPointerException exception) {
+                exception.printStackTrace();
             }
         }
     }
 }
+

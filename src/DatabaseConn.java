@@ -31,25 +31,42 @@ public class DatabaseConn {
     }
 
 
-    /* FUNCTIONS RELATED TO LOGIN AND REGISTER */
+    /* FUNCTIONS RELATED TO USER */
+
+    /**
+     * Registers a user in the database.
+     * <p>
+     * @param username username to be added
+     * @param hash hash generated from encryption algorithm
+     * @param salt salt used to generate the hash
+     * @return returns true if registration is successful, otherwise false.
+     */
     public static boolean registerUser(String username, byte[] hash, byte[] salt) {
-            try {
-                PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
-                ps.setString(1, username);
-                ps.setBytes(2, hash);
-                ps.setBytes(3, salt);
-                ps.executeUpdate();
+        try {
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO login VALUES (?,?,?)");
+            ps.setString(1, username);
+            ps.setBytes(2, hash);
+            ps.setBytes(3, salt);
+            ps.executeUpdate();
 
-                PreparedStatement ps2 = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?)");
-                ps2.setString(1, username);
-                ps2.setBoolean(2, false);
-                ps2.executeUpdate();
+            PreparedStatement ps2 = getInstance().c.prepareStatement("INSERT INTO users VALUES (?,?)");
+            ps2.setString(1, username);
+            ps2.setBoolean(2, false);
+            ps2.executeUpdate();
 
-                return true;
-            } catch (SQLException se) {
-                return false;
-            }
+            return true;
+        } catch (SQLException se) {
+            return false;
+        }
     }
+
+    /**
+     * Updates a users password
+     * @param username name of the user
+     * @param hash hash generated from encryption algorithm
+     * @param salt salt used to generate hash
+     * @return returns true if successful, false if there was an error.
+     */
     public static boolean updateUserpass(String username, byte[] hash, byte[] salt) {
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("UPDATE login SET hash = ?, salt= ? WHERE username=?");
@@ -62,6 +79,12 @@ public class DatabaseConn {
             return false;
         }
     }
+
+    /**
+     * Used to retrieve a users hash. Used during login to verify credentials.
+     * @param user username
+     * @return if successful it returns a byte array containing the hash, otherwise it returns null
+     */
     public static byte[] getHash(String user){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT hash FROM login WHERE username = ?");
@@ -74,6 +97,11 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Used to retrieve a users salt. Used during login to verify credentials.
+     * @param user username
+     * @return If successfull it returns a byte array containing the salt, otherwise it returns null.
+     */
     public static byte[] getSalt(String user){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT salt FROM login WHERE username = ?");
@@ -86,6 +114,11 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Retrieves the settings for the user.
+     * @param user username
+     * @return Returns the value of the darkmode setting as boolean, false by default if not successful.
+     */
     public static boolean getUserMode(String user){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT darkmode FROM users WHERE username = ?");
@@ -98,6 +131,12 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Sets the settings for provided username
+     * @param user username
+     * @param mode mode to be set
+     * @return returns a boolean with true or false if the change was successful or not.
+     */
     public static boolean setUserMode(String user, boolean mode){
         try {
             PreparedStatement ps = getInstance().c.prepareStatement("UPDATE users SET darkmode = ? WHERE username = ?");
@@ -114,6 +153,12 @@ public class DatabaseConn {
 
 
     /* FUNCTIONS RELATED TO CIRCLES */
+
+    /**
+     * Used to retrieve the circles a user has joined.
+     * @param username username
+     * @return Returns a LinkedList of circles. Null if not successful.
+     */
     public static LinkedList<Circle> getUserCircles(String username){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circlemembers WHERE member = ?");
@@ -155,6 +200,10 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Used to retreive all circles currently in the database.
+     * @return Returns a Linkedlist of circles, null if not successful.
+     */
     public static LinkedList<Circle> getAllCircles(){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM Circles");
@@ -195,6 +244,41 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Used to retrieve the movies a circle has.
+     * @param c Circle object
+     * @return Returns a Linkedlist of movies, null if not successful.
+     */
+    public static LinkedList<Movie> getCircleMovies(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT movieid FROM MovieInCircle WHERE circleid = ?");
+            ps.setInt(1, c.getId());
+            ResultSet idnumbers = ps.executeQuery();
+            LinkedList<Movie> movies = new LinkedList<>();
+            while(idnumbers.next()){
+                PreparedStatement ps2 = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE id = ?");
+                ps2.setInt(1, idnumbers.getInt(1));
+                ResultSet movie = ps.executeQuery();
+                Movie temp = new Movie();
+                movie.next();
+                temp.setName(movie.getString("name"));
+                temp.setId(movie.getInt("id"));
+                temp.setDescription(movie.getString("description"));
+                temp.setYear(movie.getString("year"));
+                temp.setPosterURL(movie.getString("posterurl"));
+                movies.add(temp);
+            }
+            return movies;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    /**
+     * Adds a new circle to the database.
+     * @param c Circle to be added
+     * @return returns true if successful, false if not.
+     */
     public static boolean addCircle(Circle c){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO circles VALUES(default,?,?,?,?,?,default)");
@@ -224,6 +308,113 @@ public class DatabaseConn {
         return true;
     }
 
+    /**
+     * Removes the circle from the database.
+     * @param c Circle to be removed
+     * @return returns true if successful, false if not
+     */
+    public static boolean deleteCircle(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM Circles WHERE id = ?");
+            ps.setInt(1, c.getId());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Add a movie to a circle in the database.
+     * @param circle Circle to add to
+     * @param movie Movie to be added
+     * @return returns true if successful, false if not.
+     */
+    public static boolean addMovieCircle(Circle circle, Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO MovieinCircle VALUES (?,?)");
+            ps.setInt(1, circle.getId());
+            ps.setInt(2, movie.getId());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Removes a movie from a circle in the database.
+     * @param circle Circle to operate on
+     * @param movie Movie to be removed
+     * @return returns true if successful, false if not
+     */
+    public static boolean removeMovieCircle(Circle circle, Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM MovieInCircle WHERE (circleid = ? AND movieid = ?)");
+            ps.setInt(1, circle.getId());
+            ps.setInt(2, movie.getId());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Updates a circles parameters except creator and ID. Does update all members in the database.
+     * @param c Circle to be updated
+     * @return Returns true if successful, false if not.
+     */
+    public static boolean updateCircle(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("UPDATE Circles SET name = ?, description = ?, timestart = ?, timeend = ?, score = ? WHERE id = ?");
+            ps.setString(1, c.getName());
+            ps.setString(2, c.getDescription());
+            java.util.Date start_t = c.getStartTime();
+            ps.setString(3, start_t.toString());
+            java.util.Date end_t = c.getStopTime();
+            ps.setString(4, end_t.toString());
+            ps.setFloat(5, c.getScore());
+            ps.setInt(6, c.getId());
+            ps.executeUpdate();
+            LinkedList<String> members = c.getMembers();
+            PreparedStatement mem = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE id = ?");
+            int id = c.getId();
+            ps.setInt(1, id);
+            ps.execute();
+            for(int i = 0; i < members.size(); i++){
+                mem = getInstance().c.prepareStatement("INSERT INTO CircleMembers VALUES (?,?)");
+                mem.setInt(1, id);
+                mem.setString(2, members.get(i));
+            }
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+    /* FUNCTIONS RELATED TO MOVIES */
+
+    /**
+     * Adds a movie to the database.
+     * @param movie Movie to be added
+     * @return returns true if successful, false if not.
+     */
+    public static boolean addMovie(Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO Movies VALUES (?,?,?,?,?)");
+            ps.setString(1, movie.getName());
+            ps.setInt(2, movie.getId());
+            ps.setString(3, movie.getDescription());
+            ps.setString(4, movie.getYear());
+            ps.setString(5, movie.getPosterURL());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
     public static void printc(Circle c){
         System.out.println("Id: " + c.getId());
@@ -240,8 +431,6 @@ public class DatabaseConn {
         }
         System.out.println("\n");
     }
-
-
 }
 
 

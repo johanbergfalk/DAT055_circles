@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 public class Registerpanel extends JPanel implements ActionListener {
    private JTextField username;
    private JPasswordField password;
-    private JPasswordField passwordrep;
+   private JPasswordField passwordrep;
    private MainFrame m;
    private Register r;
 
@@ -100,6 +100,7 @@ public class Registerpanel extends JPanel implements ActionListener {
             Boolean pass_rep_match;
             pass_rep_match = r.val_rep_pass();
             if(!pass_rep_match){
+                Toolkit.getDefaultToolkit().beep();
                 JOptionPane.showMessageDialog(m, "Passwords don't match!");
                 password.setText("");
                 passwordrep.setText("");
@@ -115,9 +116,11 @@ public class Registerpanel extends JPanel implements ActionListener {
                             m.navigateTo(Loginpanel::new);
                         }
                         case EMPTY_FIELDS ->  {
+                            Toolkit.getDefaultToolkit().beep();
                             JOptionPane.showMessageDialog(m, "Can't leave fields password or username blank Please try again!");
                         }
                         case DUPLICATE ->   {
+                            Toolkit.getDefaultToolkit().beep();
                             JOptionPane.showMessageDialog(m, "Username" + " " + username.getText() + " " + " Already taken! Please try again!");
                             username.setText("");
                             password.setText("");

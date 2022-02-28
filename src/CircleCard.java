@@ -4,6 +4,7 @@ import java.awt.*;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CircleCard extends JPanel {
 
@@ -69,15 +70,13 @@ public class CircleCard extends JPanel {
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         left.add(scrollPane);
 
-        DateFormat df = new SimpleDateFormat("yy-MM-dd");
-        String dateFrom = df.format(i.getStartTime());
-        String dateTo = df.format(i.getStopTime());
+        MovieDates days = new MovieDates(i.getStartTime(), i.getStopTime());
 
         JPanel leftBottom = new JPanel();
         leftBottom.setLayout(new GridLayout(4,0));
         leftBottom.add(new JLabel(""));
-        leftBottom.add(new JLabel("Running from:      " + "20" + dateFrom));
-        leftBottom.add(new JLabel("To:                           " + "20" + dateTo));
+        leftBottom.add(new JLabel("Running from:      " + days.getLocalStart()));
+        leftBottom.add(new JLabel("To:                           " + days.getLocalEnd()));
         leftBottom.add(new JLabel("Score:                     " + i.getScore()));
         left.add(leftBottom);
 

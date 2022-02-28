@@ -15,13 +15,13 @@ public class Circle {
 
     }
 
-    public Circle(String name, String creator, String description, Date starttime, Date stoptime) {
+    public Circle(String name, String creator, String description, Date startTime, Date stopTime) {
         this.name = name;
         this.creator = creator;
         this.members.add(creator);
         this.description = description;
-        this.startTime = starttime;
-        this.stopTime = stoptime;
+        this.startTime = startTime;
+        this.stopTime = stopTime;
 
 
     }

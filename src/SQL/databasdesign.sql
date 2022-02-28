@@ -59,12 +59,13 @@ CREATE TABLE MovieReview (
     rating REAL NOT NULL,
     comment TEXT NOT NULL,
     PRIMARY KEY (username, circleid, movieid),
-    FOREIGN KEY (username) REFERENCES Users(username),
+    FOREIGN KEY (username) REFERENCES Login(username),
     FOREIGN KEY (circleid) REFERENCES Circles(id),
     FOREIGN KEY (movieid) REFERENCES Movies(id),
     CHECK (rating >= 0 && rating <= 10)
 );
 
+/* Kanske inte behövs. Låt den vara utkommenterad sålänge.
 CREATE VIEW CircleMovies AS
     SELECT circleid, Circles.name AS circle_name, movieid, movie_name, movie_description, year, posterURL
     FROM Circles LEFT OUTER JOIN
@@ -72,3 +73,5 @@ CREATE VIEW CircleMovies AS
         FROM Movieincircle LEFT OUTER JOIN Movies
 ON movieid = Movies.id) As w
     ON w.circleid = Circles.id;
+
+ */
