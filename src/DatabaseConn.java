@@ -414,6 +414,11 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Returns a movie object from the database
+     * @param moviename The name of the movie
+     * @return Returns a Movie-object
+     */
     public static Movie getMovie(String moviename){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE name = ?");
