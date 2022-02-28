@@ -23,7 +23,7 @@ public class CircleDetailsPanel extends JPanel {
             add(new NavigationBar(frame, user, 5, c), BorderLayout.NORTH);
         }
 
-        TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Circle title goes here");
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), c.getName());
         titledBorder.setTitleColor(textColor);
         setBorder(titledBorder);
 
