@@ -220,7 +220,7 @@ public class DatabaseConn {
                 current_circle.next();
                 temp.setName(current_circle.getString("name"));
                 temp.setCreator(current_circle.getString("creator"));
-                temp.setDescription("description");
+                temp.setDescription(current_circle.getString("description"));
                 temp.setScore(current_circle.getFloat("score"));
                 String start_t = current_circle.getString("timestart");
                 java.util.Date starttime = new SimpleDateFormat("yyyy-MM-dd").parse(start_t);
