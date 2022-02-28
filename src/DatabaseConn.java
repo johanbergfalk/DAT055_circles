@@ -377,6 +377,29 @@ public class DatabaseConn {
         }
     }
 
+    public static boolean joinCircle(Circle c, User u){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO CircleMembers VALUES(?,?)");
+            ps.setInt(1, c.getId());
+            ps.setString(2, u.getUsername());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    public static boolean leaveCircle(Circle c, User u){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE circleid = ? AND member = ?");
+            ps.setInt(1, c.getId());
+            ps.setString(2, u.getUsername());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
     /**
      * Updates a circles parameters except creator and ID. Does update all members in the database.
      * @param c Circle to be updated
