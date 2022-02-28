@@ -287,7 +287,7 @@ public class DatabaseConn {
             ps.setString(2, c.getCreator());
             ps.setString(3, c.getDescription());
             java.util.Date start_t = c.getStartTime();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); //Datum
             String start_time = dateFormat.format(start_t);
             ps.setString(4, start_time);
             java.util.Date end_t = c.getStopTime();
