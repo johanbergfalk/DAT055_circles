@@ -429,13 +429,13 @@ public class DatabaseConn {
 
     /**
      * Returns a movie object from the database
-     * @param moviename The name of the movie
+     * @param id The API id of the movie
      * @return Returns a Movie-object
      */
-    public static Movie getMovie(String moviename){
+    public static Movie getMovie(int id){
         try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE name = ?");
-            ps.setString(1, moviename);
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE id = ?");
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             rs.next();
             Movie m = new Movie();
