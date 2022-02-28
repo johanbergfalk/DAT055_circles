@@ -237,10 +237,10 @@ public class DatabaseConn {
                 }
                 temp.setMembers(members);
                 circles.add(temp);
-                printc(temp);
             }
             return circles;
         } catch (SQLException | ParseException e){
+            e.printStackTrace();
             return null;
         }
     }

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 
 public class CircleCard extends JPanel {
 
@@ -86,6 +87,7 @@ public class CircleCard extends JPanel {
         right.setLayout(new GridLayout(0,2));
 
         //TODO metod som hämtar namnet på första filmen i cirkeln
+
         Movie m = new Movie("Napoleon Dynamite");
 
         JLabel poster = getPoster(m);
@@ -114,10 +116,20 @@ public class CircleCard extends JPanel {
         //Button
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3,0));
-        JPanel temp = new JPanel();
-        buttonPanel.add(temp.add(new JLabel("")));
-        JPanel temp2 = new JPanel();
-        buttonPanel.add(temp2.add(new JLabel("Created by: " + i.getCreator())));
+
+        //Show Join button only if not all ready a member
+        if(!checkMember(i, u)){
+            JButton joinButton = new JButton("Join Circle");
+            //TODO - kör metod i DabaseConn som lägger till user i cirkel samt uppdaterar denna panel
+            joinButton.addActionListener(event -> this.validate());
+            buttonPanel.add(joinButton);
+        } else{
+            JPanel temp = new JPanel();
+            buttonPanel.add(temp.add(new JLabel("")));
+        }
+
+        JPanel createdBy = new JPanel();
+        buttonPanel.add(createdBy.add(new JLabel("Created by: " + i.getCreator())));
         JButton detailsButton = new JButton("Circle details");
         detailsButton.addActionListener(event -> frame.navigateTo(k -> new CircleDetailsPanel(k, u, circle)));
         buttonPanel.add(detailsButton);
@@ -126,20 +138,28 @@ public class CircleCard extends JPanel {
 
     }
     private JLabel getPoster(Movie m) {
+        try {
+            URL posterUrl = new URL(m.getPosterURL());
+            ImageIcon icon = new ImageIcon(posterUrl);
+            Image scaleImage = icon.getImage().getScaledInstance(72, 108, Image.SCALE_DEFAULT);
+            return new JLabel(new ImageIcon(scaleImage));
 
-            try {
-                URL posterUrl = new URL(m.getPosterURL());
-                ImageIcon icon = new ImageIcon(posterUrl);
-                Image scaleImage = icon.getImage().getScaledInstance(72, 108, Image.SCALE_DEFAULT);
-                return new JLabel(new ImageIcon(scaleImage));
-
-            } catch(
-            Exception e)
-
+        } catch(Exception e)
             {
                 e.printStackTrace();
                 return new JLabel("No image");
             }
+    }
 
+    private boolean checkMember(Circle c, User u){
+        if(c.getCreator().equals(u.getUsername())){
+            return true;
+        }
+        for(String m : c.getMembers()){
+            if(m.equals(u.getUsername())){
+                return true;
+            }
+        }
+        return false;
     }
 }

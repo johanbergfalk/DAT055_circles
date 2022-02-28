@@ -5,7 +5,7 @@ public class User{
 
     private String username;
     private LinkedList<Integer> circles;
-    private boolean darkmode = false;
+    private boolean darkMode = false;
 
     /**
      * Create a new User
@@ -25,21 +25,21 @@ public class User{
     }
 
     public boolean getDarkMode(){
-        return this.darkmode;
+        return this.darkMode;
     }
 
-    public void setDarkmode(boolean darkmode){ this.darkmode = darkmode; }
+    public void setDarkmode(boolean darkmode){ this.darkMode = darkmode; }
 
 
     public Color getForegroundColor() {
-        if (darkmode) {
+        if (darkMode) {
             return Color.WHITE;
         } else {
             return Color.BLACK;
         }
     }
     public Color getBackgroundColor() {
-        if (darkmode) {
+        if (darkMode) {
             return Color.BLACK;
         } else {
             return Color.WHITE;

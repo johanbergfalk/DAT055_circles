@@ -59,6 +59,10 @@ public class Circle {
         this.members = members;
     }
 
+    public void addMember(String m){
+        this.members.add(m);
+    }
+
     public String getDescription(){
         return this.description;
     }

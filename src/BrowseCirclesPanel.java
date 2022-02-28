@@ -14,8 +14,9 @@ public class BrowseCirclesPanel extends JPanel {
     public BrowseCirclesPanel(MainFrame frame, User user){
 
         //TODO - använd nedan funktion när cirklar finns i databasen
-        //LinkedList<Circle> circles = DatabaseConn.getAllCircles();
+        this.circles = DatabaseConn.getAllCircles();
 
+/*
         //TODO - enbart för test, ta bort när cirklar finns i databasen
         try {
             String start = "2022-03-01";
@@ -52,7 +53,7 @@ public class BrowseCirclesPanel extends JPanel {
         }catch(ParseException e){
             //Nothing to see here
         }
-
+*/
         setLayout(new BorderLayout());
         setBackground(user.getBackgroundColor());
         Color textColor = user.getForegroundColor();
@@ -65,7 +66,7 @@ public class BrowseCirclesPanel extends JPanel {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         //Get all circles from the database
-        circles(content, frame, user);
+        circles(content, frame, user, circles);
 
         //If many circles, makes it possible to scroll through all
         JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -76,7 +77,7 @@ public class BrowseCirclesPanel extends JPanel {
 //----Methods-----------------------------------------------------------------------
 
     //Creates the frame for each circle
-    private void circles(JPanel c, MainFrame frame, User u){
+    private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
         for(Circle i : circles) {
             c.add(new CircleCard(frame, u,  i));
         }
