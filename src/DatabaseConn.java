@@ -391,7 +391,7 @@ public class DatabaseConn {
 
     public static boolean leaveCircle(Circle c, User u){
         try{
-            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE circleid = ? AND member = ?");
+            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE id = ? AND member = ?");
             ps.setInt(1, c.getId());
             ps.setString(2, u.getUsername());
             ps.execute();
