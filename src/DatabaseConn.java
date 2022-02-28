@@ -310,14 +310,16 @@ public class DatabaseConn {
 
     public static int getCircleID(Circle c){
         try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circles WHERE name = ?");
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circles WHERE name = ? AND creator = ?");
             ps.setString(1, c.getName());
+            ps.setString(2, c.getCreator());
             ResultSet rs = ps.executeQuery();
             rs.next();
             return rs.getInt(1);
-            } catch (SQLException s){
+        } catch (SQLException e){
             return -1;
         }
+
     }
     /**
      * Removes the circle from the database.
