@@ -15,7 +15,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Circles
 (
-    id SERIAL,
+    id SERIAL UNIQUE,
     name TEXT NOT NULL,         ---Enklare att hantera enskilda medlemmar genom att ha dom i eget table.
     creator TEXT NOT NULL, ---Samma sak gäller för filmer. Enklare att ha separat table istället för listor.
     description TEXT NOT NULL,

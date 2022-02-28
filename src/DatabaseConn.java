@@ -1,5 +1,6 @@
 
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
@@ -286,9 +287,12 @@ public class DatabaseConn {
             ps.setString(2, c.getCreator());
             ps.setString(3, c.getDescription());
             java.util.Date start_t = c.getStartTime();
-            ps.setString(4, start_t.toString());
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String start_time = dateFormat.format(start_t);
+            ps.setString(4, start_time);
             java.util.Date end_t = c.getStopTime();
-            ps.setString(5, end_t.toString());
+            String end_time = dateFormat.format(end_t);
+            ps.setString(5, end_time);
             ps.execute();
             ps = getInstance().c.prepareStatement("SELECT id FROM Circles WHERE name = ?");
             ps.setString(1, c.getName());
