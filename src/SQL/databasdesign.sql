@@ -15,13 +15,14 @@ CREATE TABLE Users (
 
 CREATE TABLE Circles
 (
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     name TEXT NOT NULL,         ---Enklare att hantera enskilda medlemmar genom att ha dom i eget table.
     creator TEXT NOT NULL, ---Samma sak gäller för filmer. Enklare att ha separat table istället för listor.
     description TEXT NOT NULL,
     timestart TEXT NOT NULL,
     timeend TEXT NOT NULL,
-    score REAL DEFAULT 0
+    score REAL DEFAULT 0,
+    PRIMARY KEY (name, creator)
 );
 
 CREATE TABLE Movies
