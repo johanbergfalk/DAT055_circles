@@ -29,7 +29,7 @@ CREATE TABLE Movies
     name TEXT,
     id INT PRIMARY KEY,
     description TEXT NOT NULL,
-    year INT NOT NULL,
+    year TEXT NOT NULL,
     posterURL TEXT DEFAULT ''
 );
 

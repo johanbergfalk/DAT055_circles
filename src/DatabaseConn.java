@@ -308,6 +308,17 @@ public class DatabaseConn {
         return true;
     }
 
+    public static int getCircleID(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circles WHERE name = ?");
+            ps.setString(1, c.getName());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+            } catch (SQLException s){
+            return -1;
+        }
+    }
     /**
      * Removes the circle from the database.
      * @param c Circle to be removed
