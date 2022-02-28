@@ -118,15 +118,6 @@ public class CircleCard extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3,0));
 
-        /*//Show Join button only if not all ready a member
-        if(!checkMember(i, u)){
-            JButton joinButton = new JButton("Join Circle");
-            joinButton.addActionListener(event -> this.validate());
-            buttonPanel.add(joinButton);
-        } else{
-            JPanel temp = new JPanel();
-            buttonPanel.add(temp.add(new JLabel("")));
-        }*/
 
         JPanel temp = new JPanel();
         buttonPanel.add(temp.add(new JLabel("")));

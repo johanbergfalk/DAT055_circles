@@ -15,7 +15,9 @@ public class CircleDetailsPanel extends JPanel {
         Color textColor = user.getForegroundColor();
 
         //NavBar
-        if(checkMember(c, user)){
+        if(checkCreator(c, user)){
+            add(new NavigationBar(frame, user, 1, c), BorderLayout.NORTH);
+        } else if(checkMember(c, user)){
             add(new NavigationBar(frame, user, 6, c), BorderLayout.NORTH);
         } else {
             add(new NavigationBar(frame, user, 5, c), BorderLayout.NORTH);
@@ -45,10 +47,12 @@ public class CircleDetailsPanel extends JPanel {
 
     }
 
+    private boolean checkCreator(Circle c, User u){
+        return c.getCreator().equals(u.getUsername());
+    }
+
+
     private boolean checkMember(Circle c, User u){
-        if(c.getCreator().equals(u.getUsername())){
-            return true;
-        }
         for(String m : c.getMembers()){
             if(m.equals(u.getUsername())){
                 return true;
