@@ -477,6 +477,21 @@ public class DatabaseConn {
         }
     }
 
+    public static Movie getFirstMovie(Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM movieInCircle WHERE circleid = ?");
+            ps.setInt(1, c.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            int id = rs.getInt("movieid");
+            System.out.println(id);
+            Movie m = DatabaseConn.getMovie(id);
+            return m;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
 
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
     public static void printc(Circle c){

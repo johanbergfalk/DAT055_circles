@@ -13,7 +13,6 @@ public class BrowseCirclesPanel extends JPanel {
 
     public BrowseCirclesPanel(MainFrame frame, User user){
 
-        //TODO - använd nedan funktion när cirklar finns i databasen
         this.circles = DatabaseConn.getAllCircles();
 
         setLayout(new BorderLayout());

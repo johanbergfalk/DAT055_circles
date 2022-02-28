@@ -88,7 +88,8 @@ public class CircleCard extends JPanel {
 
         //TODO metod som hämtar namnet på första filmen i cirkeln
 
-        Movie m = new Movie("Napoleon Dynamite");
+        //Movie m = new Movie("Napoleon Dynamite");
+        Movie m = DatabaseConn.getFirstMovie(i);
 
         JLabel poster = getPoster(m);
         right.add(poster);
