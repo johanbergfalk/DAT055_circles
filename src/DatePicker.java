@@ -53,8 +53,7 @@ public class DatePicker {
     }
 
     public Date getSelectedDate(JDatePicker picker) {
-        Calendar value = (Calendar) picker.getModel().getValue();
-        return value.getTime();
+        return (Date) picker.getModel().getValue();
     }
 }
 
