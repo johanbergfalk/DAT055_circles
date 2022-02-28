@@ -16,16 +16,34 @@ public class LandingPagePanel extends JPanel {
         add(new NavigationBar(frame, user, 1, temp), BorderLayout.NORTH);
         setBorder(BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), " "));
 
-        JPanel content = new JPanel();
-        content.setLayout(new FlowLayout());
-        try {
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            InputStream input = classLoader.getResourceAsStream("LandingImage.jpg");
-            BufferedImage myPicture = ImageIO.read(input);
-            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-            add(picLabel, BorderLayout.CENTER);
-        } catch (IOException e){}
 
+        JPanel textPanel = new JPanel();
+        textPanel.setBackground(user.getBackgroundColor());
+        textPanel.setLayout(new GridLayout(2,1,10,10));
 
+        JLabel welcome = new JLabel();
+        welcome.setFont(new Font("Arial Black", Font.BOLD, 48));
+        welcome.setForeground(Color.decode("#C6E2FF"));
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        String username = user.getUsername();
+        if(username.length() > 10){
+            welcome.setText("Welcome, " + username.substring(0,9) + "...!");
+        } else {
+            welcome.setText("Welcome, " + username + "!");
+        }
+
+        JLabel prompt = new JLabel("Use the menu above to start navigating");
+        prompt.setFont(new Font("serif", Font.BOLD, 24));
+        prompt.setForeground(user.getForegroundColor());
+        prompt.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome);
+        textPanel.add(prompt);
+
+        JPanel bufferpanel = new JPanel();
+        bufferpanel.setBackground(user.getBackgroundColor());
+        bufferpanel.setLayout(new GridBagLayout());
+        bufferpanel.add(textPanel);
+
+        add(bufferpanel, BorderLayout.CENTER);
     }
 }
