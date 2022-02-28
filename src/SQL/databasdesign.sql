@@ -27,11 +27,10 @@ CREATE TABLE Circles
 CREATE TABLE Movies
 (
     name TEXT,
-    id INT UNIQUE NOT NULL,
+    id INT PRIMARY KEY,
     description TEXT NOT NULL,
     year INT NOT NULL,
-    posterURL TEXT DEFAULT '',
-    PRIMARY KEY (name, year)
+    posterURL TEXT DEFAULT ''
 );
 
 CREATE TABLE CircleMembers

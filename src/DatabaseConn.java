@@ -414,6 +414,24 @@ public class DatabaseConn {
         }
     }
 
+    public static Movie getMovie(String moviename){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM Movies WHERE name = ?");
+            ps.setString(1, moviename);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            Movie m = new Movie();
+            m.setName(rs.getString("name"));
+            m.setId(rs.getInt("id"));
+            m.setDescription(rs.getString("description"));
+            m.setYear(rs.getString("year"));
+            m.setPosterURL(rs.getString("posterurl"));
+            return m;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
 
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
     public static void printc(Circle c){
