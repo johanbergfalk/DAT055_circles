@@ -4,7 +4,7 @@ import javax.swing.*;
 public class NavigationBar extends JPanel{
 
 
-    public NavigationBar(MainFrame frame, User user, int hide){
+    public NavigationBar(MainFrame frame, User user, int hide, Circle c){
 
         JButton myCircles = new JButton("My Circles");
         myCircles.addActionListener(event -> frame.navigateTo(m -> new MyCirclesPanel(m, user)));
@@ -16,11 +16,20 @@ public class NavigationBar extends JPanel{
         settings.addActionListener(event -> frame.navigateTo(m -> new Settingspanel(m, user)));
         JButton logOut = new JButton("Logout");
         logOut.addActionListener(event -> frame.navigateTo(Loginpanel :: new));
+        JButton join = new JButton("Join Circle");
+        join.addActionListener(event -> DatabaseConn.joinCircle(c, user));
+        join.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, user)));
+        JButton leave = new JButton("Leave Circle");
+        leave.addActionListener(event -> DatabaseConn.leaveCircle(c, user));
+        leave.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, user)));
+
+
+
         setBackground(user.getBackgroundColor());
 
         //Only show relevant buttons in each panel
         switch (hide){
-            //Landingpage, CircleDetailsPanel
+            //Landingpage
             case 1: add(myCircles);
                     add(browseCircles);
                     add(settings);
@@ -42,6 +51,21 @@ public class NavigationBar extends JPanel{
                     add(browseCircles);
                     add(logOut);
                     break;
+            //CircleDetailsPanel with join button
+            case 5: add(myCircles);
+                    add(browseCircles);
+                    add(join);
+                    add(settings);
+                    add(logOut);
+                break;
+            //CirleDetailsPanel with leave button
+            case 6: add(myCircles);
+                add(browseCircles);
+                add(leave);
+                add(settings);
+                add(logOut);
+                break;
         }
     }
+
 }

@@ -20,7 +20,8 @@ public class MyCirclesPanel extends JPanel {
         setLayout(new BorderLayout());
         setBackground(user.getBackgroundColor());
         Color textColor = user.getForegroundColor();
-        add(new NavigationBar(frame, user, 3), BorderLayout.NORTH);
+        Circle temp = new Circle();
+        add(new NavigationBar(frame, user, 3, temp), BorderLayout.NORTH);
         TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "My Circles");
         titledBorder.setTitleColor(textColor);
         setBorder(titledBorder);

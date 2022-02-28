@@ -117,7 +117,7 @@ public class CircleCard extends JPanel {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3,0));
 
-        //Show Join button only if not all ready a member
+        /*//Show Join button only if not all ready a member
         if(!checkMember(i, u)){
             JButton joinButton = new JButton("Join Circle");
             //TODO - kör metod i DabaseConn som lägger till user i cirkel samt uppdaterar denna panel
@@ -126,8 +126,10 @@ public class CircleCard extends JPanel {
         } else{
             JPanel temp = new JPanel();
             buttonPanel.add(temp.add(new JLabel("")));
-        }
+        }*/
 
+        JPanel temp = new JPanel();
+        buttonPanel.add(temp.add(new JLabel("")));
         JPanel createdBy = new JPanel();
         buttonPanel.add(createdBy.add(new JLabel("Created by: " + i.getCreator())));
         JButton detailsButton = new JButton("Circle details");

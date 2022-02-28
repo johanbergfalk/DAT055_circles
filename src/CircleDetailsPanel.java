@@ -13,7 +13,14 @@ public class CircleDetailsPanel extends JPanel {
         setLayout(new BorderLayout());
         setBackground(user.getBackgroundColor());
         Color textColor = user.getForegroundColor();
-        add(new NavigationBar(frame, user, 1), BorderLayout.NORTH);
+
+        //NavBar
+        if(checkMember(c, user)){
+            add(new NavigationBar(frame, user, 6, c), BorderLayout.NORTH);
+        } else {
+            add(new NavigationBar(frame, user, 5, c), BorderLayout.NORTH);
+        }
+
         TitledBorder titledBorder = BorderFactory.createTitledBorder(new EmptyBorder(10,5,5,5), "Circle title goes here");
         titledBorder.setTitleColor(textColor);
         setBorder(titledBorder);
@@ -36,6 +43,18 @@ public class CircleDetailsPanel extends JPanel {
 
         add(scrollPane, BorderLayout.CENTER);
 
+    }
+
+    private boolean checkMember(Circle c, User u){
+        if(c.getCreator().equals(u.getUsername())){
+            return true;
+        }
+        for(String m : c.getMembers()){
+            if(m.equals(u.getUsername())){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
