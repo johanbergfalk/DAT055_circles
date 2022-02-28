@@ -133,23 +133,44 @@ public class AddNewCirclePanel extends JPanel {
 
     }
 
+    /**
+     * Method that creates a new circle and adds the circle to the database
+     * @param f frame
+     * @param d listbox containing choosen movies
+     * @param u active user
+     */
     private void addNewCircle(MainFrame f, DualListBox d, User u) {
 
-        Iterator i = d.destListIterator();
-        LinkedList<Movie> movies = new LinkedList<>();
-
-        while(i.hasNext()) {
-            movies.add(new Movie((String) i.next()));
-
-        }
+        Iterator movies = d.destListIterator();
 
         Circle c = new Circle(name.getText(), u.getUsername(), description.getText(), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
 
-        DatabaseConn.addCircle(c);
+        int circleId;
+        if(DatabaseConn.addCircle(c)) {
+            circleId = DatabaseConn.getCircleID(c);
+            c.setId(circleId);
+            System.out.println(circleId);
 
-        f.navigateTo(m -> new BrowseCirclesPanel(m, u));
+            while(movies.hasNext()) {
+                String current = (String) movies.next();
+
+                Movie m = new Movie(current);
+                if(DatabaseConn.getMovie(m.getId()) == null) {
+                    DatabaseConn.addMovie(m);
+                }
+
+                DatabaseConn.addMovieCircle(c,m);
+
+            }
+            JOptionPane.showMessageDialog(f, "Circle "+ c.getName() +" created!");
+            f.navigateTo(m -> new BrowseCirclesPanel(m, u));
+
+        }
+        else {
+            JOptionPane.showMessageDialog(f, "Circle already exists");
+            name.setText("");
+        }
 
     }
-
 
 }
