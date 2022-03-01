@@ -14,14 +14,6 @@ public class MovieCard extends JPanel {
     private Movie movie;
     private long daysLeft;
 
-
-    /**
-     * Constructor for a MovieCard
-     * @param m movie
-     * @param u user
-     * @param c circle
-     * @param d active days left of the movie
-     */
     public MovieCard(Movie m, User u, Circle c, long d) {
         this.user = u;
         this.circle = c;
@@ -60,7 +52,10 @@ public class MovieCard extends JPanel {
             } else {
                 createSelfReviewedPanel(rightPanel);
             }
-        }else {
+        } else if((!checkMember(circle, user)) && (daysLeft >= 0)){
+            createEmptyPanel(rightPanel);
+        }
+        else {
             createReviewedPanel(rightPanel);
         }
 
@@ -78,10 +73,6 @@ public class MovieCard extends JPanel {
 
     }
 
-    /**
-     * Creates the left panels of the MovieCard
-     * @param left JPanel
-     */
     private void createLeftPanel(JPanel left) {
         left.setPreferredSize(new Dimension(350, 150));
         left.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -121,10 +112,7 @@ public class MovieCard extends JPanel {
 
     }
 
-    /**
-     * Show this panel when it is possible to still review movie (and user is member/creator of the circle)
-     * @param right JPanel
-     */
+    //Show this panel when it is possible to still review movie (and user is member/creator of the circle)
     private void createRightPanel(JPanel right) {
         //IF CIRCLE ACTIVE
         right.setPreferredSize(new Dimension(250, 150));
@@ -218,10 +206,7 @@ public class MovieCard extends JPanel {
 
     }
 
-    /**
-     * Show this panel when the user has reviewed the movie
-     * @param right JPanel
-     */
+    //Show this panel when the user has reviewed the movie
     private void createSelfReviewedPanel(JPanel right){
 
         GradeComment userGrade = DatabaseConn.getUserRating(circle, user, movie);
@@ -249,10 +234,7 @@ public class MovieCard extends JPanel {
 
     }
 
-    /**
-     * Show this panel when it is no longer possible to review the movie
-     * @param right JPanel
-     */
+    //Show this panel when it is no longer possible to review the movie
     private void createReviewedPanel(JPanel right){
 
         LinkedList<GradeComment>  userComments = DatabaseConn.getAllMovieRatings(circle, movie);
@@ -286,11 +268,17 @@ public class MovieCard extends JPanel {
 
     }
 
-    /**
-     * method that gets the poster for a movie and resizes it properly
-     * @param m the movie which the poster you which to find
-     * @return the image inside an JLabel
-     */
+    private void createEmptyPanel(JPanel right){
+        right.setPreferredSize(new Dimension(250, 150));
+        right.setLayout(new BorderLayout());
+
+
+        JPanel contents = new JPanel();
+        contents.setBackground(this.getBackground());
+        contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
+    }
+
+
     private JLabel getPoster(Movie m) {
 
         try {
@@ -306,14 +294,6 @@ public class MovieCard extends JPanel {
         }
     }
 
-    /**
-     * Method for submitting a review
-     * @param u user
-     * @param c circle
-     * @param m movie
-     * @param rating movie rating
-     * @param review movie review
-     */
     private void submitReview(User u, Circle c, Movie m, int rating, String review) {
         if(DatabaseConn.addMovieReview(u, c, m, rating, review)) {
             JFrame f = new JFrame();
@@ -321,26 +301,16 @@ public class MovieCard extends JPanel {
             CircleDetailsPanel.updateCircleDetail();
         }
         else {
-            JFrame f = new JFrame();
-            JOptionPane.showMessageDialog(f,"Voting failed!");
+            //TODO FIX
+            System.out.println("voting failed");
         }
     }
 
-    /**
-     * Method that checks if a movie is already reviewed by a user
-     * @return true/false if already reviewed
-     */
     private boolean isReviewed(){
         return DatabaseConn.isReviewed(user, circle, movie);
 
     }
 
-    /**
-     * Method that checks if a user is member of a circle
-     * @param c circle
-     * @param u user
-     * @return true/false if member
-     */
     private boolean checkMember(Circle c, User u){
         for(String m : c.getMembers()){
             if(m.equals(u.getUsername())){
