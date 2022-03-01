@@ -13,7 +13,7 @@ public class Settingspanel extends JPanel implements ActionListener {
     Settings s;
 
     /**
-     * Constructor which sets the instance variables and will call on draw for the swingdesign of the settingspanel.
+     * Constructor which sets the instance variables and will call on private func draw for the swingdesign of the settingspanel.
      * @param m current Jframe
      * @param u user object
      */
