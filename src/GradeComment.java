@@ -20,14 +20,6 @@ public class GradeComment {
     public GradeComment(){}
 
 
-
-    public GradeComment(User u, Movie m, Circle c,String comment){
-        this.user=u;
-        this.movie=m;
-        this.circle=c;
-        this.comment=comment;
-    }
-
     public User getUser() {
         return user;
     }
