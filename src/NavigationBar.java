@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,9 +11,21 @@ public class NavigationBar extends JPanel{
     public NavigationBar(MainFrame frame, User user, int hide, Circle c){
 
         JButton myCircles = new JButton("My Circles");
-        myCircles.addActionListener(event -> frame.navigateTo(m -> new MyCirclesPanel(m, user)));
+        myCircles.addActionListener(event -> {
+            Thread my = new Thread (() -> {
+                frame.navigateTo(m -> new MyCirclesPanel(m, user));
+            });
+            frame.navigateTo(m -> new LoadingScreenPanel(user));
+            my.start();
+        });
         JButton browseCircles = new JButton("Browse Circles");
-        browseCircles.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, user)));
+        browseCircles.addActionListener(event -> {
+            Thread browse = new Thread (() -> {
+                frame.navigateTo(m -> new BrowseCirclesPanel(m, user));
+            });
+            frame.navigateTo(m -> new LoadingScreenPanel(user));
+            browse.start();
+        });
         JButton createCircle = new JButton("Create new Circle");
         createCircle.addActionListener(event -> frame.navigateTo(m -> new AddNewCirclePanel(m, user)));
         JButton settings = new JButton("Settings");
