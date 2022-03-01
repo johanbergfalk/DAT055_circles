@@ -191,28 +191,27 @@ public class AddNewCirclePanel extends JPanel {
         Circle c = new Circle(name.getText(), u.getUsername(), description.getText(), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
 
         int circleId;
-        if(DatabaseConn.addCircle(c)) {
-            circleId = DatabaseConn.getCircleID(c);
-            c.setId(circleId);
 
-            while(movies.hasNext()) {
-                String current = (String) movies.next();
+        int addCircle = DatabaseConn.addCircle(c);
+        switch (addCircle) {
+            case 1 -> {
+                circleId = DatabaseConn.getCircleID(c);
+                c.setId(circleId);
+                while (movies.hasNext()) {
+                    String current = (String) movies.next();
 
-                Movie m = new Movie(current);
-                if(DatabaseConn.getMovie(m.getId()) == null) {
-                    DatabaseConn.addMovie(m);
+                    Movie m = new Movie(current);
+                    if (DatabaseConn.getMovie(m.getId()) == null) {
+                        DatabaseConn.addMovie(m);
+                    }
+
+                    DatabaseConn.addMovieCircle(c, m);
                 }
-
-                DatabaseConn.addMovieCircle(c,m);
-
+                JOptionPane.showMessageDialog(f, "Circle " + c.getName() + " created!");
+                f.navigateTo(m -> new BrowseCirclesPanel(m, u));
             }
-            JOptionPane.showMessageDialog(f, "Circle "+ c.getName() +" created!");
-            f.navigateTo(m -> new BrowseCirclesPanel(m, u));
-
-        }
-        else {
-            JOptionPane.showMessageDialog(f, "Circle already exists");
-            name.setText("");
+            case 0 -> JOptionPane.showMessageDialog(f, "Circle already exists, choose different name!");
+            case -1 -> JOptionPane.showMessageDialog(f, "Please fill in all the fields");
         }
 
     }

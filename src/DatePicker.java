@@ -42,8 +42,16 @@ public class DatePicker {
 
             if(value != null) {
                 Calendar cal = (Calendar) value;
-                String date = format.format(cal.getTime());
-                return date;
+                Calendar today = Calendar.getInstance();
+                today.add(Calendar.DATE, -1);
+                if(cal.before(today)) {
+                    JFrame f = new JFrame();
+                    JOptionPane.showMessageDialog(f, "The date cannot be prior to today");
+                }
+                else {
+                    String date = format.format(cal.getTime());
+                    return date;
+                }
             }
             return "";
         }
