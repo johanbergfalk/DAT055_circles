@@ -94,6 +94,7 @@ public class DatabaseConn {
             result.setComment(rs.getString("comment"));
             result.setMovie(m);
             result.setCircle(c);
+            result.setUserRating(rs.getInt("rating"));
             return result;
         } catch (SQLException e){
             return null;

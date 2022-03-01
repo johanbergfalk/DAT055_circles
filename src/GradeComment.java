@@ -2,17 +2,25 @@ public class GradeComment {
     private User user;
     private Movie movie;
     private Circle circle;
+
+    public int getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(int userRating) {
+        this.userRating = userRating;
+    }
+
+    private int userRating;
     private float avgMovieGrade;
     private float avgCircleGrade;
     private String comment;
+
+
     public GradeComment(){}
-    /*
-    metoder:
-    get-user-comment
-    get-all-circle-comments
-    get movie avg grade
-    get circle avg grade
-     */
+
+
+
     public GradeComment(User u, Movie m, Circle c,String comment){
         this.user=u;
         this.movie=m;
