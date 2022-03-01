@@ -163,7 +163,7 @@ public class DatabaseConn {
      * @param c Circle that the movie belongs to
      * @param u User that is the author
      * @param m Movie rated
-     * @return
+     * @return returns GradeComment, null if not successful.
      */
     public static GradeComment getUserRating(Circle c, User u, Movie m){
         try{
@@ -342,7 +342,6 @@ public class DatabaseConn {
                 }
                 temp.setMembers(members);
                 circles.add(temp);
-                //printc(temp);
             }
             return circles;
         } catch (SQLException | ParseException e){
@@ -600,8 +599,6 @@ public class DatabaseConn {
             return null;
         }
     }
-
-
 }
 
 
