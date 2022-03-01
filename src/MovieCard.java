@@ -9,8 +9,12 @@ import java.net.URL;
 
 public class MovieCard extends JPanel {
     private User user;
-    public MovieCard(Movie m, User u) {
+    private Circle cirlce;
+    private Movie movie;
+    public MovieCard(Movie m, User u, Circle c) {
         this.user = u;
+        this.cirlce = c;
+        this.movie = m;
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(600, 150));
@@ -22,13 +26,13 @@ public class MovieCard extends JPanel {
         leftPanel.setBackground(this.getBackground());
         //new thread to allow dynamic loading of API-data
         new Thread(() -> {
-            createLeftPanel(leftPanel, m);
+            createLeftPanel(leftPanel);
             validate();
         }).start();
 
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(this.getBackground());
-        createRightPanel(rightPanel, m);
+        createRightPanel(rightPanel);
 
         //adds the left and right panel into a splitpane
         JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
@@ -44,12 +48,12 @@ public class MovieCard extends JPanel {
 
     }
 
-    private void createLeftPanel(JPanel left, Movie m) {
+    private void createLeftPanel(JPanel left) {
         left.setPreferredSize(new Dimension(350, 150));
         left.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         left.setLayout(new BorderLayout());
-        left.add(getPoster(m), BorderLayout.WEST);
-        JLabel title = new JLabel(m.getName());
+        left.add(getPoster(movie), BorderLayout.WEST);
+        JLabel title = new JLabel(movie.getName());
         title.setForeground(this.getForeground());
         left.add(title, BorderLayout.NORTH);
 
@@ -62,18 +66,18 @@ public class MovieCard extends JPanel {
         ta.setEditable(false);
         ta.setLineWrap(true);
         ta.setWrapStyleWord(true);
-        ta.setText(m.getDescription());
+        ta.setText(movie.getDescription());
         ta.setBackground(this.getBackground());
         left.add(ta, BorderLayout.PAGE_END);
         JScrollPane sp1 = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         sp1.setBorder(BorderFactory.createEmptyBorder());
         left.add(sp1);
-        JLabel releaseRate = new JLabel("Release date: " + m.getYear() + ".            Rate within XXX days");
+        JLabel releaseRate = new JLabel("Release date: " + movie.getYear() + ".            Rate within XXX days");
         releaseRate.setForeground(this.getForeground());
         left.add(releaseRate, BorderLayout.SOUTH);
     }
 
-    private void createRightPanel(JPanel right, Movie m) {
+    private void createRightPanel(JPanel right) {
         //IF CIRCLE ACTIVE
         right.setPreferredSize(new Dimension(250, 150));
         right.setLayout(new BorderLayout());
@@ -150,6 +154,7 @@ public class MovieCard extends JPanel {
 
         //TODO Om input.gettext() == Write your comment here... så har man inte skrivit något. Kolla med en if typ
         JButton submit = new JButton("Submit");
+        submit.addActionListener(e -> {submitReview(user, cirlce, movie, slider.getValue(), input.getText());});
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
         contents.add(submit);
 
@@ -173,6 +178,16 @@ public class MovieCard extends JPanel {
             e.printStackTrace();
             return new JLabel("No image");
         }
+    }
+
+    private void submitReview(User u, Circle c, Movie m, int rating, String review) {
+        if(DatabaseConn.addMovieReview(u, c, m, rating, review)) {
+            System.out.println("voting done!");
+        }
+        else {
+            System.out.println("voting failed");
+        }
+
     }
 }
 

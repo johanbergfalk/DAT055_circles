@@ -34,7 +34,7 @@ public class CircleDetailsPanel extends JPanel {
 
         if(moviesInCircle != null) {
             for(Movie m : moviesInCircle) {
-                content.add(new MovieCard(m, user));
+                content.add(new MovieCard(m, user, c));
             }
         }
         else {
