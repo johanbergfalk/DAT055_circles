@@ -376,7 +376,7 @@ public class DatabaseConn {
                 ps.setString(2, member);
                 ps.execute();
             }
-        } catch (SQLException e){
+        } catch (SQLException | NullPointerException e){
             return false;
         }
         return true;
