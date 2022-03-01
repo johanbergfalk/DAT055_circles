@@ -26,12 +26,14 @@ public class BrowseCirclesPanel extends JPanel {
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        content.setBackground(getBackground());
 
         //Get all circles from the database
         circles(content, frame, user, circles);
 
         //If many circles, makes it possible to scroll through all
         JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBackground(user.getBackgroundColor());
         add(scrollPane, BorderLayout.CENTER);
 
     }

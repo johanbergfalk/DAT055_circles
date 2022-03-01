@@ -32,9 +32,9 @@ public class CircleCard extends JPanel {
 
         //Right side of the card
         JPanel right = new JPanel();
-        right.setPreferredSize(new Dimension(390,150));
-        right.setMaximumSize(new Dimension(390,150));
-        right.setMinimumSize(new Dimension(390,150));
+        right.setPreferredSize(new Dimension(350,150));
+        right.setMaximumSize(new Dimension(350,150));
+        right.setMinimumSize(new Dimension(350,150));
 
         new Thread(() -> {
             createRight(circle, right, frame, user);
@@ -145,7 +145,7 @@ public class CircleCard extends JPanel {
         }
         members.setText(mem);
         JScrollPane scrollPane = new JScrollPane(members, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        scrollPane.setBorder(new LineBorder(u.getForegroundColor()));
         scrollPane.setBackground(this.getBackground());
         scrollPane.setForeground(this.getForeground());
         membersAndButton.add(scrollPane);
