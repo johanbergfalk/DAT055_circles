@@ -43,7 +43,6 @@ public class BrowseCirclesPanel extends JPanel {
         JPanel active = new JPanel();
         active.setBackground(u.getBackgroundColor());
         JLabel activeLabel = new JLabel("Active Circles: ");
-        activeLabel.setHorizontalAlignment(SwingConstants.LEFT);
         activeLabel.setForeground(Color.decode("#C6E2FF"));
         activeLabel.setFont(new Font("Arial Black", Font.BOLD, 24));
         active.add(activeLabel);
@@ -57,7 +56,6 @@ public class BrowseCirclesPanel extends JPanel {
         JPanel completed = new JPanel();
         completed.setBackground(u.getBackgroundColor());
         JLabel passed = new JLabel("Passed circles: ");
-        passed.setHorizontalAlignment(SwingConstants.LEFT);
         passed.setForeground(Color.decode("#C6E2FF"));
         passed.setFont(new Font("Arial Black", Font.BOLD, 24));
         completed.add(passed);
