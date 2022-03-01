@@ -285,6 +285,7 @@ public class MovieCard extends JPanel {
             CircleDetailsPanel.updateCircleDetail();
         }
         else {
+            //TODO FIX
             System.out.println("voting failed");
         }
     }

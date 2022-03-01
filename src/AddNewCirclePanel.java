@@ -186,7 +186,6 @@ public class AddNewCirclePanel extends JPanel {
         if(DatabaseConn.addCircle(c)) {
             circleId = DatabaseConn.getCircleID(c);
             c.setId(circleId);
-            System.out.println(circleId);
 
             while(movies.hasNext()) {
                 String current = (String) movies.next();
