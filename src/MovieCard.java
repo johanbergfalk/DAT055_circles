@@ -173,7 +173,7 @@ public class MovieCard extends JPanel {
         JButton submit = new JButton("Submit");
         submit.addActionListener(e -> {
             if(input.getText().equals("Write your review here...")){
-                JOptionPane.showMessageDialog(right, "You can't the review-field empty!");
+                JOptionPane.showMessageDialog(right, "You can't leave the review-field empty!");
             } else {
                 submitReview(user, cirlce, movie, slider.getValue(), input.getText());
             }
