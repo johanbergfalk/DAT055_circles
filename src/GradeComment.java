@@ -1,6 +1,24 @@
 public class GradeComment {
     private User user;
     private Movie movie;
+    private Circle circle;
+    private float avgMovieGrade;
+    private float avgCircleGrade;
+    private String comment;
+    public GradeComment(){}
+    /*
+    metoder:
+    get-user-comment
+    get-all-circle-comments
+    get movie avg grade
+    get circle avg grade
+     */
+    public GradeComment(User u, Movie m, Circle c,String comment){
+        this.user=u;
+        this.movie=m;
+        this.circle=c;
+        this.comment=comment;
+    }
 
     public User getUser() {
         return user;
@@ -49,37 +67,4 @@ public class GradeComment {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
-    private Circle circle;
-    private float avgMovieGrade;
-    private float avgCircleGrade;
-    private String comment;
-
-
-    public GradeComment(){}
-    /*
-    metoder:
-    get-user-comment
-    get-all-circle-comments
-    get movie avg grade
-    get circle avg grade
-     */
-    public GradeComment(User u, Movie m, Circle c,String comment){
-    this.user=u;
-    this.movie=m;
-    this.circle=c;
-    this.comment=comment;
-    }
-    public String getUserComment(){
-
-        return comment;
-    }
-    /*
-    public Int getUserrating(){
-
-        return DatabaseConn.getUserRating();
-    }
-
-     */
-
 }
