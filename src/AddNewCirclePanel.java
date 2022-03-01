@@ -172,7 +172,13 @@ public class AddNewCirclePanel extends JPanel {
         buttonPanel.add(createCirlceButton);
 
         JButton abort = new JButton("Abort");
-        abort.addActionListener(event -> frame.navigateTo(m -> new BrowseCirclesPanel(m, u)));
+        abort.addActionListener(event -> {
+            Thread browse = new Thread (() -> {
+                frame.navigateTo(m -> new BrowseCirclesPanel(m, u));
+            });
+            frame.navigateTo(m -> new LoadingScreenPanel(u));
+            browse.start();
+        });
         buttonPanel.add(abort);
 
         right.add(buttonPanel);
@@ -212,7 +218,11 @@ public class AddNewCirclePanel extends JPanel {
                         DatabaseConn.addMovieCircle(c, m);
                     }
                     JOptionPane.showMessageDialog(f, "Circle " + c.getName() + " created!");
-                    f.navigateTo(m -> new BrowseCirclesPanel(m, u));
+                    Thread browse = new Thread(() -> {
+                        f.navigateTo(m -> new BrowseCirclesPanel(m, u));
+                    });
+                    f.navigateTo(m -> new LoadingScreenPanel(u));
+                    browse.start();
                 }
                 case 0 -> JOptionPane.showMessageDialog(f, "Circle already exists, choose different name!");
                 case -1 -> JOptionPane.showMessageDialog(f, "Please fill in all the fields");
