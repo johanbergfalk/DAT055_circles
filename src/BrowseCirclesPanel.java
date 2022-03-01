@@ -38,11 +38,45 @@ public class BrowseCirclesPanel extends JPanel {
 
 //----Methods-----------------------------------------------------------------------
 
+
+    private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
+        JPanel active = new JPanel();
+        active.setBackground(u.getBackgroundColor());
+        JLabel activeLabel = new JLabel("Active Circles: ");
+        activeLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        activeLabel.setForeground(Color.decode("#C6E2FF"));
+        activeLabel.setFont(new Font("Arial Black", Font.BOLD, 24));
+        active.add(activeLabel);
+        c.add(active);
+        for(Circle i : circles){
+            MovieDates dates = new MovieDates(i.getStartTime(), i.getStopTime());
+            if(dates.getTotalDaysLeft() >= 0){
+                c.add(new CircleCard(frame, u, i));
+            }
+        }
+        JPanel completed = new JPanel();
+        completed.setBackground(u.getBackgroundColor());
+        JLabel passed = new JLabel("Passed circles: ");
+        passed.setHorizontalAlignment(SwingConstants.LEFT);
+        passed.setForeground(Color.decode("#C6E2FF"));
+        passed.setFont(new Font("Arial Black", Font.BOLD, 24));
+        completed.add(passed);
+        c.add(completed);
+        for(Circle i : circles){
+            MovieDates dates =  new MovieDates(i.getStartTime(), i.getStopTime());
+            if(dates.getTotalDaysLeft() < 0){
+                c.add(new CircleCard(frame, u, i));
+            }
+        }
+    }
+
+    /*
     //Creates the frame for each circle
     private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
         for(Circle i : circles) {
             c.add(new CircleCard(frame, u,  i));
         }
     }
+     */
 }
 
