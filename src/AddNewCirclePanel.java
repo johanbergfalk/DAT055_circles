@@ -4,6 +4,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -181,37 +182,44 @@ public class AddNewCirclePanel extends JPanel {
     /**
      * Method that creates a new circle and adds the circle to the database
      * @param f frame
-     * @param d listbox containing choosen movies
+     * @param d listbox containing chosen movies
      * @param u active user
      */
     private void addNewCircle(MainFrame f, DualListBox d, User u) {
 
+        Date d1 = startDate.getSelectedDate(startDate.getDatePicker());
+        Date d2 = endDate.getSelectedDate(endDate.getDatePicker());
+
         Iterator movies = d.destListIterator();
+        Circle c;
+        //check that all the fields are filled in
+        if(name.getText() != null && u.getUsername() != null && description.getText() != null && startDate.getSelectedDate(startDate.getDatePicker()) != null && endDate.getSelectedDate(endDate.getDatePicker()) != null && movies.hasNext() && d1.before(d2)) {
+            c = new Circle(name.getText(), u.getUsername(), description.getText(), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
+            int circleId;
+            int addCircle = DatabaseConn.addCircle(c);
+            switch (addCircle) {
+                case 1 -> {
+                    circleId = DatabaseConn.getCircleID(c);
+                    c.setId(circleId);
+                    while (movies.hasNext()) {
+                        String current = (String) movies.next();
 
-        Circle c = new Circle(name.getText(), u.getUsername(), description.getText(), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
+                        Movie m = new Movie(current);
+                        if (DatabaseConn.getMovie(m.getId()) == null) {
+                            DatabaseConn.addMovie(m);
+                        }
 
-        int circleId;
-
-        int addCircle = DatabaseConn.addCircle(c);
-        switch (addCircle) {
-            case 1 -> {
-                circleId = DatabaseConn.getCircleID(c);
-                c.setId(circleId);
-                while (movies.hasNext()) {
-                    String current = (String) movies.next();
-
-                    Movie m = new Movie(current);
-                    if (DatabaseConn.getMovie(m.getId()) == null) {
-                        DatabaseConn.addMovie(m);
+                        DatabaseConn.addMovieCircle(c, m);
                     }
-
-                    DatabaseConn.addMovieCircle(c, m);
+                    JOptionPane.showMessageDialog(f, "Circle " + c.getName() + " created!");
+                    f.navigateTo(m -> new BrowseCirclesPanel(m, u));
                 }
-                JOptionPane.showMessageDialog(f, "Circle " + c.getName() + " created!");
-                f.navigateTo(m -> new BrowseCirclesPanel(m, u));
+                case 0 -> JOptionPane.showMessageDialog(f, "Circle already exists, choose different name!");
+                case -1 -> JOptionPane.showMessageDialog(f, "Please fill in all the fields");
             }
-            case 0 -> JOptionPane.showMessageDialog(f, "Circle already exists, choose different name!");
-            case -1 -> JOptionPane.showMessageDialog(f, "Please fill in all the fields");
+        }
+        else {
+            JOptionPane.showMessageDialog(f, "Please fill in all the fields, enter correct date and add some movies!");
         }
 
     }
