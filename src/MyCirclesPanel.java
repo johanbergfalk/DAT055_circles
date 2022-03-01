@@ -29,6 +29,7 @@ public class MyCirclesPanel extends JPanel {
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.setBackground(this.getBackground());
+
         //Get all circles from user
         circles(content, frame, user);
 
