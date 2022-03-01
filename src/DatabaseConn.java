@@ -491,7 +491,7 @@ public class DatabaseConn {
             return null;
         }
     }
-    public static boolean addmoviereview(Movie movie, Circle circle, User U, int rating, String comment){
+    public static boolean addMovieReview(Movie movie, Circle circle, User U, int rating, String comment){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO moviereview VALUES (?,?,?,?,?)");
 
