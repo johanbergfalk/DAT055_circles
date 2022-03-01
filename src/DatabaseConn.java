@@ -491,6 +491,21 @@ public class DatabaseConn {
             return null;
         }
     }
+    public static boolean addmoviereview(Movie movie, Circle circle, User U, int rating, String comment){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO moviereview VALUES (?,?,?,?,?)");
+
+            ps.setString(1, U.getUsername());
+            ps.setInt(2, circle.getId());
+            ps.setInt(3, movie.getId());
+            ps.setInt(4, rating);
+            ps.setString(5, comment);
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
 
 
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
