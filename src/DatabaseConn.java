@@ -518,7 +518,7 @@ public class DatabaseConn {
             rs.next();
             return rs.getInt("circleid") == circle.getId();
         } catch (SQLException e){
-            return false;SQL
+            return false;
         }
     }
 
