@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Class for handling control and swing design.
+ */
 public class Loginpanel extends JPanel implements ActionListener {
     private JTextField username;
     private JPasswordField password;
@@ -11,6 +14,10 @@ public class Loginpanel extends JPanel implements ActionListener {
     private Login l;
     private User user;
 
+    /**
+     * Constructor for the loginpanel takes the frame and handles swing design for the login panel.
+     * @param m
+     */
     public Loginpanel(MainFrame m) {
         setPreferredSize(new Dimension(m.getWidth(), m.getHeight()));
         setBackground(Color.WHITE);
@@ -83,6 +90,13 @@ public class Loginpanel extends JPanel implements ActionListener {
         add(alignPanel);
         this.m = m;
     }
+
+    /**
+     Function which listen when an event occurs, in our case we listen if a button is pressed and take certain action depending on what was pressed.
+     in case button login is pressed we handle login logic in class login and depending on outcome it will either prompt user with error or take user to landing page.
+     if button registered is pressed user will be taken to registered panel.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
