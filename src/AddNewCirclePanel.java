@@ -145,7 +145,15 @@ public class AddNewCirclePanel extends JPanel {
 
         JButton search = new JButton("Search");
         search.setAlignmentX(Component.CENTER_ALIGNMENT);
-        search.addActionListener(e -> { dual.addSourceElements(new String[] { Movie.searchForMovieToAdd(searchMovie.getText()) }); });
+        //search.addActionListener(e -> { dual.addSourceElements(new String[] { Movie.searchForMovieToAdd(searchMovie.getText()) }); });
+
+        search.addActionListener(e -> {
+            dual.clearSourceListModel();
+            for (String s : Movie.searchForMovies(searchMovie.getText())) {
+                dual.addSourceElements(new String[]{s});
+            }
+        });
+
         right.add(search);
 
         right.add(Box.createRigidArea(new Dimension(15,20)));
