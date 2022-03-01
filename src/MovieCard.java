@@ -52,7 +52,10 @@ public class MovieCard extends JPanel {
             } else {
                 createSelfReviewedPanel(rightPanel);
             }
-        }else {
+        } else if((!checkMember(circle, user)) && (daysLeft >= 0)){
+            createEmptyPanel(rightPanel);
+        }
+        else {
             createReviewedPanel(rightPanel);
         }
 
@@ -263,6 +266,16 @@ public class MovieCard extends JPanel {
         rating.setForeground(this.getForeground());
         right.add(rating, BorderLayout.SOUTH);
 
+    }
+
+    private void createEmptyPanel(JPanel right){
+        right.setPreferredSize(new Dimension(250, 150));
+        right.setLayout(new BorderLayout());
+
+
+        JPanel contents = new JPanel();
+        contents.setBackground(this.getBackground());
+        contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
     }
 
 
