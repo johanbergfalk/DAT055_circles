@@ -1,28 +1,9 @@
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-/*
-     ===== Kommer köra som vi kom fram till med felix och lägga alla nya threads i databaseconn.
-             Men eftersom vi inte behöver lagra objekt nu utan kan skriva get/set funktion för allt så kommer
-             metoderna i databas conn se annorlunda ut än tänkt från början. Så kika där efterhand hur dom
-             utformas. Kan hända att vi kommer få ändra en del i våra tables med. ///Filip ==================
-
-             new Thread(() -> {
-
-             DatabaseConn.addUser(username.getText(), null, null, null, (result) -> {
-             if (result) {
-             System.out.println("GREAT!");
-             } else {
-             System.out.println("nope :(");
-
-             SwingUtilities.invokeLater(() -> {
-             username.setText("There was an error");
-             });
-             }
-             });
-             }).start();
-             break;
-             */
+/**
+ * Class for handling login logic and validate if a user entered correct password and username.
+ */
 public class Login {
 private char[] password;
 private String username;
@@ -33,10 +14,23 @@ private byte[] gethash;
         EMPTY_FIELDS,
         NO_SUCH_USER,
     }
+
+    /**
+     *Login constructor takes a users entered password and username.
+     * @param password
+     * @param username
+     */
     public Login(char[] password, String username) {
             this.password = password;
             this.username = username;
     }
+
+    /**
+     *method for validating a user, it will create a new thread when executing
+     *
+     * @return deepending on outcome it will throw a Result of type enum, telling what went wrong or if a sucessful login occurred.
+     * @throws NullPointerException
+     */
     public Future<Result> validateuser() throws NullPointerException {
             getsalt = DatabaseConn.getSalt(username);
             gethash = DatabaseConn.getHash(username);
@@ -55,6 +49,3 @@ private byte[] gethash;
             });
         }
     }
-
-//klicka på registered skicka till registered
-//klicka på login validate!!
