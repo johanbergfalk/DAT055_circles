@@ -32,7 +32,23 @@ public class MovieCard extends JPanel {
 
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(this.getBackground());
-        createRightPanel(rightPanel);
+
+        //Show review panel depending on member/creator or if all ready reviewed
+        if(c.getCreator().equals(u.getUsername())){
+            if(!isReviewed()){
+                createRightPanel(rightPanel);
+            } else {
+                createSelfReviewedPanel(rightPanel);
+            }
+        } else if(checkMember(cirlce, user)){
+            if(!isReviewed()){
+                createRightPanel(rightPanel);
+            } else {
+                createSelfReviewedPanel(rightPanel);
+            }
+        }else {
+            createReviewedPanel(rightPanel);
+        }
 
         //adds the left and right panel into a splitpane
         JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
@@ -77,6 +93,7 @@ public class MovieCard extends JPanel {
         left.add(releaseRate, BorderLayout.SOUTH);
     }
 
+    //Show this panel when it is possible to still review movie (and user is member/creator of the circle)
     private void createRightPanel(JPanel right) {
         //IF CIRCLE ACTIVE
         right.setPreferredSize(new Dimension(250, 150));
@@ -164,6 +181,50 @@ public class MovieCard extends JPanel {
 
     }
 
+    //Show this panel when the user has reviewed the movie
+    private void createSelfReviewedPanel(JPanel right){
+
+        GradeComment userGrade = DatabaseConn.getUserRating(cirlce, user, movie);
+
+        right.setPreferredSize(new Dimension(250, 150));
+        right.setLayout(new BorderLayout());
+
+        JTextArea ta = new JTextArea();
+        ta.setBackground(this.getBackground());
+        ta.setForeground(this.getForeground());
+        ta.setSize(new Dimension(180,60));
+        ta.setBorder(BorderFactory.createEmptyBorder(3,3,3,3));
+        ta.setEditable(false);
+        ta.setLineWrap(true);
+        ta.setWrapStyleWord(true);
+        ta.setText("Review: \n" + userGrade.getComment());
+        ta.setBackground(this.getBackground());
+        right.add(ta, BorderLayout.PAGE_END);
+        JScrollPane sp1 = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp1.setBorder(BorderFactory.createEmptyBorder());
+        right.add(sp1);
+        JLabel rating = new JLabel("Rating: " + userGrade.getUserRating());
+        rating.setForeground(this.getForeground());
+        right.add(rating, BorderLayout.SOUTH);
+
+    }
+
+    //Show this panel when it is no longer possible to review the movie
+    private void createReviewedPanel(JPanel right){
+
+        right.setPreferredSize(new Dimension(250, 150));
+        right.setLayout(new BorderLayout());
+
+        JPanel contents = new JPanel();
+        contents.setBackground(this.getBackground());
+        contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
+        JPanel done = new JPanel();
+        done.add(new JLabel("All reviews done"));
+        contents.add(done);
+
+
+    }
+
 
     private JLabel getPoster(Movie m) {
 
@@ -182,13 +243,29 @@ public class MovieCard extends JPanel {
 
     private void submitReview(User u, Circle c, Movie m, int rating, String review) {
         if(DatabaseConn.addMovieReview(u, c, m, rating, review)) {
-            System.out.println("voting done!");
+            JFrame f = new JFrame();
+            JOptionPane.showMessageDialog(f, "Voting done!");
+            CircleDetailsPanel.updateCircleDetail();
         }
         else {
             System.out.println("voting failed");
         }
+    }
+
+    private boolean isReviewed(){
+        return DatabaseConn.isReviewed(user, cirlce, movie);
 
     }
+
+    private boolean checkMember(Circle c, User u){
+        for(String m : c.getMembers()){
+            if(m.equals(u.getUsername())){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
 

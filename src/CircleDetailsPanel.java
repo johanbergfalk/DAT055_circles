@@ -1,3 +1,5 @@
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -7,8 +9,15 @@ import java.util.LinkedList;
 public class CircleDetailsPanel extends JPanel {
 
     LinkedList<Movie> moviesInCircle;
+    private static MainFrame frame;
+    private static User user;
+    private static Circle c;
 
     public CircleDetailsPanel(MainFrame frame, User user, Circle c) {
+
+        this.frame = frame;
+        this.user = user;
+        this.c = c;
 
         setLayout(new BorderLayout());
         setBackground(user.getBackgroundColor());
@@ -59,6 +68,10 @@ public class CircleDetailsPanel extends JPanel {
             }
         }
         return false;
+    }
+
+    public static void updateCircleDetail(){
+        frame.navigateTo(k -> new CircleDetailsPanel(k, user, c));
     }
 
 }
