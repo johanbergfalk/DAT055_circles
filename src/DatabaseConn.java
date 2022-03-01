@@ -101,6 +101,21 @@ public class DatabaseConn {
         }
     }
 
+    public static GradeComment avgMovieScore (Circle c, Movie m){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT AVG(rating) AS movieavg FROM MovieReview WHERE(circleid = ? AND movieid = ?)");
+            ps.setInt(1, c.getId());
+            ps.setInt(2, m.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            GradeComment result = new GradeComment();
+            result.setAvgMovieGrade(rs.getFloat("movieavg"));
+            return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
     /**
      * Used to retrieve a users hash. Used during login to verify credentials.
      * @param user username
