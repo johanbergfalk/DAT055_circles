@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class CircleCard extends JPanel {
@@ -84,18 +85,34 @@ public class CircleCard extends JPanel {
         leftBottom.setBackground(this.getBackground());
         leftBottom.setLayout(new GridLayout(3,0,0,0));
         //leftBottom.add(new JLabel(""));
-        JLabel runtime = new JLabel("Running from: " + days.getLocalStart() + " to " + days.getLocalEnd());
-        runtime.setForeground(this.getForeground());
-        leftBottom.add(runtime);
-        LinkedList<Movie> movielist = DatabaseConn.getCircleMovies(i);
-        JLabel movies = new JLabel("No. movies: " + movielist.size());
-        movies.setForeground(this.getForeground());
-        leftBottom.add(movies);
-        JLabel score = new JLabel("Average score: " + i.getScore());
-        score.setForeground(this.getForeground());
-        leftBottom.add(score);
-        left.add(leftBottom);
 
+        if(days.getTotalDaysLeft() < 0){
+            JLabel runtime = new JLabel("Circle is closed");
+            runtime.setForeground(Color.RED);
+            leftBottom.add(runtime);
+            LinkedList<Movie> movielist = DatabaseConn.getCircleMovies(i);
+            JLabel movies = new JLabel("No. movies: " + movielist.size());
+            movies.setForeground(this.getForeground());
+            leftBottom.add(movies);
+            GradeComment finalGrade = DatabaseConn.avgCircleScore(circle);
+            JLabel score = new JLabel("Circle final score: " + finalGrade.getAvgCircleGrade());
+            score.setForeground(this.getForeground());
+            leftBottom.add(score);
+            left.add(leftBottom);
+        } else {
+
+            JLabel runtime = new JLabel("Running from: " + days.getLocalStart() + " to " + days.getLocalEnd());
+            runtime.setForeground(this.getForeground());
+            leftBottom.add(runtime);
+            LinkedList<Movie> movielist = DatabaseConn.getCircleMovies(i);
+            JLabel movies = new JLabel("No. movies: " + movielist.size());
+            movies.setForeground(this.getForeground());
+            leftBottom.add(movies);
+            JLabel score = new JLabel("Average score: " + i.getScore());
+            score.setForeground(this.getForeground());
+            leftBottom.add(score);
+            left.add(leftBottom);
+        }
     }
 
     private void createRight(Circle i, JPanel right, MainFrame frame, User u){

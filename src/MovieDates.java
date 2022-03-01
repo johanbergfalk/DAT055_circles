@@ -96,6 +96,7 @@ public class MovieDates {
         }else return j;
     }
 
+
 //----Getters and Setters-----------------------------
     public long getTotalRunningDays(){
         return this.totalRunningDays;
