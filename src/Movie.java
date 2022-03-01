@@ -1,6 +1,9 @@
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import org.json.*;
 
 public class Movie {
@@ -18,7 +21,7 @@ public class Movie {
      */
     public Movie(String title) {
 
-        JSONObject movie = movieSearch(title);
+        JSONObject movie = createMovie(title);
 
         this.name = movie.getString("original_title");
         this.id = movie.getInt("id");
@@ -33,24 +36,75 @@ public class Movie {
     public Movie(){}
 
     /**
-     * Search for a movie to display its title in the GUI
+     * Used when creating a movie from the class constructor
      * @param title the movie title to find in tmdb database
-     * @return the movie title as a string to display in the GUI
+     * @return a JSON object containing information about the movie
      */
-    public static String searchForMovieToAdd(String title) {
+    public static JSONObject createMovie(String title) {
 
-        JSONObject movie = movieSearch(title);
-        return movie.getString("original_title");
+        //the full JSON of movies and extra data
+        JSONObject obj = apiResult(title);
+
+        //the movies found are stored as arrays under the results key
+        JSONArray results = new JSONArray(obj.getJSONArray("results"));
+
+        //if multiple movies are found the first one in the list is returned
+        return (JSONObject) results.get(0);
 
     }
 
     /**
+     * Search for a movie to display its title in the GUI
+     * @param title the movie title to find in tmdb database
+     * @return the movie title as a string to display in the GUI
+     */
+    public static LinkedList<String> searchForMovies(String title) {
+
+        LinkedList<JSONObject> movies = movieSearch(title);
+        LinkedList<String> movieTitles = new LinkedList<>();
+
+        for (JSONObject obj : movies) {
+            movieTitles.add(obj.getString("original_title"));
+        }
+
+        return movieTitles;
+    }
+
+
+    /**
      * Search for a movie in the tmdb database using API
      * @param title the movie title to find in tmdb database
-     * @return a JSON object containing information about the movie
+     * @return a JSON object containing information about the <= 5 movies found in the database
      */
-    public static JSONObject movieSearch(String title) {
+    public static LinkedList<JSONObject> movieSearch(String title) {
 
+        //the full JSON of movies and extra data
+        JSONObject obj = apiResult(title);
+
+        //the movies found are stored as arrays under the results key
+        JSONArray results = new JSONArray(obj.getJSONArray("results"));
+
+        int itCount = 0;
+        Iterator<Object> resultsIterator = results.iterator();
+        LinkedList<JSONObject> resultSet = new LinkedList<>();
+
+        //gets the first five or less results from the resultset
+        while(resultsIterator.hasNext() && itCount < 5) {
+            resultSet.add((JSONObject) resultsIterator.next());
+            itCount++;
+        }
+
+        //return first 5 movies found or the results found fewer than 5
+        return resultSet;
+
+    }
+
+    /**
+     * Method that returns the result from an API search in the TMDB database
+     * @param title movie title
+     * @return JSOBObject containing the all the results from the search
+     */
+    public static JSONObject apiResult(String title) {
         try {
             //converts spaces in the title with %20 for url formatting
             title = title.replaceAll("\\s+","%20");
@@ -68,13 +122,7 @@ public class Movie {
                 responseStrBuilder.append(inputStr);
 
             //the full JSON of movies and extra data
-            JSONObject obj = new JSONObject(responseStrBuilder.toString());
-
-            //the movies found are stored as arrays under the results key
-            JSONArray results = new JSONArray(obj.getJSONArray("results"));
-
-            //if multiple movies are found the first one in the list is returned
-            return (JSONObject) results.get(0);
+            return new JSONObject(responseStrBuilder.toString());
 
         }
 
@@ -82,7 +130,6 @@ public class Movie {
             System.out.println(e);
             return new JSONObject("empty");
         }
-
     }
 
 
