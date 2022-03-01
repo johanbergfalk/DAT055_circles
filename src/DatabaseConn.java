@@ -81,6 +81,25 @@ public class DatabaseConn {
         }
     }
 
+    public static GradeComment getUserRating(Circle c, User u, Movie m){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM MovieReview WHERE(username = ? AND circleid = ? AND movieid = ?)");
+            ps.setString(1, u.getUsername());
+            ps.setInt(2, c.getId());
+            ps.setInt(3, m.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            GradeComment result = new GradeComment();
+            result.setUser(u);
+            result.setComment(rs.getString("comment"));
+            result.setMovie(m);
+            result.setCircle(c);
+            return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
     /**
      * Used to retrieve a users hash. Used during login to verify credentials.
      * @param user username
@@ -389,6 +408,7 @@ public class DatabaseConn {
         }
     }
 
+
     public static boolean leaveCircle(Circle c, User u){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE id = ? AND member = ?");
@@ -400,11 +420,12 @@ public class DatabaseConn {
             return false;
         }
     }
+    /*
     /**
      * Updates a circles parameters except creator and ID. Does update all members in the database.
      * @param c Circle to be updated
      * @return Returns true if successful, false if not.
-     */
+     *//*
     public static boolean updateCircle(Circle c){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("UPDATE Circles SET name = ?, description = ?, timestart = ?, timeend = ?, score = ? WHERE id = ?");
@@ -432,6 +453,7 @@ public class DatabaseConn {
             return false;
         }
     }
+    */
     /* FUNCTIONS RELATED TO MOVIES */
 
     /**
