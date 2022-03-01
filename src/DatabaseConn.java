@@ -115,6 +115,19 @@ public class DatabaseConn {
             return null;
         }
     }
+    public static GradeComment avgCircleScore (Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT AVG(rating) AS circleavg FROM MovieReview WHERE(circleid = ?)");
+            ps.setInt(1, c.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            GradeComment result = new GradeComment();
+            result.setAvgMovieGrade(rs.getFloat("circleavg"));
+            return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
 
     public static LinkedList<GradeComment> getAllMovieRatings(Circle c, Movie m){
         try{
