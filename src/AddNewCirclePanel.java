@@ -192,7 +192,7 @@ public class AddNewCirclePanel extends JPanel {
 
         Iterator movies = d.destListIterator();
         Circle c;
-        //check that all the fields are filled in
+        //check that all the fields are filled in, that a list of movies is provided and that startDate < endDate
         if(name.getText() != null && u.getUsername() != null && description.getText() != null && startDate.getSelectedDate(startDate.getDatePicker()) != null && endDate.getSelectedDate(endDate.getDatePicker()) != null && movies.hasNext() && d1.before(d2)) {
             c = new Circle(name.getText(), u.getUsername(), description.getText(), startDate.getSelectedDate(startDate.getDatePicker()), endDate.getSelectedDate(endDate.getDatePicker()));
             int circleId;
