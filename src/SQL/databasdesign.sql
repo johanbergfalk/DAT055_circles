@@ -62,7 +62,7 @@ CREATE TABLE MovieReview (
     FOREIGN KEY (username) REFERENCES Login(username),
     FOREIGN KEY (circleid) REFERENCES Circles(id),
     FOREIGN KEY (movieid) REFERENCES Movies(id),
-    CHECK (rating >= 0 && rating <= 10)
+    CHECK (rating >= 0 AND rating <= 10)
 );
 
 /* Kanske inte behövs. Låt den vara utkommenterad sålänge.
