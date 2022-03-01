@@ -12,6 +12,8 @@ public class DatabaseConn {
     private static DatabaseConn instance;
     private Connection c;
 
+
+    /* These functions ensures singleton principle. */
     private DatabaseConn() {
         try {
             String url = "jdbc:postgresql://ec2-34-251-245-108.eu-west-1.compute.amazonaws.com/ddc0n5csqqi7j1";
@@ -32,8 +34,9 @@ public class DatabaseConn {
     }
 
 
-    /* FUNCTIONS RELATED TO USER */
 
+
+    /* FUNCTIONS RELATED TO USER */
     /**
      * Registers a user in the database.
      * <p>
@@ -78,76 +81,6 @@ public class DatabaseConn {
             return true;
         } catch (SQLException se) {
             return false;
-        }
-    }
-
-    public static GradeComment getUserRating(Circle c, User u, Movie m){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM MovieReview WHERE(username = ? AND circleid = ? AND movieid = ?)");
-            ps.setString(1, u.getUsername());
-            ps.setInt(2, c.getId());
-            ps.setInt(3, m.getId());
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            GradeComment result = new GradeComment();
-            result.setUser(u.getUsername());
-            result.setComment(rs.getString("comment"));
-            result.setMovie(m);
-            result.setCircle(c);
-            result.setUserRating(rs.getInt("rating"));
-            return result;
-        } catch (SQLException e){
-            return null;
-        }
-    }
-
-    public static GradeComment avgMovieScore (Circle c, Movie m){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT AVG(rating) AS movieavg FROM MovieReview WHERE(circleid = ? AND movieid = ?)");
-            ps.setInt(1, c.getId());
-            ps.setInt(2, m.getId());
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            GradeComment result = new GradeComment();
-            result.setAvgMovieGrade(rs.getFloat("movieavg"));
-            return result;
-        } catch (SQLException e){
-            return null;
-        }
-    }
-    public static GradeComment avgCircleScore (Circle c){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT AVG(rating) AS circleavg FROM MovieReview WHERE(circleid = ?)");
-            ps.setInt(1, c.getId());
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            GradeComment result = new GradeComment();
-            result.setAvgCircleGrade(rs.getFloat("circleavg"));
-            return result;
-        } catch (SQLException e){
-            return null;
-        }
-    }
-
-    public static LinkedList<GradeComment> getAllMovieRatings(Circle c, Movie m){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM MovieReview WHERE circleid = ? AND movieid = ?");
-            ps.setInt(1, c.getId());
-            ps.setInt(2, m.getId());
-            LinkedList<GradeComment> ratings = new LinkedList<>();
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                GradeComment temp = new GradeComment();
-                temp.setMovie(m);
-                temp.setCircle(c);
-                temp.setUser(rs.getString("username"));
-                temp.setComment(rs.getString("comment"));
-                temp.setUserRating(rs.getInt("rating"));
-                ratings.add(temp);
-            }
-            return ratings;
-        } catch (SQLException e){
-            return null;
         }
     }
 
@@ -223,8 +156,154 @@ public class DatabaseConn {
 
 
 
-    /* FUNCTIONS RELATED TO CIRCLES */
 
+    /* FUNCTIONS RELATED TO RATINGS AND REVIEWS */
+    /**
+     * Retrieve the rating given by a user for a movie
+     * @param c Circle that the movie belongs to
+     * @param u User that is the author
+     * @param m Movie rated
+     * @return
+     */
+    public static GradeComment getUserRating(Circle c, User u, Movie m){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM MovieReview WHERE(username = ? AND circleid = ? AND movieid = ?)");
+            ps.setString(1, u.getUsername());
+            ps.setInt(2, c.getId());
+            ps.setInt(3, m.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            GradeComment result = new GradeComment();
+            result.setUser(u.getUsername());
+            result.setComment(rs.getString("comment"));
+            result.setMovie(m);
+            result.setCircle(c);
+            result.setUserRating(rs.getInt("rating"));
+            return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    /**
+     * Gets the average score for a given movie in a circle.
+     * @param c Circle that the movie belongs to
+     * @param m Movie rated
+     * @return Returns a GradeComment object. Null if not successful.
+     */
+    public static GradeComment avgMovieScore (Circle c, Movie m){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT AVG(rating) AS movieavg FROM MovieReview WHERE(circleid = ? AND movieid = ?)");
+            ps.setInt(1, c.getId());
+            ps.setInt(2, m.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            GradeComment result = new GradeComment();
+            result.setAvgMovieGrade(rs.getFloat("movieavg"));
+            return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    /**
+     * Gets average score for all movies in this circle
+     * @param c Circle
+     * @return Returns a GradeComment object. Null if not successful.
+     */
+    public static GradeComment avgCircleScore (Circle c){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT AVG(rating) AS circleavg FROM MovieReview WHERE(circleid = ?)");
+            ps.setInt(1, c.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            GradeComment result = new GradeComment();
+            result.setAvgCircleGrade(rs.getFloat("circleavg"));
+            return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    /**
+     * Retrieve all ratings for this movie
+     * @param c Circle that the movie belongs to
+     * @param m Movie rated
+     * @return Returns a LinkedList consisting of GradeComment objects. Null if not successful.
+     */
+    public static LinkedList<GradeComment> getAllMovieRatings(Circle c, Movie m){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM MovieReview WHERE circleid = ? AND movieid = ?");
+            ps.setInt(1, c.getId());
+            ps.setInt(2, m.getId());
+            LinkedList<GradeComment> ratings = new LinkedList<>();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                GradeComment temp = new GradeComment();
+                temp.setMovie(m);
+                temp.setCircle(c);
+                temp.setUser(rs.getString("username"));
+                temp.setComment(rs.getString("comment"));
+                temp.setUserRating(rs.getInt("rating"));
+                ratings.add(temp);
+            }
+            return ratings;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    /**
+     * Add a review for a movie in a circle
+     * @param U User that made the review
+     * @param circle Circle that the movie belongs to
+     * @param movie Movie in question
+     * @param rating Given rating
+     * @param comment Given comment
+     * @return Returns true if successful, false in all other cases.
+     */
+    public static boolean addMovieReview(User U, Circle circle, Movie movie, int rating, String comment){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO moviereview VALUES (?,?,?,?,?)");
+
+            ps.setString(1, U.getUsername());
+            ps.setInt(2, circle.getId());
+            ps.setInt(3, movie.getId());
+            ps.setInt(4, rating);
+            ps.setString(5, comment);
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+    /**
+     * Check whether a user has reviewed specified movie in this circle
+     * @param U User in question
+     * @param circle Circle in question
+     * @param movie Movie to check for reviews made by this user
+     * @return Returns true if requested review is found, false in all other cases.
+     */
+    public static boolean isReviewed(User U, Circle circle, Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT username,circleid,movieid FROM moviereview WHERE (username=? AND circleid=? AND movieid=?)");
+
+            ps.setString(1, U.getUsername());
+            ps.setInt(2, circle.getId());
+            ps.setInt(3, movie.getId());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("circleid") == circle.getId();
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+
+
+
+    /* FUNCTIONS RELATED TO CIRCLES */
     /**
      * Used to retrieve the circles a user has joined.
      * @param username username
@@ -344,11 +423,10 @@ public class DatabaseConn {
             return null;
         }
     }
-
     /**
      * Adds a new circle to the database.
      * @param c Circle to be added
-     * @return returns true if successful, false if not.
+     * @return Returns (1,0,-1) for (success, already exists, wrong input)
      */
     public static int addCircle(Circle c){
         try{
@@ -384,6 +462,11 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Function used to retrieve the PostgreSQL generated ID for the circle.
+     * @param c The circle whose ID is asked for
+     * @return Returns the id as integer, -1 if not successful.
+     */
     public static int getCircleID(Circle c){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT id FROM Circles WHERE name = ? AND creator = ?");
@@ -396,21 +479,6 @@ public class DatabaseConn {
             return -1;
         }
 
-    }
-    /**
-     * Removes the circle from the database.
-     * @param c Circle to be removed
-     * @return returns true if successful, false if not
-     */
-    public static boolean deleteCircle(Circle c){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM Circles WHERE id = ?");
-            ps.setInt(1, c.getId());
-            ps.execute();
-            return true;
-        } catch (SQLException e){
-            return false;
-        }
     }
 
     /**
@@ -432,23 +500,11 @@ public class DatabaseConn {
     }
 
     /**
-     * Removes a movie from a circle in the database.
-     * @param circle Circle to operate on
-     * @param movie Movie to be removed
-     * @return returns true if successful, false if not
+     * Insert a member into a circle
+     * @param c Circle to join
+     * @param u User that wants to join
+     * @return returns true if successful, false otherwise
      */
-    public static boolean removeMovieCircle(Circle circle, Movie movie){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM MovieInCircle WHERE (circleid = ? AND movieid = ?)");
-            ps.setInt(1, circle.getId());
-            ps.setInt(2, movie.getId());
-            ps.executeUpdate();
-            return true;
-        } catch (SQLException e){
-            return false;
-        }
-    }
-
     public static boolean joinCircle(Circle c, User u){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO CircleMembers VALUES(?,?)");
@@ -461,7 +517,12 @@ public class DatabaseConn {
         }
     }
 
-
+    /**
+     * Removes a member from a circle
+     * @param c Circle target to member removal
+     * @param u User to be removed
+     * @return returns true if successful, false otherwise
+     */
     public static boolean leaveCircle(Circle c, User u){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE id = ? AND member = ?");
@@ -473,42 +534,11 @@ public class DatabaseConn {
             return false;
         }
     }
-    /*
-    /**
-     * Updates a circles parameters except creator and ID. Does update all members in the database.
-     * @param c Circle to be updated
-     * @return Returns true if successful, false if not.
-     *//*
-    public static boolean updateCircle(Circle c){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("UPDATE Circles SET name = ?, description = ?, timestart = ?, timeend = ?, score = ? WHERE id = ?");
-            ps.setString(1, c.getName());
-            ps.setString(2, c.getDescription());
-            java.util.Date start_t = c.getStartTime();
-            ps.setString(3, start_t.toString());
-            java.util.Date end_t = c.getStopTime();
-            ps.setString(4, end_t.toString());
-            ps.setFloat(5, c.getScore());
-            ps.setInt(6, c.getId());
-            ps.executeUpdate();
-            LinkedList<String> members = c.getMembers();
-            PreparedStatement mem = getInstance().c.prepareStatement("DELETE FROM CircleMembers WHERE id = ?");
-            int id = c.getId();
-            ps.setInt(1, id);
-            ps.execute();
-            for(int i = 0; i < members.size(); i++){
-                mem = getInstance().c.prepareStatement("INSERT INTO CircleMembers VALUES (?,?)");
-                mem.setInt(1, id);
-                mem.setString(2, members.get(i));
-            }
-            return true;
-        } catch (SQLException e){
-            return false;
-        }
-    }
-    */
-    /* FUNCTIONS RELATED TO MOVIES */
 
+
+
+
+    /* FUNCTIONS RELATED TO MOVIES */
     /**
      * Adds a movie to the database.
      * @param movie Movie to be added
@@ -552,6 +582,11 @@ public class DatabaseConn {
         }
     }
 
+    /**
+     * Returns the first movie in the circle. Used to retrieve poster urls for display.
+     * @param c Circle to check.
+     * @return Returns the movie object.
+     */
     public static Movie getFirstMovie(Circle c){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM movieInCircle WHERE circleid = ?");
@@ -559,63 +594,14 @@ public class DatabaseConn {
             ResultSet rs = ps.executeQuery();
             rs.next();
             int id = rs.getInt("movieid");
-            System.out.println(id);
             Movie m = DatabaseConn.getMovie(id);
             return m;
         } catch (SQLException e){
             return null;
         }
     }
-    public static boolean addMovieReview(User U, Circle circle, Movie movie, int rating, String comment){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO moviereview VALUES (?,?,?,?,?)");
-
-            ps.setString(1, U.getUsername());
-            ps.setInt(2, circle.getId());
-            ps.setInt(3, movie.getId());
-            ps.setInt(4, rating);
-            ps.setString(5, comment);
-            ps.execute();
-            return true;
-        } catch (SQLException e){
-            return false;
-        }
-    }
-
-    public static boolean isReviewed(User U, Circle circle, Movie movie){
-        try{
-            PreparedStatement ps = getInstance().c.prepareStatement("SELECT username,circleid,movieid FROM moviereview WHERE (username=? AND circleid=? AND movieid=?)");
-
-            ps.setString(1, U.getUsername());
-            ps.setInt(2, circle.getId());
-            ps.setInt(3, movie.getId());
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getInt("circleid") == circle.getId();
-        } catch (SQLException e){
-            return false;
-        }
-    }
 
 
-
-
-    // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
-    public static void printc(Circle c){
-        System.out.println("Id: " + c.getId());
-        System.out.println("Name: " + c.getName());
-        System.out.println("Creator: " + c.getCreator());
-        System.out.println("Description: " + c.getDescription());
-        System.out.println("Start time: " + c.getStartTime());
-        System.out.println("Stop time: " + c.getStopTime());
-        System.out.println("Score: " + c.getScore());
-        System.out.println("====Members====");
-        LinkedList<String> members = c.getMembers();
-        for(int i = 0; i < members.size(); i++){
-            System.out.println(members.get(i));
-        }
-        System.out.println("\n");
-    }
 }
 
 
