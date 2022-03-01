@@ -40,10 +40,14 @@ public class CircleDetailsPanel extends JPanel {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         moviesInCircle = DatabaseConn.getCircleMovies(c);
+        int numberOfMovies = moviesInCircle.size();
+        int moviePos = 1;
 
         if(moviesInCircle != null) {
             for(Movie m : moviesInCircle) {
-                content.add(new MovieCard(m, user, c));
+                MovieDates dates = new MovieDates(c.getStartTime(), c.getStopTime(), moviePos, numberOfMovies);
+                content.add(new MovieCard(m, user, c, dates.getMovieDaysLeft()));
+                moviePos +=1;
             }
         }
         else {

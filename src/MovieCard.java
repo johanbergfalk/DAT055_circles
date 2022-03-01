@@ -5,16 +5,20 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.net.URL;
+import java.util.LinkedList;
 
 
 public class MovieCard extends JPanel {
     private User user;
-    private Circle cirlce;
+    private Circle circle;
     private Movie movie;
-    public MovieCard(Movie m, User u, Circle c) {
+    private long daysLeft;
+
+    public MovieCard(Movie m, User u, Circle c, long d) {
         this.user = u;
-        this.cirlce = c;
+        this.circle = c;
         this.movie = m;
+        this.daysLeft = d;
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(600, 150));
@@ -34,13 +38,15 @@ public class MovieCard extends JPanel {
         rightPanel.setBackground(this.getBackground());
 
         //Show review panel depending on member/creator or if all ready reviewed
-        if(c.getCreator().equals(u.getUsername())){
+        if(daysLeft <= 0){
+            createReviewedPanel(rightPanel);
+        }else if(c.getCreator().equals(u.getUsername())){
             if(!isReviewed()){
-                createRightPanel(rightPanel);
+            createRightPanel(rightPanel);
             } else {
                 createSelfReviewedPanel(rightPanel);
             }
-        } else if(checkMember(cirlce, user)){
+        } else if(checkMember(circle, user)){
             if(!isReviewed()){
                 createRightPanel(rightPanel);
             } else {
@@ -88,9 +94,16 @@ public class MovieCard extends JPanel {
         JScrollPane sp1 = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         sp1.setBorder(BorderFactory.createEmptyBorder());
         left.add(sp1);
-        JLabel releaseRate = new JLabel("Release date: " + movie.getYear() + ".            Rate within XXX days");
-        releaseRate.setForeground(this.getForeground());
-        left.add(releaseRate, BorderLayout.SOUTH);
+        if(daysLeft <= 0){
+            JLabel releaseRate = new JLabel("Release date: " + movie.getYear() + ".         Voting closed");
+            releaseRate.setForeground(this.getForeground());
+            left.add(releaseRate, BorderLayout.SOUTH);
+        }else {
+            JLabel releaseRate = new JLabel("Release date: " + movie.getYear() + ".         Rate within: " + daysLeft +" days");
+            releaseRate.setForeground(this.getForeground());
+            left.add(releaseRate, BorderLayout.SOUTH);
+        }
+
     }
 
     //Show this panel when it is possible to still review movie (and user is member/creator of the circle)
@@ -175,7 +188,7 @@ public class MovieCard extends JPanel {
             if(input.getText().equals("Write your review here...")){
                 JOptionPane.showMessageDialog(right, "You can't leave the review-field empty!");
             } else {
-                submitReview(user, cirlce, movie, slider.getValue(), input.getText());
+                submitReview(user, circle, movie, slider.getValue(), input.getText());
             }
         });
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -190,7 +203,7 @@ public class MovieCard extends JPanel {
     //Show this panel when the user has reviewed the movie
     private void createSelfReviewedPanel(JPanel right){
 
-        GradeComment userGrade = DatabaseConn.getUserRating(cirlce, user, movie);
+        GradeComment userGrade = DatabaseConn.getUserRating(circle, user, movie);
 
         right.setPreferredSize(new Dimension(250, 150));
         right.setLayout(new BorderLayout());
@@ -218,16 +231,34 @@ public class MovieCard extends JPanel {
     //Show this panel when it is no longer possible to review the movie
     private void createReviewedPanel(JPanel right){
 
+        LinkedList<GradeComment>  userComments = DatabaseConn.getAllMovieRatings(circle, movie);
+
         right.setPreferredSize(new Dimension(250, 150));
         right.setLayout(new BorderLayout());
 
-        JPanel contents = new JPanel();
-        contents.setBackground(this.getBackground());
-        contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
-        JPanel done = new JPanel();
-        done.add(new JLabel("All reviews done"));
-        contents.add(done);
+        JTextArea ta = new JTextArea();
+        ta.setBackground(this.getBackground());
+        ta.setForeground(this.getForeground());
+        ta.setSize(new Dimension(180,60));
+        ta.setBorder(BorderFactory.createEmptyBorder(3,3,3,3));
+        ta.setEditable(false);
+        ta.setLineWrap(true);
+        ta.setWrapStyleWord(true);
+        String allReviews = "";
+        for(GradeComment g : userComments){
+            allReviews += g.getUser() + ": " + g.getComment() + "\n Grade: " + g.getUserRating() + "\n\n";
+        }
 
+        ta.setText(allReviews);
+        ta.setBackground(this.getBackground());
+        right.add(ta, BorderLayout.PAGE_END);
+        JScrollPane sp1 = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp1.setBorder(BorderFactory.createEmptyBorder());
+        right.add(sp1);
+        GradeComment grade = DatabaseConn.avgMovieScore(circle, movie);
+        JLabel rating = new JLabel("Average movie rating: " + grade.getAvgMovieGrade());
+        rating.setForeground(this.getForeground());
+        right.add(rating, BorderLayout.SOUTH);
 
     }
 
@@ -259,7 +290,7 @@ public class MovieCard extends JPanel {
     }
 
     private boolean isReviewed(){
-        return DatabaseConn.isReviewed(user, cirlce, movie);
+        return DatabaseConn.isReviewed(user, circle, movie);
 
     }
 
