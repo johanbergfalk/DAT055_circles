@@ -4,17 +4,24 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * class for handling settings control function and swing design for the panel
+ */
 public class Settingspanel extends JPanel implements ActionListener {
     private MainFrame m;
     private User u;
     Settings s;
 
+    /**
+     * Constructor which sets the instance variables and will call on draw for the swingdesign of the settingspanel.
+     * @param m current Jframe
+     * @param u user object
+     */
     public Settingspanel(MainFrame m, User u) {
         this.m = m;
         this.u = u;
         draw(u, m);
     }
-
     private void draw(User u, MainFrame m) {
         setLayout(new BorderLayout());
         Circle temp = new Circle();
@@ -35,7 +42,7 @@ public class Settingspanel extends JPanel implements ActionListener {
         JButton settings = new JButton(u.getDarkMode() ? "Enable Light Mode" : "Enable Dark Mode");
         settings.addActionListener(this);
         buttonPanel.setBackground(u.getBackgroundColor());
-        JButton changepass = new JButton("Change password"); //add func change password?
+        JButton changepass = new JButton("Change password");
         changepass.addActionListener(this);
         buttonPanel.add(header);
         buttonPanel.add(settings);
@@ -54,6 +61,13 @@ public class Settingspanel extends JPanel implements ActionListener {
         add(alignPanel);
     }
 
+    /**
+     Function which listen when an event occurs, in our case we listen if buttons are pressed and take certain action.
+     in case button Enable Light Mode is pressed: we set darkmode false and update the panel.
+     in case button Enable Dark Mode is pressed: we set darkmode true and update the panel.
+     in case button Change password: function draw is called upon to draw change password panel.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
@@ -78,6 +92,10 @@ public class Settingspanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Function that draw swing design for the password change joptionpane and takes certain actions depending on outcome of function changepass
+     * in class settings.
+     */
     public void draw(){
         JLabel oldpass = new JLabel("Old Password:");
         JLabel newpass = new JLabel("New password:");

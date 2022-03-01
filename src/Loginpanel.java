@@ -15,7 +15,8 @@ public class Loginpanel extends JPanel implements ActionListener {
     private User user;
 
     /**
-     * Constructor for the loginpanel takes the frame and handles swing design for the login panel.
+     * Constructor for the loginpanel takes the frame and handles swing design.
+     * if button register is pressed user will be taken to registerpanel.
      * @param m
      */
     public Loginpanel(MainFrame m) {
@@ -92,9 +93,9 @@ public class Loginpanel extends JPanel implements ActionListener {
     }
 
     /**
-     Function which listen when an event occurs, in our case we listen if a button is pressed and take certain action depending on what was pressed.
-     in case button login is pressed we handle login logic in class login and depending on outcome it will either prompt user with error or take user to landing page.
-     if button registered is pressed user will be taken to registered panel.
+     Function which listen when an event occurs, in our case we listen if a button is pressed and take certain action.
+     In case button login is pressed we handle login logic in class login and depending on outcome it will either prompt user with error
+     or take user to landing page.
      * @param e
      */
     @Override

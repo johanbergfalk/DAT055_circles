@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+/**
+ * class for handle settings logic
+ */
 public class Settings {
 
     private final char[] password;
@@ -16,12 +19,26 @@ public class Settings {
         OLD_PASSWORD_ERROR,
     }
 
+    /**
+     * Settings constructor sets instance variable values.
+     * @param pass users current password
+     * @param newpass users new password
+     * @param username Username of the user
+     * @param newotherpass user confirmation of new password
+     */
+
     public Settings(char[] pass, char[] newpass, String username, char[] newotherpass){
         this.password=pass;
         this.newpass=newpass;
         this.username=username;
         this.newotherpass=newotherpass;
     }
+
+    /**
+     * function for changing a users password and update it to the database.
+     * also check that the users have provided values for the parameters username, password, newpass,newotherpass.
+     * @return result of type enum depending on outcome.
+     */
 
     public Result changepass(){
         if (username.trim().isEmpty() || password.length == 0 || newotherpass.length==0 || newpass.length==0) {

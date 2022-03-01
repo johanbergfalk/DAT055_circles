@@ -3,6 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
+/**
+ Class for register controller functions and swing design.
+*/
 
 public class Registerpanel extends JPanel implements ActionListener {
    private JTextField username;
@@ -11,6 +14,12 @@ public class Registerpanel extends JPanel implements ActionListener {
    private MainFrame m;
    private Register r;
 
+    /**
+     * constructor that takes current Jframe.
+     * makes the registerpanel swing design and add actionlisteners to buttons login and register.
+     * if button login is pressed user will be taken to loginpanel.
+     * @param m
+     */
     public Registerpanel(MainFrame m) {
         setBackground(Color.WHITE);
         setLayout(new GridLayout(3, 1, 0, 10));
@@ -91,7 +100,12 @@ public class Registerpanel extends JPanel implements ActionListener {
         this.m = m;
     }
 
-
+    /**
+     Function which listen when an event occurs, in our case we listen if a button is pressed and take certain action.
+     in case button register is pressed we handle register logic in class register and depending on outcome it will either prompt user with error
+     or take user to loginpanel.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();
