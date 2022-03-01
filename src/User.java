@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -41,6 +42,22 @@ public class User{
     public Color getBackgroundColor() {
         if (darkMode) {
             return Color.BLACK;
+        } else {
+            return Color.WHITE;
+        }
+    }
+
+    public Color getCardColor(){
+        if (darkMode){
+            return Color.DARK_GRAY;
+        } else {
+            return UIManager.getColor("Panel.background");
+        }
+    }
+
+    public Color getTextFieldColor(){
+        if(darkMode){
+            return Color.decode("#333333"); //Slightly darker than dark gray
         } else {
             return Color.WHITE;
         }

@@ -2,14 +2,12 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 
 public class CircleCard extends JPanel {
 
     private final Circle circle;
+
 
     public CircleCard(MainFrame frame, User user, Circle i){
 
@@ -19,7 +17,9 @@ public class CircleCard extends JPanel {
         setPreferredSize(new Dimension(780,150));
         setMaximumSize(new Dimension(780,150));
         setMinimumSize(new Dimension(780,150));
-        setBorder(new LineBorder(Color.YELLOW));
+        setBorder(new LineBorder(user.getForegroundColor()));
+        setBackground(user.getCardColor());
+        setForeground(user.getForegroundColor());
 
         //Left side of the card
         JPanel left = new JPanel();
@@ -46,6 +46,7 @@ public class CircleCard extends JPanel {
         pane.setDividerSize(0);
         pane.add(left);
         pane.add(right);
+        /**/pane.setBackground(user.getCardColor());
         add(pane);
     }
 
@@ -53,12 +54,16 @@ public class CircleCard extends JPanel {
 
     private void createLeft(Circle i, JPanel left){
         left.setLayout(new GridLayout(3,0));
-
+        left.setBackground(this.getBackground());
         JPanel title =  new JPanel();
         JLabel name = new JLabel(i.getName(), JLabel.LEFT);
         name.setFont(new Font("Arial", Font.BOLD, 15));
+        title.setBackground(this.getBackground());
+        name.setForeground(this.getForeground());
         title.add(name);
         left.add(title);
+
+
 
         //Description
         JTextArea description = new JTextArea();
@@ -67,39 +72,53 @@ public class CircleCard extends JPanel {
         description.setWrapStyleWord(true);
         description.setText(i.getDescription());
         description.setBackground(this.getBackground());
+        description.setForeground(this.getForeground());
         JScrollPane scrollPane = new JScrollPane(description, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         left.add(scrollPane);
 
         MovieDates days = new MovieDates(i.getStartTime(), i.getStopTime());
 
+        //leftbottom
         JPanel leftBottom = new JPanel();
-        leftBottom.setLayout(new GridLayout(4,0));
-        leftBottom.add(new JLabel(""));
-        leftBottom.add(new JLabel("Running from:      " + days.getLocalStart()));
-        leftBottom.add(new JLabel("To:                           " + days.getLocalEnd()));
-        leftBottom.add(new JLabel("Score:                     " + i.getScore()));
+        leftBottom.setBackground(this.getBackground());
+        leftBottom.setLayout(new GridLayout(3,0,0,0));
+        //leftBottom.add(new JLabel(""));
+        JLabel runtime = new JLabel("Running from: " + days.getLocalStart() + " to " + days.getLocalEnd());
+        runtime.setForeground(this.getForeground());
+        leftBottom.add(runtime);
+        LinkedList<Movie> movielist = DatabaseConn.getCircleMovies(i);
+        JLabel movies = new JLabel("No. movies: " + movielist.size());
+        movies.setForeground(this.getForeground());
+        leftBottom.add(movies);
+        JLabel score = new JLabel("Average score: " + i.getScore());
+        score.setForeground(this.getForeground());
+        leftBottom.add(score);
         left.add(leftBottom);
 
     }
 
     private void createRight(Circle i, JPanel right, MainFrame frame, User u){
         right.setLayout(new GridLayout(0,2));
+        right.setBackground(this.getBackground());
 
-        //TODO metod som hämtar namnet på första filmen i cirkeln
-
-        //Movie m = new Movie("Napoleon Dynamite");
         Movie m = DatabaseConn.getFirstMovie(i);
 
         JLabel poster = getPoster(m);
+        poster.setForeground(this.getForeground());
+        poster.setBackground(this.getBackground());
         right.add(poster);
 
 
         JPanel membersAndButton = new JPanel();
         membersAndButton.setLayout(new GridLayout(2,0));
+        membersAndButton.setBackground(this.getBackground());
+        membersAndButton.setForeground(this.getForeground());
 
         //Members
         JTextArea members = new JTextArea();
+        members.setForeground(this.getForeground());
+        members.setBackground(this.getBackground());
         members.setEditable(false);
         members.setLineWrap(true);
         members.setWrapStyleWord(true);
@@ -108,21 +127,27 @@ public class CircleCard extends JPanel {
             mem += p + "\n";
         }
         members.setText(mem);
-        members.setBackground(this.getBackground());
         JScrollPane scrollPane = new JScrollPane(members, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        scrollPane.setBackground(this.getBackground());
+        scrollPane.setForeground(this.getForeground());
         membersAndButton.add(scrollPane);
 
 
         //Button
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3,0));
+        buttonPanel.setBackground(this.getBackground());
 
 
         JPanel temp = new JPanel();
+        temp.setBackground(this.getBackground());
         buttonPanel.add(temp.add(new JLabel("")));
         JPanel createdBy = new JPanel();
-        buttonPanel.add(createdBy.add(new JLabel("Created by: " + i.getCreator())));
+        createdBy.setBackground(this.getBackground());
+        JLabel creator = new JLabel("Created by: " + i.getCreator());
+        creator.setForeground(this.getForeground());
+        buttonPanel.add(createdBy.add(creator));
         JButton detailsButton = new JButton("Circle details");
         detailsButton.addActionListener(event -> frame.navigateTo(k -> new CircleDetailsPanel(k, u, circle)));
         buttonPanel.add(detailsButton);

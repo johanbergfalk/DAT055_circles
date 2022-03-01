@@ -28,13 +28,12 @@ public class MyCirclesPanel extends JPanel {
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-
+        content.setBackground(this.getBackground());
         //Get all circles from user
         circles(content, frame, user);
 
         //If many circles, makes it possible to scroll through all
         JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
         add(scrollPane, BorderLayout.CENTER);
 
     }
