@@ -514,10 +514,11 @@ public class DatabaseConn {
             ps.setString(1, U.getUsername());
             ps.setInt(2, circle.getId());
             ps.setInt(3, movie.getId());
-            ps.execute();
-            return true;
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("circleid") == circle.getId();
         } catch (SQLException e){
-            return false;
+            return false;SQL
         }
     }
 
