@@ -90,7 +90,7 @@ public class DatabaseConn {
             ResultSet rs = ps.executeQuery();
             rs.next();
             GradeComment result = new GradeComment();
-            result.setUser(u);
+            result.setUser(u.getUsername());
             result.setComment(rs.getString("comment"));
             result.setMovie(m);
             result.setCircle(c);
@@ -111,6 +111,28 @@ public class DatabaseConn {
             GradeComment result = new GradeComment();
             result.setAvgMovieGrade(rs.getFloat("movieavg"));
             return result;
+        } catch (SQLException e){
+            return null;
+        }
+    }
+
+    public static LinkedList<GradeComment> getAllMovieRatings(Circle c, Movie m){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT * FROM MovieReview WHERE circleid = ? AND movieid = ?");
+            ps.setInt(1, c.getId());
+            ps.setInt(2, m.getId());
+            LinkedList<GradeComment> ratings = new LinkedList<>();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                GradeComment temp = new GradeComment();
+                temp.setMovie(m);
+                temp.setCircle(c);
+                temp.setUser(rs.getString("username"));
+                temp.setComment(rs.getString("comment"));
+                temp.setUserRating(rs.getInt("rating"));
+                ratings.add(temp);
+            }
+            return ratings;
         } catch (SQLException e){
             return null;
         }

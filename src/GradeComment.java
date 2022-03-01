@@ -1,5 +1,5 @@
 public class GradeComment {
-    private User user;
+
     private Movie movie;
     private Circle circle;
 
@@ -15,16 +15,17 @@ public class GradeComment {
     private float avgMovieGrade;
     private float avgCircleGrade;
     private String comment;
+    private String user;
 
 
     public GradeComment(){}
 
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
