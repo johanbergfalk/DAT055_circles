@@ -350,7 +350,7 @@ public class DatabaseConn {
      * @param c Circle to be added
      * @return returns true if successful, false if not.
      */
-    public static boolean addCircle(Circle c){
+    public static int addCircle(Circle c){
         try{
             PreparedStatement ps = getInstance().c.prepareStatement("INSERT INTO circles VALUES(default,?,?,?,?,?,default)");
             ps.setString(1, c.getName());
@@ -376,10 +376,12 @@ public class DatabaseConn {
                 ps.setString(2, member);
                 ps.execute();
             }
-        } catch (SQLException | NullPointerException e){
-            return false;
+            return 1;
+        } catch (SQLException e){
+            return 0;
+        } catch (NullPointerException e){
+            return -1;
         }
-        return true;
     }
 
     public static int getCircleID(Circle c){
