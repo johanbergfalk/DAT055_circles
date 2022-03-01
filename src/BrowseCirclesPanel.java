@@ -26,23 +26,57 @@ public class BrowseCirclesPanel extends JPanel {
 
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        content.setBackground(getBackground());
 
         //Get all circles from the database
         circles(content, frame, user, circles);
 
         //If many circles, makes it possible to scroll through all
         JScrollPane scrollPane = new JScrollPane(content ,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setBackground(user.getBackgroundColor());
         add(scrollPane, BorderLayout.CENTER);
 
     }
 
 //----Methods-----------------------------------------------------------------------
 
+
+    private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
+        JPanel active = new JPanel();
+        active.setBackground(u.getBackgroundColor());
+        JLabel activeLabel = new JLabel("Active Circles: ");
+        activeLabel.setForeground(Color.decode("#C6E2FF"));
+        activeLabel.setFont(new Font("Arial Black", Font.BOLD, 24));
+        active.add(activeLabel);
+        c.add(active);
+        for(Circle i : circles){
+            MovieDates dates = new MovieDates(i.getStartTime(), i.getStopTime());
+            if(dates.getTotalDaysLeft() >= 0){
+                c.add(new CircleCard(frame, u, i));
+            }
+        }
+        JPanel completed = new JPanel();
+        completed.setBackground(u.getBackgroundColor());
+        JLabel passed = new JLabel("Passed circles: ");
+        passed.setForeground(Color.decode("#C6E2FF"));
+        passed.setFont(new Font("Arial Black", Font.BOLD, 24));
+        completed.add(passed);
+        c.add(completed);
+        for(Circle i : circles){
+            MovieDates dates =  new MovieDates(i.getStartTime(), i.getStopTime());
+            if(dates.getTotalDaysLeft() < 0){
+                c.add(new CircleCard(frame, u, i));
+            }
+        }
+    }
+
+    /*
     //Creates the frame for each circle
     private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
         for(Circle i : circles) {
             c.add(new CircleCard(frame, u,  i));
         }
     }
+     */
 }
 

@@ -122,7 +122,7 @@ public class DatabaseConn {
             ResultSet rs = ps.executeQuery();
             rs.next();
             GradeComment result = new GradeComment();
-            result.setAvgMovieGrade(rs.getFloat("circleavg"));
+            result.setAvgCircleGrade(rs.getFloat("circleavg"));
             return result;
         } catch (SQLException e){
             return null;

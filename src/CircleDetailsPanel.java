@@ -23,8 +23,14 @@ public class CircleDetailsPanel extends JPanel {
         setBackground(user.getBackgroundColor());
         Color textColor = user.getForegroundColor();
 
+        MovieDates end = new MovieDates(c.getStartTime(), c.getStartTime());
+        System.out.println(checkMember(c, user));
+
+
         //NavBar
-        if(checkCreator(c, user)){
+        if(checkCreator(c, user)) {
+            add(new NavigationBar(frame, user, 1, c), BorderLayout.NORTH);
+        } else if((!checkMember(c, user)) && (end.getTotalDaysLeft() < 0)) {
             add(new NavigationBar(frame, user, 1, c), BorderLayout.NORTH);
         } else if(checkMember(c, user)){
             add(new NavigationBar(frame, user, 6, c), BorderLayout.NORTH);

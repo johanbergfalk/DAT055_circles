@@ -95,8 +95,11 @@ public class MovieCard extends JPanel {
         sp1.setBorder(BorderFactory.createEmptyBorder());
         left.add(sp1);
         if(daysLeft <= 0){
-            JLabel releaseRate = new JLabel("Release date: " + movie.getYear() + ".         Voting closed");
+            JLabel closed = new JLabel("Voting closed");
+            JLabel releaseRate = new JLabel();
             releaseRate.setForeground(this.getForeground());
+            closed.setForeground(Color.RED);
+            releaseRate.setText("Release date: " + movie.getYear() + ".         " + closed.getText());
             left.add(releaseRate, BorderLayout.SOUTH);
         }else {
             JLabel releaseRate = new JLabel("Release date: " + movie.getYear() + ".         Rate within: " + daysLeft +" days");
