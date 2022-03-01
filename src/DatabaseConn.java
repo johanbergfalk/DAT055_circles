@@ -507,6 +507,22 @@ public class DatabaseConn {
         }
     }
 
+    public static boolean isReviewed(User U, Circle circle, Movie movie){
+        try{
+            PreparedStatement ps = getInstance().c.prepareStatement("SELECT username,circleid,movieid FROM moviereview WHERE (username=? AND circleid=? AND movieid=?)");
+
+            ps.setString(1, U.getUsername());
+            ps.setInt(2, circle.getId());
+            ps.setInt(3, movie.getId());
+            ps.execute();
+            return true;
+        } catch (SQLException e){
+            return false;
+        }
+    }
+
+
+
 
     // Enkel funktion för att skriva ut innehållet i en cirkel. Används för testning.
     public static void printc(Circle c){
