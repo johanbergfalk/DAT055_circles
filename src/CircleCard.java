@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class CircleCard extends JPanel {
@@ -47,7 +46,7 @@ public class CircleCard extends JPanel {
         pane.setDividerSize(0);
         pane.add(left);
         pane.add(right);
-        /**/pane.setBackground(user.getCardColor());
+        pane.setBackground(user.getCardColor());
         add(pane);
     }
 
