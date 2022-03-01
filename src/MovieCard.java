@@ -152,9 +152,15 @@ public class MovieCard extends JPanel {
         sliderPanel.add(Box.createRigidArea(new Dimension(10,5)));
         contents.add(sliderPanel);
 
-        //TODO Om input.gettext() == Write your comment here... så har man inte skrivit något. Kolla med en if typ
+
         JButton submit = new JButton("Submit");
-        submit.addActionListener(e -> {submitReview(user, cirlce, movie, slider.getValue(), input.getText());});
+        submit.addActionListener(e -> {
+            if(input.getText().equals("Write your review here...")){
+                JOptionPane.showMessageDialog(right, "You can't the review-field empty!");
+            } else {
+                submitReview(user, cirlce, movie, slider.getValue(), input.getText());
+            }
+        });
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
         contents.add(submit);
 
