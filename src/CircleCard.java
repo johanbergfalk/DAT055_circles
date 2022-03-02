@@ -7,6 +7,8 @@ import java.util.LinkedList;
 /**
  * Creates a card with all circle details to be used in
  * BrowseCirclesPanel and MyCirclesPanel
+ * @author Robert Nilsson
+ * @version 2022-03-02
  */
 
 public class CircleCard extends JPanel {
