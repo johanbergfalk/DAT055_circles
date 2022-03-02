@@ -3,6 +3,8 @@ import java.util.concurrent.Future;
 
 /**
  * Class for handling login logic and validate if a user entered correct password and username.
+ *@author Oscar
+ *@version 2022-03-02
  */
 public class Login {
 private char[] password;

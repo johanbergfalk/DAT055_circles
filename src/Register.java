@@ -4,6 +4,8 @@ import java.util.concurrent.Future;
 
 /**
  * Class that handles Register logic.
+ * @author Oscar
+ * @version 2022-03-02
  */
 public class Register {
    private String username;

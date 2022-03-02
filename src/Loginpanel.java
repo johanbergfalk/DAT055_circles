@@ -6,6 +6,8 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Class for handling control and swing design.
+ *@author Oscar
+ *@version 2022-03-02
  */
 public class Loginpanel extends JPanel implements ActionListener {
     private JTextField username;
