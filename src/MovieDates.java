@@ -1,7 +1,5 @@
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.ZoneId;
-import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -51,8 +49,8 @@ public class MovieDates {
      * how long a circle is running, in days,
      * how long until a circle is closed, in days
      *
-     * @param start
-     * @param end
+     * @param start startdate of Circle
+     * @param end enddate of Circle
      */
     public MovieDates(Date start, Date end){
         LocalDate s = convertToLocalDateViaInstant(start);
@@ -101,12 +99,14 @@ public class MovieDates {
         return countDaysLeft(s.plusDays(endInDays));
     }
 
+    //To avoid 0
     private int checkPos(int i){
         if(i <= 0){
             return 1;
         }else return i;
     }
 
+    //To avoid 0
     private int checkMovieTotal(int i, int j){
         if(j < i){
             j = i;
@@ -117,23 +117,42 @@ public class MovieDates {
 
 //----Getters and Setters-----------------------------
 
-
+    /**
+     *
+     * @return Amount of days the circle is running
+     */
     public long getTotalRunningDays(){
         return this.totalRunningDays;
     }
 
+    /**
+     *
+     * @return Amount of days from now, until the circle closes
+     */
     public long getTotalDaysLeft(){
         return totalDaysLeft;
     }
 
+    /**
+     *
+     * @return Amount of days from now, until the movie closes for review
+     */
     public long getMovieDaysLeft(){
         return movieDaysLeft;
     }
 
+    /**
+     *
+     * @return start date as LocalDate
+     */
     public LocalDate getLocalStart(){
         return this.localStart;
     }
 
+    /**
+     *
+     * @return end date as LocalDate
+     */
     public LocalDate getLocalEnd(){
         return this.localEnd;
     }

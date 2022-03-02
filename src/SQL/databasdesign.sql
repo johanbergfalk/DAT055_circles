@@ -48,20 +48,20 @@ CREATE TABLE MovieInCircle
     circleid INT,               --Update nedan :-)
     movieid INT,
     PRIMARY KEY(circleid, movieid),
-    FOREIGN KEY (circleid) REFERENCES Circles(id),
-    FOREIGN KEY (movieid) REFERENCES Movies(id)
+    FOREIGN KEY (circleid) REFERENCES Circles(id) ON DELETE CASCADE,
+    FOREIGN KEY (movieid) REFERENCES Movies(id) ON DELETE CASCADE
 );
 
 CREATE TABLE MovieReview (
     username TEXT,
     circleid INT,
     movieid INT,
-    rating INT NOT NULL,
+    rating INT DEFAULT 0,
     comment TEXT NOT NULL,
     PRIMARY KEY (username, circleid, movieid),
-    FOREIGN KEY (username) REFERENCES Login(username),
-    FOREIGN KEY (circleid) REFERENCES Circles(id),
-    FOREIGN KEY (movieid) REFERENCES Movies(id),
+    FOREIGN KEY (username) REFERENCES Login(username) ON DELETE CASCADE,
+    FOREIGN KEY (circleid) REFERENCES Circles(id) ON DELETE CASCADE,
+    FOREIGN KEY (movieid) REFERENCES Movies(id) ON DELETE CASCADE,
     CHECK (rating >= 0 AND rating <= 10)
 );
 

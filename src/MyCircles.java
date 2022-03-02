@@ -6,12 +6,12 @@ import java.util.LinkedList;
 
 public class MyCircles {
 
-    private LinkedList<Circle> userCircles = new LinkedList<Circle>();
+    private LinkedList<Circle> userCircles = new LinkedList<>();
 
     /**
      * Creates a LinkedList with all circles a user is a member in
      *
-     * @param user the user you want all circles from
+     * @param user the user to get all Circles from
      */
     public MyCircles(User user) {
 

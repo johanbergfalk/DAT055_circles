@@ -17,7 +17,7 @@ public class Loginpanel extends JPanel implements ActionListener {
     /**
      * Constructor for the loginpanel takes the frame and handles swing design.
      * if button register is pressed user will be taken to registerpanel.
-     * @param m
+     * @param m mainframe
      */
     public Loginpanel(MainFrame m) {
         setPreferredSize(new Dimension(m.getWidth(), m.getHeight()));
@@ -111,8 +111,12 @@ public class Loginpanel extends JPanel implements ActionListener {
                         user.setDarkmode(DatabaseConn.getUserMode(user.getUsername()));
                         m.navigateTo(frame -> new LandingPagePanel(frame, user));
                     }
-                    case EMPTY_FIELDS -> JOptionPane.showMessageDialog(m, "Can't leave fields password or username blank Please try again!");
+                    case EMPTY_FIELDS -> {
+                        getToolkit().beep();
+                        JOptionPane.showMessageDialog(m, "Can't leave fields password or username blank Please try again!");
+                    }
                     case NO_SUCH_USER -> {
+                        getToolkit().beep();
                         JOptionPane.showMessageDialog(m, "Invalid Username OR password" + " " + "Please try again!");
                         username.setText("");
                         password.setText("");
