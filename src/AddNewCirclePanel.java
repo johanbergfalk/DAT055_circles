@@ -125,7 +125,7 @@ public class AddNewCirclePanel extends JPanel {
         JLabel title = new JLabel("Add movies to circle");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setForeground(Color.decode("#C6E2FF"));
-        title.setFont(new Font("Arial Black", Font.BOLD, 17));
+        title.setFont(new Font("Arial Black", Font.BOLD, 16));
         titlePanel.add(title, BorderLayout.CENTER);
         right.add(titlePanel);
 
