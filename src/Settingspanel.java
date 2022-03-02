@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * class for handling settings control function and swing design for the panel
+ *class for handling settings control function and swing design for the panel
  *@author Oscar
  *@version 2022-03-02
  */
