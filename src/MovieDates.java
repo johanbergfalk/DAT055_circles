@@ -123,7 +123,7 @@ public class MovieDates {
      * @return Amount of days the circle is running
      */
     public long getTotalRunningDays(){
-        return this.totalRunningDays;
+        return this.totalRunningDays + 1;
     }
 
     /**
@@ -131,7 +131,7 @@ public class MovieDates {
      * @return Amount of days from now, until the circle closes
      */
     public long getTotalDaysLeft(){
-        return totalDaysLeft;
+        return totalDaysLeft + 1;
     }
 
     /**
