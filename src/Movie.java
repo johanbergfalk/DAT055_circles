@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.*;
@@ -5,6 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.json.*;
+
+import javax.swing.*;
 
 public class Movie {
 
@@ -27,9 +30,15 @@ public class Movie {
         this.id = movie.getInt("id");
         this.description = movie.getString("overview");
         this.year = movie.getString("release_date");
-        String poster = movie.getString("poster_path");
-        this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
-
+        Object poster = movie.get("poster_path");
+        //the poster is null if a posterURL is not present
+        if(poster instanceof String) {
+            this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
+        }
+        //if no posterURL, set default poster
+        else {
+            this.posterURL = "https://motivatevalmorgan.com/wp-content/uploads/2016/06/default-movie-1-2-204x300.jpg";
+        }
     }
 
     //Tom konstruktor används internt i databaseconn.
@@ -131,7 +140,6 @@ public class Movie {
             return new JSONObject("empty");
         }
     }
-
 
     //------ GETTERS & SETTERS
 
