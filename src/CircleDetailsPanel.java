@@ -1,11 +1,14 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.LinkedList;
 
+/**
+ * Class for creating a new panel presenting information about a circle
+ * @author Johan Bergfalk and Robert Nilsson
+ * @version 2022-03-02
+ */
 public class CircleDetailsPanel extends JPanel {
 
     LinkedList<Movie> moviesInCircle;
@@ -13,6 +16,12 @@ public class CircleDetailsPanel extends JPanel {
     private static User user;
     private static Circle c;
 
+    /**
+     * Constructor for a new CircleDetailsPanel
+     * @param frame the active frame
+     * @param user the active user
+     * @param c the circle to display information about
+     */
     public CircleDetailsPanel(MainFrame frame, User user, Circle c) {
 
         this.frame = frame;
@@ -64,11 +73,12 @@ public class CircleDetailsPanel extends JPanel {
 
     }
 
+    //checks if the active user have created this circle
     private boolean checkCreator(Circle c, User u){
         return c.getCreator().equals(u.getUsername());
     }
 
-
+    //check if the active user is member of this circle
     private boolean checkMember(Circle c, User u){
         for(String m : c.getMembers()){
             if(m.equals(u.getUsername())){
@@ -78,6 +88,9 @@ public class CircleDetailsPanel extends JPanel {
         return false;
     }
 
+    /**
+     * Makes a new instance of CircleDetailsPanel with updated information about the circle
+     */
     public static void updateCircleDetail(){
         frame.navigateTo(k -> new CircleDetailsPanel(k, user, c));
     }
