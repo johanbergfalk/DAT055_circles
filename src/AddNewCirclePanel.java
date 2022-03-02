@@ -52,14 +52,15 @@ public class AddNewCirclePanel extends JPanel {
         left.setBorder(BorderFactory.createEmptyBorder(15,5,5,5));
         left.setLayout(new BoxLayout(left, BoxLayout.Y_AXIS));
 
+        left.add(Box.createRigidArea(new Dimension(15,20)));
 
         JLabel title = new JLabel("Create new circle");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        title.setForeground(this.getForeground());
-        title.setFont(new Font("title.getFont()", Font.PLAIN, 16));
+        title.setForeground(Color.decode("#C6E2FF"));
+        title.setFont(new Font("Arial Black", Font.BOLD, 24));
         left.add(title);
 
-        left.add(Box.createRigidArea(new Dimension(15,40)));
+        left.add(Box.createRigidArea(new Dimension(5,29)));
 
         left.setSize(new Dimension(400,100));
         JLabel nameLabel = new JLabel("Name of the circle:");
@@ -123,12 +124,12 @@ public class AddNewCirclePanel extends JPanel {
         titlePanel.setLayout(new BorderLayout());
         JLabel title = new JLabel("Add movies to circle");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        title.setForeground(this.getForeground());
-        title.setFont(new Font("title.getFont()", Font.PLAIN, 16));
+        title.setForeground(Color.decode("#C6E2FF"));
+        title.setFont(new Font("Arial Black", Font.BOLD, 17));
         titlePanel.add(title, BorderLayout.CENTER);
         right.add(titlePanel);
 
-        right.add(Box.createRigidArea(new Dimension(15,20)));
+        right.add(Box.createRigidArea(new Dimension(15,19)));
 
         JLabel searchLabel = new JLabel("Search for movie to add");
         searchLabel.setForeground(this.getForeground());
