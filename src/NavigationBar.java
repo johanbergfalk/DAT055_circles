@@ -1,13 +1,25 @@
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-
+/**
+ * Supplies possibility to move between panels
+ * @author Robert Nilsson
+ * @version 2022-03-02
+ */
 public class NavigationBar extends JPanel{
 
-
+    /**
+     *
+     * @param frame Mainframe
+     * @param user logged in user
+     * @param hide contextual button visibility.
+     *             1. Landingpage
+     *             2. BrowseCirclesPanel
+     *             3. MyCirclesPanel
+     *             4. Settings
+     *             5. CircleDetailsPanel with join button
+     *             6. CircleDetailsPanel with leave button
+     * @param c used in CircleDetailsPanel
+     */
     public NavigationBar(MainFrame frame, User user, int hide, Circle c){
 
         JButton myCircles = new JButton("My Circles");
@@ -42,9 +54,6 @@ public class NavigationBar extends JPanel{
             DatabaseConn.leaveCircle(c, user);
             frame.navigateTo(m -> new BrowseCirclesPanel(m, user));
         });
-
-
-
 
         setBackground(user.getBackgroundColor());
 
