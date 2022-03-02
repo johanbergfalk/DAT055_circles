@@ -6,7 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 
-
+/**
+ * Class that handles the methods that requires database connection. Maintains singleton state.
+ * @author Filip Svensson
+ */
 public class DatabaseConn {
     //Singleton
     private static DatabaseConn instance;
