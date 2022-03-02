@@ -75,7 +75,6 @@ public class AddNewCirclePanel extends JPanel {
         left.add(name);
 
         left.add(Box.createRigidArea(new Dimension(15,40)));
-
         JLabel startLabel = new JLabel("Start date for circle");
         startLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         startLabel.setForeground(this.getForeground());
@@ -104,6 +103,8 @@ public class AddNewCirclePanel extends JPanel {
         description.setBackground(u.getTextFieldColor());
         description.setForeground(this.getForeground());
         description.setBorder(new LineBorder(this.getForeground()));
+        description.setWrapStyleWord(true);
+        description.setLineWrap(true);
         left.add(description);
 
         left.add(Box.createRigidArea(new Dimension(15,20)));
