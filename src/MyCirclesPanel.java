@@ -8,7 +8,8 @@ import java.awt.*;
 import java.util.LinkedList;
 
 /** Creates a panel with all Circles that a user is a member or creator in
- *
+ * @author Robert Nilsson
+ * @version 2022-03-02
  */
 
 public class MyCirclesPanel extends JPanel {
@@ -17,7 +18,7 @@ public class MyCirclesPanel extends JPanel {
 
     /**
      * Creates a panel displaying all user circles
-     * @param frame mainframe
+     * @param frame the applications main JFrame
      * @param user logged in user
      */
     public MyCirclesPanel(MainFrame frame, User user){
