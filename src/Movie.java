@@ -1,14 +1,15 @@
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.*;
 import java.util.Iterator;
 import java.util.LinkedList;
-
 import org.json.*;
 
-import javax.swing.*;
-
+/**
+ * Class for constructing a new movie object
+ * @author Johan Bergfalk
+ * @version 2022-03-02
+ */
 public class Movie {
 
     private String name;
@@ -52,7 +53,7 @@ public class Movie {
     public static JSONObject createMovie(String title) {
 
         //the full JSON of movies and extra data
-        JSONObject obj = apiResult(title);
+        JSONObject obj = searchTmdb(title);
 
         //the movies found are stored as arrays under the results key
         JSONArray results = new JSONArray(obj.getJSONArray("results"));
@@ -88,7 +89,7 @@ public class Movie {
     public static LinkedList<JSONObject> movieSearch(String title) {
 
         //the full JSON of movies and extra data
-        JSONObject obj = apiResult(title);
+        JSONObject obj = searchTmdb(title);
 
         //the movies found are stored as arrays under the results key
         JSONArray results = new JSONArray(obj.getJSONArray("results"));
@@ -113,7 +114,7 @@ public class Movie {
      * @param title movie title
      * @return JSOBObject containing the all the results from the search
      */
-    public static JSONObject apiResult(String title) {
+    public static JSONObject searchTmdb(String title) {
         try {
             //converts spaces in the title with %20 for url formatting
             title = title.replaceAll("\\s+","%20");
