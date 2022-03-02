@@ -7,13 +7,24 @@ import java.awt.event.FocusListener;
 import java.net.URL;
 import java.util.LinkedList;
 
-
+/**
+ * Class for constructing a movie card panel containing movie information
+ * @author Johan Bergfalk
+ * @version 2022-03-02
+ */
 public class MovieCard extends JPanel {
     private User user;
     private Circle circle;
     private Movie movie;
     private long daysLeft;
 
+    /**
+     * Constructor for a MovieCard
+     * @param m movie
+     * @param u currently active user
+     * @param c current circle
+     * @param d days left of circle
+     */
     public MovieCard(Movie m, User u, Circle c, long d) {
         this.user = u;
         this.circle = c;
@@ -73,6 +84,7 @@ public class MovieCard extends JPanel {
 
     }
 
+    //method for creating left side of the frame
     private void createLeftPanel(JPanel left) {
         left.setPreferredSize(new Dimension(350, 150));
         left.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -268,6 +280,7 @@ public class MovieCard extends JPanel {
 
     }
 
+    //creating an empty panel on the right side
     private void createEmptyPanel(JPanel right){
         right.setPreferredSize(new Dimension(250, 150));
         right.setLayout(new BorderLayout());
@@ -278,7 +291,7 @@ public class MovieCard extends JPanel {
         contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
     }
 
-
+    //gets the poster for a Movie m and scales it properly
     private JLabel getPoster(Movie m) {
 
         try {
@@ -294,6 +307,7 @@ public class MovieCard extends JPanel {
         }
     }
 
+    //method that gets review from field and pushes it go the database
     private void submitReview(User u, Circle c, Movie m, int rating, String review) {
         if(DatabaseConn.addMovieReview(u, c, m, rating, review)) {
             JFrame f = new JFrame();
@@ -306,11 +320,13 @@ public class MovieCard extends JPanel {
         }
     }
 
+    //method that checks if a movie already is reviewed or not
     private boolean isReviewed(){
         return DatabaseConn.isReviewed(user, circle, movie);
 
     }
 
+    //method that checks if a user already is member of a circle or not
     private boolean checkMember(Circle c, User u){
         for(String m : c.getMembers()){
             if(m.equals(u.getUsername())){
