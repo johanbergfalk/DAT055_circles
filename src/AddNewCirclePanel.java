@@ -230,6 +230,7 @@ public class AddNewCirclePanel extends JPanel {
             }
         }
         else {
+            getToolkit().beep();
             JOptionPane.showMessageDialog(f, "Please fill in all the fields, enter correct date and add some movies!");
         }
 
