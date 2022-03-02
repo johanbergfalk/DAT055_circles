@@ -2,6 +2,8 @@ import java.util.Arrays;
 
 /**
  * class for handle settings logic
+ *@author Oscar
+ *@version 2022-03-02
  */
 public class Settings {
 

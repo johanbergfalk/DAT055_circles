@@ -6,6 +6,8 @@ import java.util.LinkedList;
 
 /**
  * Shows all circles available in database
+ * @author Robert Nilsson
+ * @version 2022-03-02
  */
 public class BrowseCirclesPanel extends JPanel {
 
@@ -13,7 +15,7 @@ public class BrowseCirclesPanel extends JPanel {
 
     /**
      * Creates a panel displaying all circles
-      * @param frame mainframe
+     * @param frame mainframe
      * @param user logged in user
      */
     public BrowseCirclesPanel(MainFrame frame, User user){

@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.ExecutionException;
 /**
  Class for register controller functions and swing design.
+ *@author Oscar
+ *@version 2022-03-02
 */
 
 public class Registerpanel extends JPanel implements ActionListener {

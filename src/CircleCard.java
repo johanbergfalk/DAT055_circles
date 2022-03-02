@@ -4,11 +4,23 @@ import java.awt.*;
 import java.net.URL;
 import java.util.LinkedList;
 
+/**
+ * Creates a card with all circle details to be used in
+ * BrowseCirclesPanel and MyCirclesPanel
+ * @author Robert Nilsson
+ * @version 2022-03-02
+ */
+
 public class CircleCard extends JPanel {
 
     private final Circle circle;
 
-
+    /**
+     *
+     * @param frame Mainframe
+     * @param user Logged in user
+     * @param i Circle to be displayed in card
+     */
     public CircleCard(MainFrame frame, User user, Circle i){
 
         this.circle = i;
@@ -52,6 +64,7 @@ public class CircleCard extends JPanel {
 
 //----Methods-----------------------------------------------------------
 
+    //Left side of panel with description, running-dates and score
     private void createLeft(Circle i, JPanel left){
         left.setLayout(new GridLayout(3,0));
         left.setBackground(this.getBackground());
@@ -62,8 +75,6 @@ public class CircleCard extends JPanel {
         name.setForeground(this.getForeground());
         title.add(name);
         left.add(title);
-
-
 
         //Description
         JTextArea description = new JTextArea();
@@ -114,6 +125,7 @@ public class CircleCard extends JPanel {
         }
     }
 
+    //Right side of panel with members, poster, details-button
     private void createRight(Circle i, JPanel right, MainFrame frame, User u){
         right.setLayout(new GridLayout(0,2));
         right.setBackground(this.getBackground());
@@ -171,6 +183,8 @@ public class CircleCard extends JPanel {
         right.add(membersAndButton);
 
     }
+
+    //Gives poster to supplied move
     private JLabel getPoster(Movie m) {
         try {
             URL posterUrl = new URL(m.getPosterURL());
@@ -180,20 +194,7 @@ public class CircleCard extends JPanel {
 
         } catch(Exception e)
             {
-                e.printStackTrace();
                 return new JLabel("No image");
             }
-    }
-
-    private boolean checkMember(Circle c, User u){
-        if(c.getCreator().equals(u.getUsername())){
-            return true;
-        }
-        for(String m : c.getMembers()){
-            if(m.equals(u.getUsername())){
-                return true;
-            }
-        }
-        return false;
     }
 }

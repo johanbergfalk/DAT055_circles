@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 /**
  * class for handling settings control function and swing design for the panel
+ *@author Oscar
+ *@version 2022-03-02
  */
 public class Settingspanel extends JPanel implements ActionListener {
     private MainFrame m;

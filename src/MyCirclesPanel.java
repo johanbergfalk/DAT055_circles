@@ -7,7 +7,7 @@ import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.util.LinkedList;
 
-/** Creates a panel with all Circles that a user is a member in
+/** Creates a panel with all Circles that a user is a member or creator in
  *
  */
 
