@@ -4,8 +4,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * Date to LocalDate manipulation
- * a set of functions to calculate days between dates, and also Date-to-LocalDate conversion*
+ * Date to LocalDate manipulation,
+ * a set of functions to calculate days between dates, and also Date-to-LocalDate conversion
+ * @author Robert Nilsson
+ * @version 2022-03-02
  */
 public class MovieDates {
 
@@ -15,15 +17,14 @@ public class MovieDates {
     private final LocalDate localStart;
     private final LocalDate localEnd;
 
-
     /**
      * Sets up methods for retrieving:
      * how long a circle is running, in days,
      * how long until a circle is closed, in days
      * how long until a movie in a circle is closed, in days
      *
-     * @param start startdate of moviecircle
-     * @param end enddate of movicircle
+     * @param start startdate of circle
+     * @param end enddate of circle
      * @param moviePos position of movie in the circle
      * @param totalMovies how many movies are in the circle
      */
