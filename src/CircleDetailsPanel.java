@@ -23,9 +23,7 @@ public class CircleDetailsPanel extends JPanel {
         setBackground(user.getBackgroundColor());
         Color textColor = user.getForegroundColor();
 
-        MovieDates end = new MovieDates(c.getStartTime(), c.getStartTime());
-        System.out.println(checkMember(c, user));
-
+        MovieDates end = new MovieDates(c.getStartTime(), c.getStopTime());
 
         //NavBar
         if(checkCreator(c, user)) {

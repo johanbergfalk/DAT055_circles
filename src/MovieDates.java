@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * Date to LocalDate manipulation
- * a set of functions to calculate days between dates *
+ * a set of functions to calculate days between dates, and also Date-to-LocalDate conversion*
  */
 public class MovieDates {
 
@@ -18,7 +18,17 @@ public class MovieDates {
     private final LocalDate localEnd;
 
 
-
+    /**
+     * Sets up methods for retrieving:
+     * how long a circle is running, in days,
+     * how long until a circle is closed, in days
+     * how long until a movie in a circle is closed, in days
+     *
+     * @param start startdate of moviecircle
+     * @param end enddate of movicircle
+     * @param moviePos position of movie in the circle
+     * @param totalMovies how many movies are in the circle
+     */
     public MovieDates(Date start, Date end, int moviePos, int totalMovies){
 
         int pos = checkPos(moviePos);
@@ -36,6 +46,14 @@ public class MovieDates {
 
     }
 
+    /**
+     * Sets up methods for retrieving:
+     * how long a circle is running, in days,
+     * how long until a circle is closed, in days
+     *
+     * @param start
+     * @param end
+     */
     public MovieDates(Date start, Date end){
         LocalDate s = convertToLocalDateViaInstant(start);
         LocalDate e = convertToLocalDateViaInstant(end);
@@ -98,6 +116,8 @@ public class MovieDates {
 
 
 //----Getters and Setters-----------------------------
+
+
     public long getTotalRunningDays(){
         return this.totalRunningDays;
     }
