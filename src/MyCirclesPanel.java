@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -16,6 +15,11 @@ public class MyCirclesPanel extends JPanel {
 
     private final LinkedList<Circle> userCircles;
 
+    /**
+     * Creates a panel displaying all user circles
+     * @param frame mainframe
+     * @param user logged in user
+     */
     public MyCirclesPanel(MainFrame frame, User user){
 
         MyCircles c = new MyCircles(user);
@@ -45,7 +49,7 @@ public class MyCirclesPanel extends JPanel {
 
 //----Methods-----------------------------------------------------------------------
 
-    //Creates the frame for each circle
+    //Lists all circles the user is member/creator in
     private void circles(JPanel c, MainFrame frame, User u){
 
         if(userCircles.size() > 0) {
@@ -108,7 +112,6 @@ public class MyCirclesPanel extends JPanel {
             stretcher.add(noCirclesPanel);
 
             c.add(stretcher);
-            getToolkit().beep();
         }
     }
 }

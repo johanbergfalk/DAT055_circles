@@ -2,15 +2,20 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 
+/**
+ * Shows all circles available in database
+ */
 public class BrowseCirclesPanel extends JPanel {
 
     private LinkedList<Circle> circles = new LinkedList<Circle>();
 
+    /**
+     * Creates a panel displaying all circles
+      * @param frame mainframe
+     * @param user logged in user
+     */
     public BrowseCirclesPanel(MainFrame frame, User user){
 
         this.circles = DatabaseConn.getAllCircles();
@@ -40,7 +45,7 @@ public class BrowseCirclesPanel extends JPanel {
 
 //----Methods-----------------------------------------------------------------------
 
-
+    //List all circles
     private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
         JPanel active = new JPanel();
         active.setBackground(u.getBackgroundColor());
@@ -69,14 +74,5 @@ public class BrowseCirclesPanel extends JPanel {
             }
         }
     }
-
-    /*
-    //Creates the frame for each circle
-    private void circles(JPanel c, MainFrame frame, User u, LinkedList<Circle> circles){
-        for(Circle i : circles) {
-            c.add(new CircleCard(frame, u,  i));
-        }
-    }
-     */
 }
 
