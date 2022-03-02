@@ -8,6 +8,11 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * Creates a panel to display informationen needed when creating a new circle
+ * @author Johan Bergfalk
+ * @version 2022-03-02
+ */
 public class AddNewCirclePanel extends JPanel {
 
     private JTextField name;
@@ -15,9 +20,12 @@ public class AddNewCirclePanel extends JPanel {
     private DatePicker endDate;
     private JTextArea description;
 
-
+    /**
+     * Constructor for a circle panel
+     * @param frame the active frame
+     * @param user the currently active in user
+     */
     public AddNewCirclePanel(MainFrame frame, User user) {
-
 
         setLayout(new BorderLayout());
         setBackground(user.getBackgroundColor());
@@ -47,6 +55,7 @@ public class AddNewCirclePanel extends JPanel {
 
     }
 
+    //Constructs the left panel of the frame
     private void createLeftPanel(JPanel left, User u) {
         left.setPreferredSize(new Dimension(400, 600));
         left.setBorder(BorderFactory.createEmptyBorder(15,5,5,5));
@@ -111,6 +120,7 @@ public class AddNewCirclePanel extends JPanel {
 
     }
 
+    //Constructs the right panel of the frame
     private void createRightPanel(MainFrame frame, JPanel right, User u) {
 
         right.setPreferredSize(new Dimension(400, 600));
@@ -187,12 +197,7 @@ public class AddNewCirclePanel extends JPanel {
 
     }
 
-    /**
-     * Method that creates a new circle and adds the circle to the database
-     * @param f frame
-     * @param d listbox containing chosen movies
-     * @param u active user
-     */
+    //Method that creates a new circle and adds the circle to the database
     private void addNewCircle(MainFrame f, DualListBox d, User u) {
 
         Date d1 = startDate.getSelectedDate(startDate.getDatePicker());

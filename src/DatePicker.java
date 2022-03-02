@@ -2,7 +2,6 @@ import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
-
 import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,10 +9,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
+/**
+ * Class for constructing a date picker from the jdatepicker-1.3.4.jar
+ * @author https://github.com/JDatePicker/JDatePicker and Johan Bergfalk
+ * @version 2022-03-02
+ */
 public class DatePicker {
 
     private final JDatePicker datePicker;
 
+    /**
+     * Constructor for a new DatePicker
+     */
     public DatePicker() {
 
         //UtilDateModel uses default Java Date format
