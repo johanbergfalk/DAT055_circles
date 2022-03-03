@@ -56,6 +56,11 @@ public class GradeComment {
         this.movie = movie;
     }
     /**
+     * Gets current movie
+     * @return movie
+     */
+    public Movie getMovie(){return this.movie;}
+    /**
      * Gets circle
      * @return circle
      */
