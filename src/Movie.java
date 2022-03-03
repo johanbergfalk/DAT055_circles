@@ -42,26 +42,8 @@ public class Movie {
         }
     }
 
-    //Tom konstruktor används internt i databaseconn.
+    //Empty constructor for use within databaseconn
     public Movie(){}
-
-    /**
-     * Used when creating a movie from the class constructor
-     * @param title the movie title to find in tmdb database
-     * @return a JSON object containing information about the movie
-     */
-    public static JSONObject createMovie(String title) {
-
-        //the full JSON of movies and extra data
-        JSONObject obj = searchTmdb(title);
-
-        //the movies found are stored as arrays under the results key
-        JSONArray results = new JSONArray(obj.getJSONArray("results"));
-
-        //if multiple movies are found the first one in the list is returned
-        return (JSONObject) results.get(0);
-
-    }
 
     /**
      * Search for a movie to display its title in the GUI
@@ -80,13 +62,30 @@ public class Movie {
         return movieTitles;
     }
 
+    /**
+     * Used when creating a movie from the class constructor
+     * @param title the movie title to find in tmdb database
+     * @return a JSON object containing information about the movie
+     */
+    private static JSONObject createMovie(String title) {
+
+        //the full JSON of movies and extra data
+        JSONObject obj = searchTmdb(title);
+
+        //the movies found are stored as arrays under the results key
+        JSONArray results = new JSONArray(obj.getJSONArray("results"));
+
+        //if multiple movies are found the first one in the list is returned
+        return (JSONObject) results.get(0);
+
+    }
 
     /**
      * Search for a movie in the tmdb database using API
      * @param title the movie title to find in tmdb database
      * @return a JSON object containing information about the <= 5 movies found in the database
      */
-    public static LinkedList<JSONObject> movieSearch(String title) {
+    private static LinkedList<JSONObject> movieSearch(String title) {
 
         //the full JSON of movies and extra data
         JSONObject obj = searchTmdb(title);
@@ -114,7 +113,7 @@ public class Movie {
      * @param title movie title
      * @return JSOBObject containing the all the results from the search
      */
-    public static JSONObject searchTmdb(String title) {
+    private static JSONObject searchTmdb(String title) {
         try {
             //converts spaces in the title with %20 for url formatting
             title = title.replaceAll("\\s+","%20");
