@@ -80,8 +80,11 @@ public class DatabaseConn {
             ps.setBytes(1, hash);
             ps.setBytes(2, salt);
             ps.setString(3, username);
-            ps.executeUpdate();
-            return true;
+            int result = ps.executeUpdate();
+            if(result == 1){
+                return true;
+            }
+            return false;
         } catch (SQLException se) {
             return false;
         }
@@ -98,7 +101,7 @@ public class DatabaseConn {
             ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            return rs.getBytes(1);
+            return rs.getBytes("hash");
         } catch (SQLException se){
             return null;
         }
@@ -132,7 +135,7 @@ public class DatabaseConn {
             ps.setString(1, user);
             ResultSet rs = ps.executeQuery();
             rs.next();
-            return rs.getBoolean(1);
+            return rs.getBoolean("darkmode");
         } catch (SQLException se){
             return false;
         }
@@ -149,9 +152,11 @@ public class DatabaseConn {
             PreparedStatement ps = getInstance().c.prepareStatement("UPDATE users SET darkmode = ? WHERE username = ?");
             ps.setBoolean(1, mode);
             ps.setString(2, user);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getBoolean(1);
+            int result = ps.executeUpdate();
+            if(result == 1){
+                return true;
+            }
+            return false;
         } catch (SQLException se){
             return false;
         }
@@ -478,6 +483,7 @@ public class DatabaseConn {
             rs.next();
             return rs.getInt(1);
         } catch (SQLException e){
+            e.printStackTrace();
             return -1;
         }
 
@@ -497,6 +503,7 @@ public class DatabaseConn {
             ps.execute();
             return true;
         } catch (SQLException e){
+            e.printStackTrace();
             return false;
         }
     }
@@ -515,6 +522,7 @@ public class DatabaseConn {
             ps.execute();
             return true;
         } catch (SQLException e){
+            e.printStackTrace();
             return false;
         }
     }
@@ -602,6 +610,51 @@ public class DatabaseConn {
             return null;
         }
     }
+
+
+
+
+
+
+    /*
+    FOLLOWING METHODS IS ONLY USED TO REMOVE INSERTS BY THE TESTING FILES, AND NOT
+    USED BY THE APPLICATION
+     */
+    public static void removeTestReview(User u, Circle c, Movie m) throws SQLException {
+        PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM moviereview WHERE username = ? AND circleid = ? AND movieid = ?");
+        ps.setString(1, u.getUsername());
+        ps.setInt(2, c.getId());
+        ps.setInt(3, m.getId());
+        ps.execute();
+    }
+
+    public static void removeTestUser(User u) throws SQLException {
+        String username = u.getUsername();
+        PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM Users WHERE username = ?");
+        ps.setString(1, username);
+        ps.execute();
+        ps = getInstance().c.prepareStatement("DELETE FROM Login WHERE username = ?");
+        ps.setString(1, username);
+        ps.execute();
+    }
+
+    public static void removeTestCircle(String name) throws SQLException {
+        PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM Circles WHERE name = ?");
+        ps.setString(1, name);
+        ps.execute();
+    }
+    public static void removeTestMovie(Movie m) throws SQLException {
+        PreparedStatement ps = getInstance().c.prepareStatement("DELETE FROM Movies WHERE id = ?");
+        ps.setInt(1, m.getId());
+        ps.execute();
+    }
+
 }
+
+
+
+
+
+
 
 
