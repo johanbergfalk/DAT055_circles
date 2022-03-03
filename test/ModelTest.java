@@ -4,7 +4,6 @@ import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
@@ -208,8 +207,8 @@ public class ModelTest {
     @Test
     public void totalDaysLeft(){
         try {
-            String start = "2022-03-01";
-            String end = "2022-03-10";
+            String start = LocalDate.now().toString();
+            String end = (LocalDate.now().plusDays(20).toString());
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
             Date startDate = formatter.parse(start);
@@ -220,9 +219,9 @@ public class ModelTest {
             LocalDate e = test.getLocalEnd();
 
             long running = test.getTotalDaysLeft();
-            long actual = s.until(e, ChronoUnit.DAYS);
+            //long actual = s.until(e, ChronoUnit.DAYS);
 
-            assertEquals(actual, running);
+            assertEquals(20, running);
 
         }catch(ParseException e){}
     }
@@ -246,7 +245,22 @@ public class ModelTest {
         }catch(ParseException e){}
     }
 
+    //Test internal 0 ------------------------------------
+    @Test
+    public void shouldBeTwenty(){
+        try {
+            String start = LocalDate.now().toString();
+            String end = (LocalDate.now().plusDays(20).toString());
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
+            Date startDate = formatter.parse(start);
+            Date endDate = formatter.parse(end);
 
+            MovieDates test = new MovieDates(startDate, endDate, 0, 0);
+            long running = test.getMovieDaysLeft();
 
+            assertEquals(20, running);
+
+        }catch(ParseException e){}
+    }
 }
