@@ -1,15 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
 
+/**
+ * Creates a user that can create and join circles.
+ * @author Robert Nilsson
+ * @version 2022-03-03
+ */
 public class User{
 
-    private String username;
-    private LinkedList<Integer> circles;
+    private final String username;
     private boolean darkMode = false;
 
     /**
-     * Create a new User
+     * Create a new User.
+     *
      * @param username Enter username
      */
     public User(String username){
@@ -18,12 +22,6 @@ public class User{
 
 //----Getters and setters------------------------------------------
     public String getUsername(){ return this.username; }
-
-    public LinkedList<Integer> getCircles(){ return this.circles; }
-
-    public void setCircles(Integer circle){
-        this.circles.add(circle);
-    }
 
     public boolean getDarkMode(){
         return this.darkMode;

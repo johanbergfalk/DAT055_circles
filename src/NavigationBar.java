@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 /**
- * Supplies possibility to move between panels
+ * Supplies possibility to move between panels.
  * @author Robert Nilsson
  * @version 2022-03-02
  */
@@ -9,7 +9,7 @@ public class NavigationBar extends JPanel{
 
     /**
      *
-     * @param frame Mainframe
+     * @param frame the applications main JFrame
      * @param user logged in user
      * @param hide contextual button visibility.
      *             1. Landingpage

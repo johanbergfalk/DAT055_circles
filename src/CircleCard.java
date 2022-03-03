@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 /**
  * Creates a card with all circle details to be used in
- * BrowseCirclesPanel and MyCirclesPanel
+ * BrowseCirclesPanel and MyCirclesPanel.
  * @author Robert Nilsson
  * @version 2022-03-02
  */
@@ -17,7 +17,7 @@ public class CircleCard extends JPanel {
 
     /**
      *
-     * @param frame Mainframe
+     * @param frame the applications main JFrame
      * @param user Logged in user
      * @param i Circle to be displayed in card
      */

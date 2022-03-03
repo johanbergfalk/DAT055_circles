@@ -17,7 +17,6 @@ public class Movie {
     private String description;
     private String year;
     private String posterURL;
-    private BufferedImage poster;
 
     /**
      * Constructor for a movie, sets name, id, description, year, poster based on title
@@ -164,8 +163,5 @@ public class Movie {
 
     public void setPosterURL(String posterURL) { this.posterURL = posterURL; }
 
-    public BufferedImage getPoster() { return poster; }
-
-    public void setPoster(BufferedImage poster) { this.poster = poster; }
 
 }

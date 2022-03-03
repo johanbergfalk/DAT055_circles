@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.LinkedList;
 
 /**
- * Class for creating a new panel presenting information about a circle
+ * Class for creating a new panel presenting information about a circle.
  * @author Johan Bergfalk and Robert Nilsson
  * @version 2022-03-02
  */
@@ -17,8 +17,8 @@ public class CircleDetailsPanel extends JPanel {
     private static Circle c;
 
     /**
-     * Constructor for a new CircleDetailsPanel
-     * @param frame the active frame
+     * Constructor for a new CircleDetailsPanel.
+     * @param frame the applications main JFrame
      * @param user the active user
      * @param c the circle to display information about
      */
@@ -89,7 +89,7 @@ public class CircleDetailsPanel extends JPanel {
     }
 
     /**
-     * Makes a new instance of CircleDetailsPanel with updated information about the circle
+     * Makes a new instance of CircleDetailsPanel with updated information about the circle.
      */
     public static void updateCircleDetail(){
         frame.navigateTo(k -> new CircleDetailsPanel(k, user, c));

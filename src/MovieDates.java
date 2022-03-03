@@ -4,8 +4,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * Date to LocalDate manipulation,
- * a set of functions to calculate days between dates, and also Date-to-LocalDate conversion
+ * Date to LocalDate manipulation.
+ * A set of functions to calculate days between dates, and also Date-to-LocalDate conversion.
  * @author Robert Nilsson
  * @version 2022-03-02
  */
