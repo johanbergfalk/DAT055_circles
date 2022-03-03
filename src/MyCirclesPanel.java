@@ -7,7 +7,7 @@ import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.util.LinkedList;
 
-/** Creates a panel with all Circles that a user is a member or creator in
+/** Creates a panel with all Circles that a user is a member or creator in.
  * @author Robert Nilsson
  * @version 2022-03-02
  */
@@ -17,7 +17,7 @@ public class MyCirclesPanel extends JPanel {
     private final LinkedList<Circle> userCircles;
 
     /**
-     * Creates a panel displaying all user circles
+     * Creates a panel displaying all user circles.
      * @param frame the applications main JFrame
      * @param user logged in user
      */

@@ -2,7 +2,7 @@ import java.util.Date;
 import java.util.LinkedList;
 
 /**
- * Stores all content of a circle
+ * Stores all content of a circle.
  * @author Robert Nilsson
  * @version 2022-03-02
  */
@@ -18,14 +18,14 @@ public class Circle {
     private float score = 0;
 
     /**
-     * Empty constructor used in DatabaseConn
+     * Empty constructor used in DatabaseConn.
      */
     public Circle(){
 
     }
 
     /**
-     * Constructor for Circle
+     * Constructor for Circle.
      * @param name Circle name
      * @param creator Creator of circle
      * @param description Description of circle content

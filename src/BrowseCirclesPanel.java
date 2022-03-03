@@ -5,7 +5,7 @@ import java.awt.*;
 import java.util.LinkedList;
 
 /**
- * Panel displaying all circles available in the database
+ * Panel displaying all circles available in the database.
  * @author Robert Nilsson
  * @version 2022-03-02
  */
@@ -14,7 +14,7 @@ public class BrowseCirclesPanel extends JPanel {
     private LinkedList<Circle> circles = new LinkedList<Circle>();
 
     /**
-     * Creates a panel displaying all circles as circle cards
+     * Creates a panel displaying all circles as circle cards.
      * @param frame the applications main JFrame
      * @param user logged in user
      */
