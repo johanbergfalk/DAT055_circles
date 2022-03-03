@@ -23,13 +23,13 @@ class DatabaseConnTest {
 
     @Test
     void updateUserpass() {
-            char[] password = {1,2,3};
-            byte[] salt = Passwords.getNextSalt();
-            byte[] hash = Passwords.hash(password, salt);
-            boolean result = DatabaseConn.updateUserpass("Filip", hash, salt);
-            assertTrue(result);
-            result = DatabaseConn.updateUserpass("THIS_USER_DOESNT_EXIST", hash, salt);
-            assertFalse(result);
+        char[] password = {1, 2, 3};
+        byte[] salt = Passwords.getNextSalt();
+        byte[] hash = Passwords.hash(password, salt);
+        boolean result = DatabaseConn.updateUserpass("Filip", hash, salt);
+        assertTrue(result);
+        result = DatabaseConn.updateUserpass("THIS_USER_DOESNT_EXIST", hash, salt);
+        assertFalse(result);
     }
 
     @Test
@@ -105,7 +105,7 @@ class DatabaseConnTest {
         result = DatabaseConn.isReviewed(user, circle, movie);
         assertTrue(result);
 
-        result = DatabaseConn.addMovieReview(user, circle, movie,5,  "TEST");
+        result = DatabaseConn.addMovieReview(user, circle, movie, 5, "TEST");
         assertFalse(result);
 
         DatabaseConn.removeTestReview(user, circle, movie);
@@ -113,9 +113,8 @@ class DatabaseConnTest {
     }
 
 
-
     @Test
-    void getUserCircles() throws SQLException {
+    void CirclesAndMoviesTest() throws SQLException {
         LinkedList<Circle> resultCircleList = DatabaseConn.getUserCircles("Filip");
         assertNotNull(resultCircleList);
 
@@ -130,7 +129,6 @@ class DatabaseConnTest {
         LinkedList<String> tempMembers = new LinkedList<>();
         tempMembers.add("Filip");
         tempCircle.setMembers(tempMembers);
-
 
 
         int resultInt;
@@ -172,44 +170,5 @@ class DatabaseConnTest {
         DatabaseConn.removeTestCircle("test_circle_to_be_removed");
 
     }
-
-    @Test
-    void getAllCircles() {
-    }
-
-    @Test
-    void getCircleMovies() {
-    }
-
-    @Test
-    void addCircle() {
-    }
-
-    @Test
-    void getCircleID() {
-    }
-
-    @Test
-    void addMovieCircle() {
-    }
-
-    @Test
-    void joinCircle() {
-    }
-
-    @Test
-    void leaveCircle() {
-    }
-
-    @Test
-    void addMovie() {
-    }
-
-    @Test
-    void getMovie() {
-    }
-
-    @Test
-    void getFirstMovie() {
-    }
 }
+
