@@ -5,6 +5,11 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Testing for GradeComment class
+ * @author Oscar Larsson
+ * @version 2022-03-03
+ */
 class GradeCommentTest {
     User u = new User("TestingUser");
     MyCircles c = new MyCircles(u);

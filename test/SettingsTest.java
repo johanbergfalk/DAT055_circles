@@ -4,6 +4,11 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Testing for Settings class
+ * @author Oscar Larsson
+ * @version 2022-03-03
+ */
 class SettingsTest {
 
     @Test

@@ -8,6 +8,12 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * Testing for DatabaseConn class
+ * @author Filip Svensson
+ * @version 2022-03-03
+ */
 class DatabaseConnTest {
 
     @Test
