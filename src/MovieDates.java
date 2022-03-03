@@ -74,12 +74,13 @@ public class MovieDates {
                 .toLocalDate();
     }
 
+    /*CURRENTLY NOT USED
     //Converter LocalDate -> Date
     private Date convertToDateViaInstant(LocalDate d) {
         return java.util.Date.from(d.atStartOfDay()
                 .atZone(ZoneId.systemDefault())
                 .toInstant());
-    }
+    }*/
 
     //Returns total days between two dates
     private long countTotalDays(LocalDate s, LocalDate e){
@@ -131,7 +132,7 @@ public class MovieDates {
      * @return Amount of days from now, until the circle closes
      */
     public long getTotalDaysLeft(){
-        return totalDaysLeft + 1;
+        return totalDaysLeft;
     }
 
     /**
