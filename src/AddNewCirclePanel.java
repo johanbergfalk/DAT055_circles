@@ -161,9 +161,11 @@ public class AddNewCirclePanel extends JPanel {
         //search.addActionListener(e -> { dual.addSourceElements(new String[] { Movie.searchForMovieToAdd(searchMovie.getText()) }); });
 
         search.addActionListener(e -> {
-            dual.clearSourceListModel();
-            for (String s : Movie.searchForMovies(searchMovie.getText())) {
-                dual.addSourceElements(new String[]{s});
+            if(!searchMovie.getText().isEmpty()) {
+                dual.clearSourceListModel();
+                for (String s : Movie.searchForMovies(searchMovie.getText())) {
+                    dual.addSourceElements(new String[]{s});
+                }
             }
         });
 
@@ -180,14 +182,12 @@ public class AddNewCirclePanel extends JPanel {
         buttonPanel.setBackground(this.getBackground());
 
         JButton createCirlceButton = new JButton("Create circle");
-        createCirlceButton.addActionListener(e -> { addNewCircle(frame, dual, u);});
+        createCirlceButton.addActionListener(e -> addNewCircle(frame, dual, u));
         buttonPanel.add(createCirlceButton);
 
         JButton abort = new JButton("Abort");
         abort.addActionListener(event -> {
-            Thread browse = new Thread (() -> {
-                frame.navigateTo(m -> new BrowseCirclesPanel(m, u));
-            });
+            Thread browse = new Thread (() -> frame.navigateTo(m -> new BrowseCirclesPanel(m, u)));
             frame.navigateTo(m -> new LoadingScreenPanel(u));
             browse.start();
         });
@@ -225,9 +225,7 @@ public class AddNewCirclePanel extends JPanel {
                         DatabaseConn.addMovieCircle(c, m);
                     }
                     JOptionPane.showMessageDialog(f, "Circle " + c.getName() + " created!");
-                    Thread browse = new Thread(() -> {
-                        f.navigateTo(m -> new BrowseCirclesPanel(m, u));
-                    });
+                    Thread browse = new Thread(() -> f.navigateTo(m -> new BrowseCirclesPanel(m, u)));
                     f.navigateTo(m -> new LoadingScreenPanel(u));
                     browse.start();
                 }
