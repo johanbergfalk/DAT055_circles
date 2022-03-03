@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.ExecutionException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ModelTest {
+public class LoginTest {
 
 //----Login ----------------------------------------------------------------
     @Test
