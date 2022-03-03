@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -94,5 +95,15 @@ class UserTest {
         Color result = u.getTextFieldColor();
 
         assertEquals(white, result);
+    }
+    @Test
+    public void testDarkModeAndName(){
+        User u = new User("TestingUser");
+        u.setDarkmode(true);
+        assertTrue(u.getDarkMode());
+        u.setDarkmode(false);
+        assertFalse(u.getDarkMode());
+        assertEquals("TestingUser", u.getUsername());
+
     }
 }

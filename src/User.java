@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
 
 /**
  * Creates a user that can create and join circles.
@@ -9,8 +8,7 @@ import java.util.LinkedList;
  */
 public class User{
 
-    private String username;
-    private LinkedList<Integer> circles;
+    private final String username;
     private boolean darkMode = false;
 
     /**
@@ -24,12 +22,6 @@ public class User{
 
 //----Getters and setters------------------------------------------
     public String getUsername(){ return this.username; }
-
-    public LinkedList<Integer> getCircles(){ return this.circles; }
-
-    public void setCircles(Integer circle){
-        this.circles.add(circle);
-    }
 
     public boolean getDarkMode(){
         return this.darkMode;
