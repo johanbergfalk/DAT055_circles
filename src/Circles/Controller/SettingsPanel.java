@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  *@author Oscar
  *@version 2022-03-02
  */
-public class Settingspanel extends JPanel implements ActionListener {
+public class SettingsPanel extends JPanel implements ActionListener {
     private MainFrame m;
     private User u;
     Settings s;
@@ -26,7 +26,7 @@ public class Settingspanel extends JPanel implements ActionListener {
      * @param m current Jframe
      * @param u user object
      */
-    public Settingspanel(MainFrame m, User u) {
+    public SettingsPanel(MainFrame m, User u) {
         this.m = m;
         this.u = u;
         draw(u, m);

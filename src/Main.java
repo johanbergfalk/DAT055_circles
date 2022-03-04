@@ -1,4 +1,4 @@
-import Circles.Controller.Loginpanel;
+import Circles.Controller.LoginPanel;
 import Circles.Controller.MainFrame;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ public class Main {
         m.setLocation(100,100);
         m.setIconImage(new ImageIcon("src/framelogo.png").getImage());
         m.setDefaultCloseOperation(m.EXIT_ON_CLOSE);
-        m.setContentPane(new Loginpanel(m));
+        m.setContentPane(new LoginPanel(m));
         m.setVisible(true);
     }
 }

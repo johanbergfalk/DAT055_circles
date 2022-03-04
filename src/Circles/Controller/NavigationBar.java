@@ -47,9 +47,9 @@ public class NavigationBar extends JPanel{
         JButton createCircle = new JButton("Create new Circle");
         createCircle.addActionListener(event -> frame.navigateTo(m -> new AddNewCirclePanel(m, user)));
         JButton settings = new JButton("Settings");
-        settings.addActionListener(event -> frame.navigateTo(m -> new Settingspanel(m, user)));
+        settings.addActionListener(event -> frame.navigateTo(m -> new SettingsPanel(m, user)));
         JButton logOut = new JButton("Logout");
-        logOut.addActionListener(event -> frame.navigateTo(Loginpanel :: new));
+        logOut.addActionListener(event -> frame.navigateTo(LoginPanel:: new));
         JButton join = new JButton("Join Circle");
         join.addActionListener(e -> {
             DatabaseConn.joinCircle(c, user);
