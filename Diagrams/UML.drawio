@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-03-04T13:17:07.138Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" etag="emcMt7n24L3bv9H4ryjV" version="16.6.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-04T13:21:19.731Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" etag="uBLEIaxSZS4WjsrmLEf6" version="16.6.5" type="github">
   <diagram id="czeYtxCxRM8ObdpQRXwS" name="Page-1">
-    <mxGraphModel dx="2370" dy="1270" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="50000" pageHeight="50000" math="0" shadow="0">
+    <mxGraphModel dx="1896" dy="1016" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="50000" pageHeight="50000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -23,16 +23,13 @@
           <mxGeometry y="34" width="240" height="256" as="geometry" />
         </mxCell>
         <mxCell id="egLKUnMWFmZdAxHy4EYi-1" value="MyCircles" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="1600" y="590" width="220" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="egLKUnMWFmZdAxHy4EYi-2" value="- userCircles: LinkedList&lt;Circle&gt; &#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="egLKUnMWFmZdAxHy4EYi-1" vertex="1">
-          <mxGeometry y="26" width="220" height="34" as="geometry" />
+          <mxGeometry x="1600" y="590" width="220" height="140" as="geometry" />
         </mxCell>
         <mxCell id="egLKUnMWFmZdAxHy4EYi-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="egLKUnMWFmZdAxHy4EYi-1" vertex="1">
-          <mxGeometry y="60" width="220" height="20" as="geometry" />
+          <mxGeometry y="26" width="220" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="egLKUnMWFmZdAxHy4EYi-4" value="+ getUserCircles(): LinkedList&lt;Circle&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="egLKUnMWFmZdAxHy4EYi-1" vertex="1">
-          <mxGeometry y="80" width="220" height="50" as="geometry" />
+        <mxCell id="egLKUnMWFmZdAxHy4EYi-4" value="+ getUserCircles(): LinkedList&lt;Circle&gt;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="egLKUnMWFmZdAxHy4EYi-1" vertex="1">
+          <mxGeometry y="46" width="220" height="94" as="geometry" />
         </mxCell>
         <mxCell id="8Do-b4mo3wIUdCFwqy2j-4" value="Movie" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="990" y="910" width="350" height="230" as="geometry" />
@@ -183,6 +180,24 @@
         </mxCell>
         <mxCell id="mYwMVlBa1_E45KKttTIE-17" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="mYwMVlBa1_E45KKttTIE-16">
           <mxGeometry y="26" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="mYwMVlBa1_E45KKttTIE-23" value="MovieDates" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="230" width="350" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mYwMVlBa1_E45KKttTIE-25" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="mYwMVlBa1_E45KKttTIE-23">
+          <mxGeometry y="26" width="350" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mYwMVlBa1_E45KKttTIE-26" value="+getTotalRuningDays():long&#xa;+getTotalDaysLeft():long&#xa;+getMovieDaysLeft():long&#xa;+getLocalStart():LocalDate&#xa;+getLocalEnd():LocalDate&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="mYwMVlBa1_E45KKttTIE-23">
+          <mxGeometry y="46" width="350" height="194" as="geometry" />
+        </mxCell>
+        <mxCell id="mYwMVlBa1_E45KKttTIE-27" value="Passwords" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="2150" y="200" width="350" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="mYwMVlBa1_E45KKttTIE-28" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="mYwMVlBa1_E45KKttTIE-27">
+          <mxGeometry y="26" width="350" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mYwMVlBa1_E45KKttTIE-29" value="+hash(char[],byte[]):byte[]&#xa;+isExpectedPassword(char[],byte[],byte[]):boolean&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="mYwMVlBa1_E45KKttTIE-27">
+          <mxGeometry y="46" width="350" height="44" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
