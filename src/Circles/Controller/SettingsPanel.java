@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 public class SettingsPanel extends JPanel implements ActionListener {
     private MainFrame m;
     private User u;
-    Settings s;
+    private Settings s;
 
     /**
      * Constructor which sets the instance variables and will call on private func draw for the swingdesign of the settingspanel.
