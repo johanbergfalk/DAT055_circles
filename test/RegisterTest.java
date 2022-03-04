@@ -4,7 +4,11 @@ import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Testing for Register class
+ * @author Oscar Larsson
+ * @version 2022-03-04
+ */
 class RegisterTest {
     char[] password = {4,5,6};
     char[] password2 = {4,5,6};
