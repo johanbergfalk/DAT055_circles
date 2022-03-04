@@ -19,16 +19,12 @@ public class User{
     public User(String username){
         this.username = username;
     }
-
 //----Getters and setters------------------------------------------
     public String getUsername(){ return this.username; }
-
     public boolean getDarkMode(){
         return this.darkMode;
     }
-
     public void setDarkmode(boolean darkmode){ this.darkMode = darkmode; }
-
 
     public Color getForegroundColor() {
         if (darkMode) {
