@@ -8,7 +8,7 @@ import org.json.*;
 /**
  * Class for constructing a new movie object
  * @author Johan Bergfalk
- * @version 2022-03-02
+ * @version 2022-03-04
  */
 public class Movie {
 
@@ -31,7 +31,7 @@ public class Movie {
         this.description = movie.getString("overview");
         this.year = movie.getString("release_date");
         Object poster = movie.get("poster_path");
-        //the poster is null if a posterURL is not present
+        //the poster is null if a posterURL is not available
         if(poster instanceof String) {
             this.posterURL = "https://image.tmdb.org/t/p/original" + poster;
         }
@@ -41,7 +41,7 @@ public class Movie {
         }
     }
 
-    //Tom konstruktor används internt i databaseconn.
+    //Empty constructor used internally in DatabaseConn
     public Movie(){}
 
     /**
@@ -69,9 +69,12 @@ public class Movie {
      */
     public static LinkedList<String> searchForMovies(String title) {
 
+        //gets the movie titles
         LinkedList<JSONObject> movies = movieSearch(title);
+
         LinkedList<String> movieTitles = new LinkedList<>();
 
+        //saves the movie titles into the new linkedlist
         for (JSONObject obj : movies) {
             movieTitles.add(obj.getString("original_title"));
         }
@@ -79,13 +82,8 @@ public class Movie {
         return movieTitles;
     }
 
-
-    /**
-     * Search for a movie in the tmdb database using API
-     * @param title the movie title to find in tmdb database
-     * @return a JSON object containing information about the <= 5 movies found in the database
-     */
-    public static LinkedList<JSONObject> movieSearch(String title) {
+    // Search for a movie in Tmdb database using API
+    private static LinkedList<JSONObject> movieSearch(String title) {
 
         //the full JSON of movies and extra data
         JSONObject obj = searchTmdb(title);
@@ -93,11 +91,13 @@ public class Movie {
         //the movies found are stored as arrays under the results key
         JSONArray results = new JSONArray(obj.getJSONArray("results"));
 
-        int itCount = 0;
+        //iterator and linkedlist to store each JSONObject in a linkedlist
         Iterator<Object> resultsIterator = results.iterator();
         LinkedList<JSONObject> resultSet = new LinkedList<>();
 
-        //gets the first five or less results from the resultset
+        //used to keep track of number of iterations
+        int itCount = 0;
+        //gets the first five or less results from the results
         while(resultsIterator.hasNext() && itCount < 5) {
             resultSet.add((JSONObject) resultsIterator.next());
             itCount++;
@@ -162,6 +162,5 @@ public class Movie {
     public String getPosterURL() { return posterURL; }
 
     public void setPosterURL(String posterURL) { this.posterURL = posterURL; }
-
 
 }
