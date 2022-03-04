@@ -121,6 +121,10 @@ class DatabaseConnTest {
 
     @Test
     void CirclesAndMoviesTest() throws SQLException {
+
+        DatabaseConn.removeTestCircle("test_circle_to_be_removed");
+
+
         LinkedList<Circle> resultCircleList = DatabaseConn.getUserCircles("Filip");
         assertNotNull(resultCircleList);
 
