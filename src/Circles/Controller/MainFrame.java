@@ -1,5 +1,11 @@
 package Circles.Controller;
 
+/**
+ * Application mainframe
+ * @author Oscar Larsson
+ * @version 2022-03-01
+ */
+
 import javax.swing.*;
 import java.util.function.Function;
 
