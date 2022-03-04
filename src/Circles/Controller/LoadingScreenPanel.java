@@ -1,4 +1,10 @@
 package Circles.Controller;
+/**
+ * Controller class for displaying a loading screen with a moving progressbar.
+ * Used in between movement between 'MyCircles' and 'BrowseCircles'.
+ * Offers better UX.
+ * @author Filip Svensson
+ */
 
 import Circles.Model.User;
 
