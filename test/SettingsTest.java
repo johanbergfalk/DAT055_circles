@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Testing for Settings class
- * @author Oscar Larsson
+ * @author Filip Svensson
  * @version 2022-03-03
  */
 class SettingsTest {
