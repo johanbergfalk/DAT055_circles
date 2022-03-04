@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Class for constructing a panel containing to lists and buttons to interchange items between the lists
- * @author http://www.java2s.com/Tutorial/Java/0240__Swing/DualListBoxSample.html, javadoc by Johan Bergfalk
+ * @author http://www.java2s.com/Tutorial/Java/0240__Swing/DualListBoxSample.htm, javadoc by Johan Bergfalk
  * @version 2022-03-02
  */
 
