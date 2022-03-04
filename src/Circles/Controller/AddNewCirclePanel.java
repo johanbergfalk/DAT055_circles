@@ -1,3 +1,9 @@
+package Circles.Controller;
+
+import Circles.Model.Circle;
+import Circles.Model.DatabaseConn;
+import Circles.Model.Movie;
+import Circles.Model.User;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -6,7 +12,6 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 /**
  * Creates a panel to display informationen needed when creating a new circle
@@ -158,7 +163,7 @@ public class AddNewCirclePanel extends JPanel {
 
         JButton search = new JButton("Search");
         search.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //search.addActionListener(e -> { dual.addSourceElements(new String[] { Movie.searchForMovieToAdd(searchMovie.getText()) }); });
+        //search.addActionListener(e -> { dual.addSourceElements(new String[] { Circles.Controller.Model.Movie.searchForMovieToAdd(searchMovie.getText()) }); });
 
         search.addActionListener(e -> {
             if(!searchMovie.getText().isEmpty()) {
@@ -237,7 +242,5 @@ public class AddNewCirclePanel extends JPanel {
             getToolkit().beep();
             JOptionPane.showMessageDialog(f, "Please fill in all the fields, enter correct date and add some movies!");
         }
-
     }
-
 }

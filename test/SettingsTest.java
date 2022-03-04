@@ -1,3 +1,7 @@
+import Circles.Model.DatabaseConn;
+import Circles.Model.Passwords;
+import Circles.Model.Settings;
+import Circles.Model.User;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -5,7 +9,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Testing for Settings class
+ * Testing for Circles.Controller.Model.Settings class
  * @author Filip Svensson
  * @version 2022-03-03
  */

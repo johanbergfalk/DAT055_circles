@@ -1,3 +1,7 @@
+package Circles.Controller;
+
+import Circles.Model.Register;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -81,7 +85,7 @@ public class Registerpanel extends JPanel implements ActionListener {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(3, 1, 1, 10));
         buttonPanel.setBackground(Color.WHITE);
-        JButton loginButton = new JButton("Login");
+        JButton loginButton = new JButton("Abort");
         loginButton.addActionListener(event -> m.navigateTo(Loginpanel::new));
         JButton registerButton = new JButton("Register");
         registerButton.addActionListener(this);

@@ -1,3 +1,5 @@
+package Circles.Model;
+
 import java.util.Date;
 import java.util.LinkedList;
 

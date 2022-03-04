@@ -1,3 +1,4 @@
+package Circles.Model;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -432,7 +433,7 @@ public class DatabaseConn {
     }
     /**
      * Adds a new circle to the database.
-     * @param c Circle to be added
+     * @param c Circles.Controller.Model.Circle to be added
      * @return Returns (1,0,-1) for (success, already exists, wrong input)
      */
     public static int addCircle(Circle c){

@@ -1,20 +1,10 @@
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+package Circles.Controller;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import javax.swing.AbstractListModel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListModel;
+import java.util.*;
 
 /**
  * Class for constructing a panel containing to lists and buttons to interchange items between the lists

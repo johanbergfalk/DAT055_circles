@@ -1,3 +1,5 @@
+package Circles.Model;
+
 import java.util.Arrays;
 
 /**
@@ -12,7 +14,7 @@ public class Settings {
     private final char[] newotherpass;
     private final String username;
 
-    enum Result{
+    public enum Result{
         OK,
         EMPTY_FIELDS,
         CANT_UPDATE,

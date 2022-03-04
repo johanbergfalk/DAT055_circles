@@ -1,3 +1,9 @@
+package Circles.Controller;
+
+import Circles.Model.Circle;
+import Circles.Model.DatabaseConn;
+import Circles.Model.User;
+
 import javax.swing.*;
 
 /**
@@ -65,23 +71,23 @@ public class NavigationBar extends JPanel{
                     add(settings);
                     add(logOut);
                     break;
-            //BrowseCirclesPanel
+            //Circles.Controller.BrowseCirclesPanel
             case 2: add(myCircles);
                     add(createCircle);
                     add(settings);
                     add(logOut);
                     break;
-            //MyCirclesPanel
+            //Circles.Controller.MyCirclesPanel
             case 3: add(browseCircles);
                     add(settings);
                     add(logOut);
                     break;
-            //Settings
+            //Circles.Controller.Model.Settings
             case 4: add(myCircles);
                     add(browseCircles);
                     add(logOut);
                     break;
-            //CircleDetailsPanel with join button
+            //Circles.Controller.CircleDetailsPanel with join button
             case 5: add(myCircles);
                     add(browseCircles);
                     add(join);

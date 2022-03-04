@@ -1,3 +1,6 @@
+package Circles.Controller;
+
+import Circles.Model.*;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -291,7 +294,7 @@ public class MovieCard extends JPanel {
         contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
     }
 
-    //gets the poster for a Movie m and scales it properly
+    //gets the poster for a Circles.Controller.Model.Movie m and scales it properly
     private JLabel getPoster(Movie m) {
 
         try {

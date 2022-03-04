@@ -1,3 +1,10 @@
+package Circles.Controller;
+
+import Circles.Model.Circle;
+import Circles.Model.MovieDates;
+import Circles.Model.MyCircles;
+import Circles.Model.User;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;

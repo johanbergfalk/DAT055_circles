@@ -1,9 +1,15 @@
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.net.*;
+package Circles.Model;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
-import org.json.*;
 
 /**
  * Class for constructing a new movie object
@@ -41,7 +47,7 @@ public class Movie {
         }
     }
 
-    //Empty constructor used internally in DatabaseConn
+    //Empty constructor used internally in Circles.Controller.Model.DatabaseConn
     public Movie(){}
 
     /**

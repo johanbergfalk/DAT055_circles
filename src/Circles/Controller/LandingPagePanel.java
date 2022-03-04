@@ -1,10 +1,11 @@
-import javax.imageio.ImageIO;
+package Circles.Controller;
+
+import Circles.Model.Circle;
+import Circles.Model.User;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class LandingPagePanel extends JPanel {
 

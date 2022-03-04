@@ -1,7 +1,6 @@
+import Circles.Model.*;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.crypto.Data;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.LinkedList;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * Testing for DatabaseConn class
+ * Testing for Circles.Controller.Model.DatabaseConn class
  * @author Filip Svensson
  * @version 2022-03-03
  */

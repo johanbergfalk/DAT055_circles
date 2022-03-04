@@ -1,10 +1,13 @@
+import Circles.Model.Circle;
+import Circles.Model.MyCircles;
+import Circles.Model.User;
 import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Internal tests of class Circle
+ * Internal tests of class Circles.Controller.Model.Circle
  * @author Robert Nilsson
  * @version 2022-03-03
  */

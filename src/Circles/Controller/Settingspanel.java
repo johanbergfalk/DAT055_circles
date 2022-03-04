@@ -1,3 +1,10 @@
+package Circles.Controller;
+
+import Circles.Model.Circle;
+import Circles.Model.DatabaseConn;
+import Circles.Model.Settings;
+import Circles.Model.User;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;

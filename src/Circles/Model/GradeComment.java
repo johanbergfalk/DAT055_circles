@@ -1,3 +1,5 @@
+package Circles.Model;
+
 /**
  * @author oscar
  * @version 2022-03-02

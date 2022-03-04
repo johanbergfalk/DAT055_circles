@@ -1,3 +1,5 @@
+package Circles.Model;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
@@ -11,7 +13,7 @@ private char[] password;
 private String username;
 private byte[] getsalt;
 private byte[] gethash;
-    enum Result{
+   public enum Result{
         OK,
         EMPTY_FIELDS,
         NO_SUCH_USER,

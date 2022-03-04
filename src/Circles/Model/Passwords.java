@@ -1,4 +1,4 @@
-/**
+package Circles.Model; /**
 
     This class is taken from here https://stackoverflow.com/questions/18142745/how-do-i-generate-a-salt-in-java-for-salted-hash
     @author assylias

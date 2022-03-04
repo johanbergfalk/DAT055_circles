@@ -1,14 +1,14 @@
+import Circles.Model.Movie;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 
 /**
- * Testing for Movie class
+ * Testing for Circles.Controller.Model.Movie class
  * @author Johan Bergfalk
  * @version 2022-03-03
  */

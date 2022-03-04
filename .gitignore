@@ -6,14 +6,14 @@
 .DS_Store
 .DS_Store?
 
-# User-specific stuff
+# Circles.Controller.Model.User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
 
-# AWS User-specific
+# AWS Circles.Controller.Model.User-specific
 .idea/**/aws.xml
 
 # Generated files

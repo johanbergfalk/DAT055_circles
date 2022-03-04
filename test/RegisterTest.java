@@ -1,3 +1,6 @@
+import Circles.Model.DatabaseConn;
+import Circles.Model.Register;
+import Circles.Model.User;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -5,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
- * Testing for Register class
+ * Testing for Circles.Controller.Model.Register class
  * @author Oscar Larsson
  * @version 2022-03-04
  */

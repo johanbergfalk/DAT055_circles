@@ -1,3 +1,8 @@
+package Circles.Controller;
+import Circles.Model.DatabaseConn;
+import Circles.Model.Login;
+import Circles.Model.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,3 +1,7 @@
+package Circles.Controller;
+
+import Circles.Model.User;
+
 import javax.swing.*;
 import java.awt.*;
 

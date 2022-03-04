@@ -1,10 +1,13 @@
+import Circles.Model.Circle;
+import Circles.Model.MyCircles;
+import Circles.Model.User;
 import org.junit.jupiter.api.Test;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Internal tests of class MyCircles
+ * Internal tests of class Circles.Controller.Model.MyCircles
  * @author Robert Nilsson
  * @version 2022-03-03
  */
@@ -22,7 +25,7 @@ class MyCirclesTest {
     @Test
     public void twoCirclesOnUser(){
         //Uses login: TestingUser, Pass: q
-        //User is member in 2 circles
+        //Circles.Controller.Model.User is member in 2 circles
 
         MyCircles circles = new MyCircles(new User("TestingUser"));
         LinkedList<Circle> shouldBeTwoCircles = circles.getUserCircles();
@@ -35,7 +38,7 @@ class MyCirclesTest {
     @Test
     public void correctFirstCirle(){
         //Uses login: TestingUser, Pass: q
-        //User is member in 2 circles
+        //Circles.Controller.Model.User is member in 2 circles
 
         MyCircles circles = new MyCircles(new User("TestingUser"));
         LinkedList<Circle> firstCircle = circles.getUserCircles();
