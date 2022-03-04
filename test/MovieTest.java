@@ -2,6 +2,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,29 +30,34 @@ public class MovieTest {
     void searchForMovies() {
         //a search for "her" should give the following results as strings
         LinkedList<String> movies = new LinkedList<>();
-        movies.add("Her");
-        movies.add("Below Her Mouth");
-        movies.add("All for Her");
-        movies.add("Death Becomes Her");
-        movies.add("Her Smell");
+        movies.add("Göta Kanal 2 - kanalkampen");
+        movies.add("Göta Kanal 3 - kanalkungens hemlighet");
+        movies.add("Göta Kanal eller Vem drog ur proppen?");
+        movies.add("Göta Kanal 4 - Vinna eller försvinna");
 
-        assertEquals(movies, Movie.searchForMovies("her"));
+        assertEquals(movies, Movie.searchForMovies("göta kanal"));
 
     }
 
     @Test
     void movieSearch() {
-        //a serach for "her" should result in a list of these movies
-        List<String> movies = List.of("Her", "Below Her Mouth", "All for Her", "Death Becomes Her", "Her Smell");
+        //a search for "her" should result in a list of these movies
+        ArrayList<String> movies = new ArrayList<>();
+        movies.add("Göta Kanal 2 - kanalkampen");
+        movies.add("Göta Kanal 3 - kanalkungens hemlighet");
+        movies.add("Göta Kanal eller Vem drog ur proppen?");
+        movies.add("Göta Kanal 4 - Vinna eller försvinna");
         LinkedList<JSONObject> movieObj = new LinkedList<>();
         //create movie objects for each movie
-        for (int i = 0; i < 5; i++) {
-            JSONObject obj = Movie.createMovie(movies.get(i));
+        for (String s : movies) {
+            JSONObject obj = Movie.createMovie(s);
             movieObj.add(obj);
         }
         //compare each title with the title of the movies list
-        for (int i = 0; i < 5; i++) {
-            assertEquals(movieObj.get(i).getString("original_title"), movies.get(i));
+        int i = 0;
+        for(JSONObject obj : movieObj) {
+            assertEquals(obj.getString("original_title"), movies.get(i));
+            i++;
         }
     }
 
