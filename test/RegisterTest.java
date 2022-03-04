@@ -36,7 +36,6 @@ class RegisterTest {
             Register.Result rs3 = reg.reg().get();
             assertEquals(Register.Result.EMPTY_FIELDS, rs3);
 
-            DatabaseConn.removeTestUser(user);
         }catch(NullPointerException | ExecutionException | InterruptedException | SQLException exception){
             exception.printStackTrace();
         }
