@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
  *@author Oscar
  *@version 2022-03-02
  */
-public class Loginpanel extends JPanel implements ActionListener {
+public class LoginPanel extends JPanel implements ActionListener {
     private JTextField username;
     private JPasswordField password;
     private MainFrame m;
@@ -26,7 +26,7 @@ public class Loginpanel extends JPanel implements ActionListener {
      * if button register is pressed user will be taken to registerpanel.
      * @param m mainframe
      */
-    public Loginpanel(MainFrame m) {
+    public LoginPanel(MainFrame m) {
         setPreferredSize(new Dimension(m.getWidth(), m.getHeight()));
         setBackground(Color.WHITE);
         setLayout(new GridLayout(3, 1, 0, 10));
@@ -82,7 +82,7 @@ public class Loginpanel extends JPanel implements ActionListener {
         JButton loginButton = new JButton("Login");
         loginButton.addActionListener(this);
         JButton registerButton = new JButton("Register");
-        registerButton.addActionListener(event -> m.navigateTo(Registerpanel::new));
+        registerButton.addActionListener(event -> m.navigateTo(RegisterPanel::new));
         buttonPanel.add(loginButton);
         buttonPanel.add(registerButton);
 

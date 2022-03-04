@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
  *@version 2022-03-02
 */
 
-public class Registerpanel extends JPanel implements ActionListener {
+public class RegisterPanel extends JPanel implements ActionListener {
    private JTextField username;
    private JPasswordField password;
    private JPasswordField passwordrep;
@@ -26,7 +26,7 @@ public class Registerpanel extends JPanel implements ActionListener {
      * if button login is pressed user will be taken to loginpanel.
      * @param m
      */
-    public Registerpanel(MainFrame m) {
+    public RegisterPanel(MainFrame m) {
         setBackground(Color.WHITE);
         setLayout(new GridLayout(3, 1, 0, 10));
         JPanel textPanel = new JPanel();
@@ -86,7 +86,7 @@ public class Registerpanel extends JPanel implements ActionListener {
         buttonPanel.setLayout(new GridLayout(3, 1, 1, 10));
         buttonPanel.setBackground(Color.WHITE);
         JButton loginButton = new JButton("Abort");
-        loginButton.addActionListener(event -> m.navigateTo(Loginpanel::new));
+        loginButton.addActionListener(event -> m.navigateTo(LoginPanel::new));
         JButton registerButton = new JButton("Register");
         registerButton.addActionListener(this);
         buttonPanel.add(registerButton);
@@ -133,7 +133,7 @@ public class Registerpanel extends JPanel implements ActionListener {
                             username.setText("");
                             password.setText("");
                             passwordrep.setText("");
-                            m.navigateTo(Loginpanel::new);
+                            m.navigateTo(LoginPanel::new);
                         }
                         case EMPTY_FIELDS ->  {
                             Toolkit.getDefaultToolkit().beep();
