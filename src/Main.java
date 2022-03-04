@@ -4,6 +4,11 @@ import Circles.Controller.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Starts application
+ * @author Oscar Larsson
+ * @version 2022-03-03
+ */
 public class Main {
     public static void main(String[] args) {
         MainFrame m = new MainFrame("Circles");
