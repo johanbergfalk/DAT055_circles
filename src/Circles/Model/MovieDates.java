@@ -23,7 +23,7 @@ public class MovieDates {
      * Sets up methods for retrieving:
      * how long a circle is running, in days,
      * how long until a circle is closed, in days
-     * how long until a movie in a circle is closed, in days
+     * how long until a movie in a circle is closed, in days.
      *
      * @param start startdate of circle
      * @param end enddate of circle
@@ -50,7 +50,7 @@ public class MovieDates {
     /**
      * Sets up methods for retrieving:
      * how long a circle is running, in days,
-     * how long until a circle is closed, in days
+     * how long until a circle is closed, in days.
      *
      * @param start startdate of Circle
      * @param end enddate of Circle
@@ -75,14 +75,6 @@ public class MovieDates {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-
-    /*CURRENTLY NOT USED
-    //Converter LocalDate -> Date
-    private Date convertToDateViaInstant(LocalDate d) {
-        return java.util.Date.from(d.atStartOfDay()
-                .atZone(ZoneId.systemDefault())
-                .toInstant());
-    }*/
 
     //Returns total days between two dates
     private long countTotalDays(LocalDate s, LocalDate e){
