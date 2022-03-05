@@ -1,16 +1,16 @@
 package Circles.Controller;
-/**
- * Controller class for displaying a loading screen with a moving progressbar.
- * Used in between movement between 'MyCircles' and 'BrowseCircles'.
- * Offers better UX.
- * @author Filip Svensson
- */
 
 import Circles.Model.User;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Controller class for displaying a loading screen with a moving progressbar.
+ * Used in between movement between 'MyCircles' and 'BrowseCircles'.
+ * Offers better UX.
+ * @author Filip Svensson
+ */
 public class LoadingScreenPanel extends JPanel {
     public LoadingScreenPanel(User u){
         setBackground(u.getBackgroundColor());
