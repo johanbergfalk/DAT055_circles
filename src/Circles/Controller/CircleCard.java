@@ -98,7 +98,6 @@ public class CircleCard extends JPanel {
         JPanel leftBottom = new JPanel();
         leftBottom.setBackground(this.getBackground());
         leftBottom.setLayout(new GridLayout(3,0,0,0));
-        //leftBottom.add(new JLabel(""));
 
         if(days.getTotalDaysLeft() < 0){
             JLabel runtime = new JLabel("Circle is closed");
