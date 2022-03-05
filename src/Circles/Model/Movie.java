@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * Class for constructing a new movie object
+ * Class for constructing a new movie object.
  * @author Johan Bergfalk
  * @version 2022-03-04
  */
@@ -25,7 +25,7 @@ public class Movie {
     private String posterURL;
 
     /**
-     * Constructor for a movie, sets name, id, description, year, poster based on title
+     * Constructor for a movie, sets name, id, description, year, poster based on title.
      * @param title the movie title to find in tmdb database
      */
     public Movie(String title) {
@@ -51,7 +51,7 @@ public class Movie {
     public Movie(){}
 
     /**
-     * Used when creating a movie from the class constructor
+     * Used when creating a movie from the class constructor.
      * @param title the movie title to find in tmdb database
      * @return a JSON object containing information about the movie
      */
@@ -69,7 +69,7 @@ public class Movie {
     }
 
     /**
-     * Search for a movie to display its title in the GUI
+     * Search for a movie to display its title in the GUI.
      * @param title the movie title to find in tmdb database
      * @return the movie title as a string to display in the GUI
      */
@@ -115,7 +115,7 @@ public class Movie {
     }
 
     /**
-     * Method that returns the result from an API search in the TMDB database
+     * Method that returns the result from an API search in the TMDB database.
      * @param title movie title
      * @return JSOBObject containing the all the results from the search
      */
