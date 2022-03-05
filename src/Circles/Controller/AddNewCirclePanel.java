@@ -163,7 +163,6 @@ public class AddNewCirclePanel extends JPanel {
 
         JButton search = new JButton("Search");
         search.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //search.addActionListener(e -> { dual.addSourceElements(new String[] { Circles.Controller.Model.Movie.searchForMovieToAdd(searchMovie.getText()) }); });
 
         search.addActionListener(e -> {
             if(!searchMovie.getText().isEmpty()) {
