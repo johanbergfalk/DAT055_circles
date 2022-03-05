@@ -1,14 +1,13 @@
 package Circles.Controller;
 
+import javax.swing.*;
+import java.util.function.Function;
+
 /**
  * Application mainframe
  * @author Oscar Larsson
  * @version 2022-03-01
  */
-
-import javax.swing.*;
-import java.util.function.Function;
-
 public class MainFrame extends JFrame {
     public MainFrame(String title) {
         super.setTitle(title);
