@@ -71,30 +71,30 @@ public class NavigationBar extends JPanel{
                     add(settings);
                     add(logOut);
                     break;
-            //Circles.Controller.BrowseCirclesPanel
+            //BrowseCirclesPanel
             case 2: add(myCircles);
                     add(createCircle);
                     add(settings);
                     add(logOut);
                     break;
-            //Circles.Controller.MyCirclesPanel
+            //MyCirclesPanel
             case 3: add(browseCircles);
                     add(settings);
                     add(logOut);
                     break;
-            //Circles.Controller.Model.Settings
+            //Settings
             case 4: add(myCircles);
                     add(browseCircles);
                     add(logOut);
                     break;
-            //Circles.Controller.CircleDetailsPanel with join button
+            //CircleDetailsPanel with join button
             case 5: add(myCircles);
                     add(browseCircles);
                     add(join);
                     add(settings);
                     add(logOut);
                 break;
-            //CirleDetailsPanel with leave button
+            //CircleDetailsPanel with leave button
             case 6: add(myCircles);
                 add(browseCircles);
                 add(leave);

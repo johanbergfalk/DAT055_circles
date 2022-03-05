@@ -1,9 +1,10 @@
 package Circles.Model;
 
 /**
+ * Class for handling GradeComments associated with this and other users.
  * @author oscar
  * @version 2022-03-02
- * Class for handeling Gradecomments associated with this and other users.
+ *
  */
 public class GradeComment {
 

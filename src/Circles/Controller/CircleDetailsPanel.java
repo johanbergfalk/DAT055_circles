@@ -15,7 +15,7 @@ import java.util.LinkedList;
  */
 public class CircleDetailsPanel extends JPanel {
 
-    LinkedList<Movie> moviesInCircle;
+    private final LinkedList<Movie> moviesInCircle;
     private static MainFrame frame;
     private static User user;
     private static Circle c;

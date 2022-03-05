@@ -30,7 +30,7 @@ private byte[] gethash;
     }
 
     /**
-     *method for validating a user, it will create a new thread when executing
+     * Method for validating a user, it will create a new thread when executing.
      *
      * @return deepending on outcome it will throw a Result of type enum, telling what went wrong or if a sucessful login occurred.
      * @throws NullPointerException
