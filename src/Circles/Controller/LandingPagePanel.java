@@ -7,6 +7,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ *Class for welcoming a user to the program.
+ *@author Oscar
+ *@version 2022-03-05
+ */
+
 public class LandingPagePanel extends JPanel {
 
     public LandingPagePanel(MainFrame frame, User user) {
