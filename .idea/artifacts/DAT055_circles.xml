@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="DAT055_circles:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/DAT055_circles_jar</output-path>
-    <root id="archive" name="DAT055_circles.jar">
+  <artifact type="war" build-on-make="true" name="DAT055_circles">
+    <output-path>$PROJECT_DIR$/out/artifacts/DAT055_circles</output-path>
+    <root id="archive" name="DAT055_circles.war">
       <element id="module-output" name="DAT055_circles" />
       <element id="extracted-dir" path="$PROJECT_DIR$/postgresql-42.3.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/jdatepicker-1.3.4.jar" path-in-jar="/" />
