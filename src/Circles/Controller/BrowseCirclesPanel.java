@@ -66,7 +66,10 @@ public class BrowseCirclesPanel extends JPanel {
         for(Circle i : circles){
             MovieDates dates = new MovieDates(i.getStartTime(), i.getStopTime());
             if(dates.getTotalDaysLeft() >= 0){
-                c.add(new CircleCard(frame, u, i));
+                int id = i.getId();
+                if(!(id == 13 || id == 14)){
+                    c.add(new CircleCard(frame, u, i));
+                }
             }
         }
         JPanel completed = new JPanel();

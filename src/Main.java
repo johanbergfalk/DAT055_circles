@@ -1,5 +1,7 @@
 import Circles.Controller.LoginPanel;
 import Circles.Controller.MainFrame;
+import Circles.Model.DatabaseConn;
+import Circles.Model.Passwords;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,5 +20,6 @@ public class Main {
         m.setDefaultCloseOperation(m.EXIT_ON_CLOSE);
         m.setContentPane(new LoginPanel(m));
         m.setVisible(true);
+
     }
 }
