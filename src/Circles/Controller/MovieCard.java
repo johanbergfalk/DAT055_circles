@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.LinkedList;
 
 /**
- * Class for constructing a movie card panel containing movie information
+ * Class for constructing a movie card panel containing movie information.
  * @author Johan Bergfalk
  * @version 2022-03-02
  */
@@ -22,7 +22,7 @@ public class MovieCard extends JPanel {
     private long daysLeft;
 
     /**
-     * Constructor for a MovieCard
+     * Constructor for a MovieCard.
      * @param m movie
      * @param u currently active user
      * @param c current circle
@@ -137,7 +137,6 @@ public class MovieCard extends JPanel {
         JPanel contents = new JPanel();
         contents.setBackground(this.getBackground());
         contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
-        //contents.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel review = new JLabel("Leave a review");
         review.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -203,7 +202,6 @@ public class MovieCard extends JPanel {
         sliderPanel.add(Box.createRigidArea(new Dimension(10,5)));
         contents.add(sliderPanel);
 
-
         JButton submit = new JButton("Submit");
         submit.addActionListener(e -> {
             if(input.getText().equals("Write your review here...")){
@@ -216,9 +214,6 @@ public class MovieCard extends JPanel {
         contents.add(submit);
 
         right.add(contents);
-        //IF CIRCLE DATE PASSED
-        //TODO SHOW RATING AND COMMENTS
-
     }
 
     //Show this panel when the user has reviewed the movie
@@ -288,7 +283,6 @@ public class MovieCard extends JPanel {
         right.setPreferredSize(new Dimension(250, 150));
         right.setLayout(new BorderLayout());
 
-
         JPanel contents = new JPanel();
         contents.setBackground(this.getBackground());
         contents.setLayout(new BoxLayout(contents, BoxLayout.Y_AXIS));
@@ -296,13 +290,11 @@ public class MovieCard extends JPanel {
 
     //gets the poster for a Circles.Controller.Model.Movie m and scales it properly
     private JLabel getPoster(Movie m) {
-
         try {
             URL posterUrl = new URL(m.getPosterURL());
             ImageIcon icon = new ImageIcon(posterUrl);
             Image scaleImage = icon.getImage().getScaledInstance(72, 108,Image.SCALE_DEFAULT);
-            JLabel label = new JLabel(new ImageIcon(scaleImage));
-            return label;
+            return new JLabel(new ImageIcon(scaleImage));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -318,8 +310,9 @@ public class MovieCard extends JPanel {
             CircleDetailsPanel.updateCircleDetail();
         }
         else {
-            //TODO FIX
-            System.out.println("voting failed");
+            JFrame f = new JFrame();
+            JOptionPane.showMessageDialog(f, "Voting failed");
+            getToolkit().beep();
         }
     }
 

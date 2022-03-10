@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Internal tests of class Circles.Controller.Model.Circle
+ * Internal tests of class Circle
  * @author Robert Nilsson
  * @version 2022-03-03
  */

@@ -7,7 +7,7 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Internal tests of class Circles.Controller.Model.User
+ * Internal tests of class User
  * @author Robert Nilsson
  * @version 2022-03-03
  */

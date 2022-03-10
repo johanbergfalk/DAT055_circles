@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 
 /**
- * Testing for Circles.Controller.Model.Movie class
+ * Testing for Movie class
  * @author Johan Bergfalk
  * @version 2022-03-03
  */
