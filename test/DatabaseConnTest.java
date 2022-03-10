@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * Testing for Circles.Controller.Model.DatabaseConn class
+ * Testing for DatabaseConn class
  * @author Filip Svensson
  * @version 2022-03-03
  */

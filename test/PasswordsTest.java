@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Internal tests of class Circles.Controller.Model.Passwords.
+ * Internal tests of class Passwords
  * @author Robert Nilsson
  * @version 2022-03-03
  */

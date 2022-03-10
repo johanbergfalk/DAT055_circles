@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Testing for Circles.Controller.Model.Settings class
+ * Testing for Settings class
  * @author Filip Svensson
  * @version 2022-03-03
  */

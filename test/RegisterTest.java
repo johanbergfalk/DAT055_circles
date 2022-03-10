@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
- * Testing for Circles.Controller.Model.Register class
+ * Testing for Register class
  * @author Oscar Larsson
  * @version 2022-03-04
  */

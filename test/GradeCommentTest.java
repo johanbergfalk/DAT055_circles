@@ -7,7 +7,7 @@ import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Testing for Circles.Controller.Model.GradeComment class
+ * Testing for GradeComment class
  * @author Oscar Larsson
  * @version 2022-03-03
  */
