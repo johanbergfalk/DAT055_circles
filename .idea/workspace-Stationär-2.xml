@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="48e21ffa-abf5-4cad-89c0-535f6cf0847b" name="Changes" comment="Javadoc" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="24T5qfFc1CAuiNdkV7EYPmL8tJU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pure_/OneDrive/Chalmers/Programmering/DAT055_circles&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="DAT055_circles" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainFrame" />
+      <module name="DAT055_circles" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyCirclesPanel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyCirclesPanel" />
+      <module name="DAT055_circles" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="loginControl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="loginControl" />
+      <module name="DAT055_circles" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainFrame" />
+        <item itemvalue="Application.MyCirclesPanel" />
+        <item itemvalue="Application.loginControl" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="48e21ffa-abf5-4cad-89c0-535f6cf0847b" name="Changes" comment="" />
+      <created>1643641931206</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1643641931206</updated>
+      <workItem from="1644322229475" duration="1477000" />
+      <workItem from="1644392659300" duration="868000" />
+      <workItem from="1644664672904" duration="2774000" />
+      <workItem from="1644930752172" duration="768000" />
+      <workItem from="1645003061235" duration="84000" />
+      <workItem from="1645021261288" duration="31375000" />
+      <workItem from="1645169352167" duration="27073000" />
+      <workItem from="1645383314216" duration="38084000" />
+      <workItem from="1645610455848" duration="18000" />
+      <workItem from="1645610616765" duration="804000" />
+      <workItem from="1645611888600" duration="437000" />
+      <workItem from="1645618499761" duration="302000" />
+      <workItem from="1645688684526" duration="2325000" />
+      <workItem from="1645709161051" duration="14798000" />
+      <workItem from="1645730605254" duration="256000" />
+      <workItem from="1645732248307" duration="106511000" />
+      <workItem from="1646230125322" duration="2508000" />
+      <workItem from="1647935095767" duration="657000" />
+      <workItem from="1648492933651" duration="621000" />
+      <workItem from="1649058977492" duration="328000" />
+      <workItem from="1649059617802" duration="89000" />
+      <workItem from="1661000802028" duration="25000" />
+      <workItem from="1661025609742" duration="1981000" />
+      <workItem from="1662446701071" duration="1538000" />
+      <workItem from="1662451532162" duration="387000" />
+      <workItem from="1662455994398" duration="26000" />
+      <workItem from="1662456191575" duration="83000" />
+      <workItem from="1663928548542" duration="3636000" />
+      <workItem from="1664202691019" duration="1218000" />
+      <workItem from="1664365875156" duration="2914000" />
+      <workItem from="1664545108244" duration="514000" />
+      <workItem from="1664635342401" duration="483000" />
+      <workItem from="1664978544935" duration="1558000" />
+      <workItem from="1667312507282" duration="32000" />
+      <workItem from="1667312679924" duration="44000" />
+    </task>
+    <task id="LOCAL−00002" summary="Third the charm">
+      <created>1643642587761</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1643642587761</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Blir det fel?">
+      <created>1643642646047</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1643642646047</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Ändrat till LinkedList">
+      <created>1645084682256</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1645084682256</updated>
+    </task>
+    <task id="LOCAL−00005" summary="MyCircles visar cirklar med info. Knapp för cirkeldetalj skickar vidare till CircleDetails.">
+      <created>1645133015268</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1645133015268</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Circles getters and setters">
+      <created>1645181361167</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1645181361167</updated>
+    </task>
+    <task id="LOCAL−00007" summary="CircleCard prepared for movieposter">
+      <created>1645182077570</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1645182077570</updated>
+    </task>
+    <task id="LOCAL−00008" summary="Navigation">
+      <created>1645388586883</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1645388586883</updated>
+    </task>
+    <task id="LOCAL−00009" summary="Thread when looking up movie posters">
+      <created>1645433124162</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1645433124162</updated>
+    </task>
+    <task id="LOCAL−00010" summary="Navigation between Loginpanel, BrowseCirclesPanel, MyCirclesPanel, CircleDetailsPanel">
+      <created>1645542681268</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1645542681268</updated>
+    </task>
+    <task id="LOCAL−00011" summary="Navigation with only relevant buttons showing depending on in witch panel you are">
+      <created>1645550485666</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1645550485666</updated>
+    </task>
+    <task id="LOCAL−00012" summary="Messed up Circle in last push, fixed now">
+      <created>1645557200846</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1645557200846</updated>
+    </task>
+    <task id="LOCAL−00013" summary="Add circle button in navbar">
+      <created>1645611404282</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1645611404282</updated>
+    </task>
+    <task id="LOCAL−00014" summary="New design of CircleCard">
+      <created>1645730044767</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1645730044767</updated>
+    </task>
+    <task id="LOCAL−00015" summary="circle creator">
+      <created>1645730849906</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1645730849906</updated>
+    </task>
+    <task id="LOCAL−00016" summary="Navigation to AddNewCirclePanel">
+      <created>1645776005305</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1645776005305</updated>
+    </task>
+    <task id="LOCAL−00017" summary="darkmode in all panels">
+      <created>1645784102522</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1645784102522</updated>
+    </task>
+    <task id="LOCAL−00018" summary="Darkmode saved on user i database">
+      <created>1645787491032</created>
+      <option name="number" value="LOCAL−00018" />
+      <option name="presentableId" value="LOCAL−00018" />
+      <updated>1645787491032</updated>
+    </task>
+    <task id="LOCAL−00019" summary="Errorsounds added in registration and change password">
+      <created>1645821445061</created>
+      <option name="number" value="LOCAL−00019" />
+      <option name="presentableId" value="LOCAL−00019" />
+      <updated>1645821445061</updated>
+    </task>
+    <task id="LOCAL−00020" summary="MovieDates - adds functionality for calculating how long it is possible to vote and add comment to a movie.">
+      <created>1645899012115</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1645899012115</updated>
+    </task>
+    <task id="LOCAL−00021" summary="MovieDates - adds functionality for calculating how long it is possible to vote and add comment to a movie.">
+      <created>1645899066345</created>
+      <option name="number" value="LOCAL−00021" />
+      <option name="presentableId" value="LOCAL−00021" />
+      <updated>1645899066345</updated>
+    </task>
+    <task id="LOCAL−00022" summary="Database get all circles">
+      <created>1646063167329</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1646063167329</updated>
+    </task>
+    <task id="LOCAL−00023" summary="2an">
+      <created>1646064053803</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1646064053803</updated>
+    </task>
+    <task id="LOCAL−00024" summary="Join / leave circle added to navbar">
+      <created>1646069230362</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1646069230362</updated>
+    </task>
+    <task id="LOCAL−00025" summary="Fixade leaveCircle">
+      <created>1646070111394</created>
+      <option name="number" value="LOCAL−00025" />
+      <option name="presentableId" value="LOCAL−00025" />
+      <updated>1646070111394</updated>
+    </task>
+    <task id="LOCAL−00026" summary="Circle showing movieposter of the first movie in the circle">
+      <created>1646074330090</created>
+      <option name="number" value="LOCAL−00026" />
+      <option name="presentableId" value="LOCAL−00026" />
+      <updated>1646074330090</updated>
+    </task>
+    <task id="LOCAL−00027" summary="Creator can now not leave a created circle">
+      <created>1646083107845</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1646083107845</updated>
+    </task>
+    <task id="LOCAL−00028" summary="Review functions">
+      <created>1646132044470</created>
+      <option name="number" value="LOCAL−00028" />
+      <option name="presentableId" value="LOCAL−00028" />
+      <updated>1646132044471</updated>
+    </task>
+    <task id="LOCAL−00029" summary="Review functions 2">
+      <created>1646140566398</created>
+      <option name="number" value="LOCAL−00029" />
+      <option name="presentableId" value="LOCAL−00029" />
+      <updated>1646140566398</updated>
+    </task>
+    <task id="LOCAL−00030" summary="Closing of circle">
+      <created>1646143747913</created>
+      <option name="number" value="LOCAL−00030" />
+      <option name="presentableId" value="LOCAL−00030" />
+      <updated>1646143747913</updated>
+    </task>
+    <task id="LOCAL−00031" summary="Can't join circle that is closed">
+      <created>1646145614980</created>
+      <option name="number" value="LOCAL−00031" />
+      <option name="presentableId" value="LOCAL−00031" />
+      <updated>1646145614980</updated>
+    </task>
+    <task id="LOCAL−00032" summary="All reviews only show after movie is closed">
+      <created>1646146817486</created>
+      <option name="number" value="LOCAL−00032" />
+      <option name="presentableId" value="LOCAL−00032" />
+      <updated>1646146817486</updated>
+    </task>
+    <task id="LOCAL−00033" summary="Cleaning">
+      <created>1646148433818</created>
+      <option name="number" value="LOCAL−00033" />
+      <option name="presentableId" value="LOCAL−00033" />
+      <updated>1646148433818</updated>
+    </task>
+    <task id="LOCAL−00034" summary="Join button fixed">
+      <created>1646210225341</created>
+      <option name="number" value="LOCAL−00034" />
+      <option name="presentableId" value="LOCAL−00034" />
+      <updated>1646210225341</updated>
+    </task>
+    <task id="LOCAL−00035" summary="Javadoc">
+      <created>1646211226857</created>
+      <option name="number" value="LOCAL−00035" />
+      <option name="presentableId" value="LOCAL−00035" />
+      <updated>1646211226857</updated>
+    </task>
+    <task id="LOCAL−00036" summary="Javadoc">
+      <created>1646211720186</created>
+      <option name="number" value="LOCAL−00036" />
+      <option name="presentableId" value="LOCAL−00036" />
+      <updated>1646211720186</updated>
+    </task>
+    <task id="LOCAL−00037" summary="Errorsounds if failed login">
+      <created>1646212417251</created>
+      <option name="number" value="LOCAL−00037" />
+      <option name="presentableId" value="LOCAL−00037" />
+      <updated>1646212417251</updated>
+    </task>
+    <task id="LOCAL−00038" summary="Javadoc">
+      <created>1646214583232</created>
+      <option name="number" value="LOCAL−00038" />
+      <option name="presentableId" value="LOCAL−00038" />
+      <updated>1646214583232</updated>
+    </task>
+    <task id="LOCAL−00039" summary="Javadoc">
+      <created>1646215592946</created>
+      <option name="number" value="LOCAL−00039" />
+      <option name="presentableId" value="LOCAL−00039" />
+      <updated>1646215592946</updated>
+    </task>
+    <task id="LOCAL−00040" summary="Javadoc">
+      <created>1646216153682</created>
+      <option name="number" value="LOCAL−00040" />
+      <option name="presentableId" value="LOCAL−00040" />
+      <updated>1646216153682</updated>
+    </task>
+    <task id="LOCAL−00041" summary="Javadoc">
+      <created>1646216340118</created>
+      <option name="number" value="LOCAL−00041" />
+      <option name="presentableId" value="LOCAL−00041" />
+      <updated>1646216340118</updated>
+    </task>
+    <task id="LOCAL−00042" summary="Javadoc">
+      <created>1646216457467</created>
+      <option name="number" value="LOCAL−00042" />
+      <option name="presentableId" value="LOCAL−00042" />
+      <updated>1646216457467</updated>
+    </task>
+    <task id="LOCAL−00043" summary="Javadoc">
+      <created>1646218157368</created>
+      <option name="number" value="LOCAL−00043" />
+      <option name="presentableId" value="LOCAL−00043" />
+      <updated>1646218157368</updated>
+    </task>
+    <task id="LOCAL−00044" summary="Javadoc">
+      <created>1646218286276</created>
+      <option name="number" value="LOCAL−00044" />
+      <option name="presentableId" value="LOCAL−00044" />
+      <updated>1646218286276</updated>
+    </task>
+    <task id="LOCAL−00045" summary="Javadoc">
+      <created>1646218337523</created>
+      <option name="number" value="LOCAL−00045" />
+      <option name="presentableId" value="LOCAL−00045" />
+      <updated>1646218337523</updated>
+    </task>
+    <task id="LOCAL−00046" summary="Javadoc">
+      <created>1646227661299</created>
+      <option name="number" value="LOCAL−00046" />
+      <option name="presentableId" value="LOCAL−00046" />
+      <updated>1646227661299</updated>
+    </task>
+    <task id="LOCAL−00047" summary="Javadoc">
+      <created>1646228779845</created>
+      <option name="number" value="LOCAL−00047" />
+      <option name="presentableId" value="LOCAL−00047" />
+      <updated>1646228779846</updated>
+    </task>
+    <task id="LOCAL−00048" summary="Javadoc">
+      <created>1646229322882</created>
+      <option name="number" value="LOCAL−00048" />
+      <option name="presentableId" value="LOCAL−00048" />
+      <updated>1646229322882</updated>
+    </task>
+    <task id="LOCAL−00049" summary="Javadoc">
+      <created>1646229617849</created>
+      <option name="number" value="LOCAL−00049" />
+      <option name="presentableId" value="LOCAL−00049" />
+      <updated>1646229617849</updated>
+    </task>
+    <task id="LOCAL−00050" summary="Javadoc">
+      <created>1646229745561</created>
+      <option name="number" value="LOCAL−00050" />
+      <option name="presentableId" value="LOCAL−00050" />
+      <updated>1646229745563</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Navigation with only relevant buttons showing depending on in witch panel you are" />
+    <MESSAGE value="Messed up Circle in last push, fixed now" />
+    <MESSAGE value="Add circle button in navbar" />
+    <MESSAGE value="New design of CircleCard" />
+    <MESSAGE value="circle creator" />
+    <MESSAGE value="Navigation to AddNewCirclePanel" />
+    <MESSAGE value="darkmode in all panels" />
+    <MESSAGE value="Darkmode saved on user i database" />
+    <MESSAGE value="Errorsounds added in registration and change password" />
+    <MESSAGE value="MovieDates - adds functionality for calculating how long it is possible to vote and add comment to a movie." />
+    <MESSAGE value="Database get all circles" />
+    <MESSAGE value="2an" />
+    <MESSAGE value="Join / leave circle added to navbar" />
+    <MESSAGE value="Fixade leaveCircle" />
+    <MESSAGE value="Circle showing movieposter of the first movie in the circle" />
+    <MESSAGE value="Creator can now not leave a created circle" />
+    <MESSAGE value="Review functions" />
+    <MESSAGE value="Review functions 2" />
+    <MESSAGE value="Closing of circle" />
+    <MESSAGE value="Can't join circle that is closed" />
+    <MESSAGE value="All reviews only show after movie is closed" />
+    <MESSAGE value="Cleaning" />
+    <MESSAGE value="Join button fixed" />
+    <MESSAGE value="Errorsounds if failed login" />
+    <MESSAGE value="Javadoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc" />
+  </component>
+</project>
